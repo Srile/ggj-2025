@@ -32,7 +32,7 @@ const server = Bun.serve<{ authToken: string; }>({
                 return
             }
 
-            console.log("ParsedMsg: %o", parsedMsg);
+            console.log("ParsedMsg: %o", parsedMsg)
             switch (parsedMsg.command) {
                 case "CONNECT":
                     ROOMS["1337"].push(ws)
@@ -47,7 +47,7 @@ const server = Bun.serve<{ authToken: string; }>({
                             message: `Unknown command ${parsedMsg.command}`
                         }
                     ))
-                    break
+                    ws.close()
             }
         },
     },
