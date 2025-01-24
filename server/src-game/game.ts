@@ -13,6 +13,7 @@ export default class Game {
     }
 
     update(actions): State {
+        this.state.turn++
         return this.state
     }
 }

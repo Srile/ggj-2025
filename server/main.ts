@@ -72,7 +72,7 @@ async function updateServer() {
     for (const ws of ROOMS["1337"]) {
         sendUpdateGameState(ws, response)
     }
-    console.log("Connected clients: %o", ROOMS)
+    console.log("Connected clients: %s", ROOMS["1337"].length)
 }
 async function sendUpdateGameState(ws, responseObj) {
     ws.send(JSON.stringify(responseObj))
