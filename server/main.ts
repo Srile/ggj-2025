@@ -1,5 +1,5 @@
 import * as Bun from "bun"
-import { Command, Message } from "./protocol.js";
+import { Message } from "./protocol.js";
 
 // https://render.com/docs/web-services#port-binding
 const PORT = process.env.PORT || 1000;
