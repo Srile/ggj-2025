@@ -1,7 +1,10 @@
-.PHONY: all install_dependencies help
+.PHONY: all deploy install_dependencies help
 
 all: ## Runs the server
 	@bun main.ts
+
+deploy:
+	git push ooz
 
 install_dependencies: ## Install dependencies
 	bun install -d bun-types
