@@ -1,7 +1,7 @@
 export type Command = "CONNECT"
     | "DISCONNECT"
 
-export class Message {
+export interface Message {
     command: Command
     roomId: string | null
 }

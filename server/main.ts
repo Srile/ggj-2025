@@ -34,7 +34,6 @@ const server = Bun.serve<{ authToken: string; }>({
 
             console.log("ParsedMsg: %o", parsedMsg)
             console.log("Command: %s", parsedMsg.command)
-            console.log("Command string access: %s", parsedMsg["command"])
             switch (parsedMsg.command) {
                 case "CONNECT":
                     ROOMS["1337"].push(ws)
