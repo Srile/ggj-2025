@@ -18,7 +18,7 @@ const server = Bun.serve<{ authToken: string; }>({
     websocket: {
         async message(ws, message) {
             const parsedMsg: Message = JSON.parse(String(message))
-            console.log(`${parsedMsg.command}`);
+            console.log("ParsedMsg: %o", parsedMsg);
             switch (parsedMsg.command) {
                 case Command.CONNECT:
                     ROOMS["1337"].push(ws)
