@@ -8,10 +8,27 @@ Game server is reachable under wss://ggj-2025.onrender.com
 
 Clients may send JSON Strings:
 
+0. Connect/disconnect to/from a room:
+
+```json
+{
+    "command": "CONNECT",
+    "roomId": "RoomID"
+}
+```
+
+```json
+{
+    "command": "DISCONNECT",
+    "roomId": "RoomID"
+}
+```
+
 1. Player movement. Send playerId (`"0"` to `"7"`) with the movement key (`"W"`, `"A"`, `"S"`, `"D"`):
 
 ```json
 {
+    "command": "MOVE",
     "0": "W"
 }
 ```
@@ -20,6 +37,10 @@ Server may send the following JSON Strings:
 
 ```json
 {
+    "command": "SERVER_RESPONSE",
+    "room": "RoomID",
+    "playerId": "0",
+    "turn": 5,
     "map": "map string\nmap string\n",
     "players": {
         "0": [1, 2],
@@ -30,8 +51,18 @@ Server may send the following JSON Strings:
 }
 ```
 
+* `turn`: Turn number
 * `map`: The map as a String, see "Map Format" below
 * `players`: Player positions
+
+Errors:
+
+```json
+{
+    "command": "SERVER_ERROR",
+    "message": "Room is full"
+}
+```
 
 ### Map Format
 
