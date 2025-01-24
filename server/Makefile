@@ -1,7 +1,7 @@
 .PHONY: all install_dependencies help
 
 all: ## Runs the server
-	bun main.ts
+	@bun main.ts
 
 install_dependencies: ## Install dependencies
 	bun install -d bun-types
