@@ -12,8 +12,7 @@
  */
 
 /* wle:auto-imports:start */
-import {MouseLookComponent} from '@wonderlandengine/components';
-import {WasdControlsComponent} from '@wonderlandengine/components';
+import {BgResizeScaler} from './bg-resize-scaler.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
@@ -73,8 +72,7 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
-engine.registerComponent(MouseLookComponent);
-engine.registerComponent(WasdControlsComponent);
+engine.registerComponent(BgResizeScaler);
 /* wle:auto-register:end */
 
 try {

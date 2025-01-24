@@ -1,34 +1,26 @@
 {
     "objects": {
         "14": {
-            "name": "Player",
-            "components": [
-                {
-                    "type": "wasd-controls",
-                    "wasd-controls": {
-                        "headObject": "17"
-                    }
-                }
-            ],
+            "name": "CameraRoot",
             "scaling": [
                 0.9999998,
                 1.0,
                 0.9999998
             ],
             "translation": [
-                -3.2591099,
-                1.8000135,
-                1.7569212
+                0.0,
+                4.4149827,
+                0.0
             ],
             "rotation": [
                 0.0,
-                -0.3768199,
                 0.0,
-                0.9262865
+                0.0,
+                1.0
             ]
         },
         "15": {
-            "name": "FloorPlane",
+            "name": "BackgroundPlane",
             "components": [
                 {
                     "type": "mesh",
@@ -36,12 +28,15 @@
                         "mesh": "7",
                         "material": "20"
                     }
+                },
+                {
+                    "type": "bg-resize-scaler"
                 }
             ],
             "scaling": [
-                4.0,
-                4.0,
-                4.0
+                5.0,
+                5.0,
+                5.0
             ],
             "translation": [
                 0.0,
@@ -55,74 +50,33 @@
                 0.7069638
             ]
         },
-        "16": {
-            "name": "Cube",
+        "17": {
+            "name": "Camera",
+            "parent": "14",
             "components": [
                 {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "8",
-                        "material": "22"
+                    "type": "view",
+                    "view": {
+                        "projectionType": "orthographic",
+                        "far": 50.0
                     }
                 }
-            ],
-            "scaling": [
-                0.5,
-                0.5,
-                0.5
             ],
             "translation": [
-                2.9802322387695313e-8,
-                0.4999999,
-                5.960464477539063e-8
+                0.0,
+                0.0,
+                0.0
             ],
             "rotation": [
+                -0.7071066,
                 0.0,
                 0.0,
-                0.0,
-                1.0
-            ]
-        },
-        "17": {
-            "name": "NonVrCamera",
-            "parent": "14",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "mouse-look"
-                }
-            ]
-        },
-        "18": {
-            "name": "EyeLeft",
-            "parent": "14",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "eye left"
-                    }
-                }
-            ]
-        },
-        "19": {
-            "name": "EyeRight",
-            "parent": "14",
-            "components": [
-                {
-                    "type": "view"
-                },
-                {
-                    "type": "input",
-                    "input": {
-                        "type": "eye right"
-                    }
-                }
+                0.7071068
+            ],
+            "scaling": [
+                1.0,
+                0.9999998,
+                0.9999998
             ]
         },
         "21": {
@@ -171,62 +125,6 @@
                 -1.0,
                 3.0,
                 -1.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ]
-        },
-        "24": {
-            "name": "Cone",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "10",
-                        "material": "25"
-                    }
-                }
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "translation": [
-                1.5,
-                1.0,
-                -1.4901161193847656e-8
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ]
-        },
-        "27": {
-            "name": "Sphere",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "9",
-                        "material": "26"
-                    }
-                }
-            ],
-            "scaling": [
-                0.75,
-                0.75,
-                0.75
-            ],
-            "translation": [
-                0.4999999,
-                0.75,
-                -1.25
             ],
             "rotation": [
                 0.0,
@@ -295,6 +193,10 @@
                     1.0
                 ],
                 "shininess": 1
+            },
+            "pipeline": "35",
+            "Flat": {
+                "flatTexture": "77"
             }
         },
         "22": {
@@ -602,8 +504,9 @@
             ]
         },
         "vr": {
-            "leftEyeObject": "18",
-            "rightEyeObject": "19"
+            "leftEyeObject": null,
+            "rightEyeObject": null,
+            "enable": false
         },
         "scripting": {
             "bundlingType": "esbuild",
@@ -615,6 +518,9 @@
             "hdr": {
                 "exposure": 1.5
             }
+        },
+        "editor": {
+            "ids": "uuid"
         }
     },
     "animations": {},
@@ -732,8 +638,22 @@
             }
         }
     },
-    "textures": {},
-    "images": {},
+    "textures": {
+        "77": {
+            "link": {
+                "name": "TemplateGrid_albedo.png",
+                "file": "assets\\TemplateGrid_albedo.png"
+            }
+        }
+    },
+    "images": {
+        "76": {
+            "link": {
+                "name": "TemplateGrid_albedo.png",
+                "file": "assets\\TemplateGrid_albedo.png"
+            }
+        }
+    },
     "fonts": {
         "55": {
             "link": {
@@ -743,6 +663,11 @@
         }
     },
     "languages": {},
-    "files": {},
+    "files": {
+        "78": {
+            "fileName": "assets/TemplateGrid_albedo.png",
+            "importerName": ""
+        }
+    },
     "morphTargets": {}
 }
