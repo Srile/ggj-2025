@@ -9,7 +9,7 @@
             ],
             "translation": [
                 0.0,
-                4.4149827,
+                50.0,
                 0.0
             ],
             "rotation": [
@@ -58,25 +58,26 @@
                     "type": "view",
                     "view": {
                         "projectionType": "orthographic",
-                        "far": 50.0
+                        "far": 100.0,
+                        "extent": 32.0
                     }
                 }
             ],
             "translation": [
-                0.0,
-                0.0,
-                0.0
+                1.3617744798466447e-7,
+                0.000004,
+                -1.1675535915856017e-7
             ],
             "rotation": [
-                -0.7071066,
+                -0.5000004,
                 0.0,
                 0.0,
-                0.7071068
+                0.8660251
             ],
             "scaling": [
-                1.0,
-                0.9999998,
-                0.9999998
+                0.9999999,
+                0.9999997,
+                0.9999997
             ]
         },
         "21": {
@@ -137,7 +138,7 @@
             "name": "Players",
             "translation": [
                 0.0,
-                0.0,
+                1.0,
                 -3.8099877
             ],
             "rotation": [
@@ -826,7 +827,14 @@
                 "file": "assets\\Players\\Pudu.glb"
             },
             "parent": "aaf7c33d-40c2-4e5d-bca7-99739b0f90b4",
-            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3",
+            "components": [
+                {
+                    "animation": {
+                        "preview": false
+                    }
+                }
+            ]
         },
         "33d1b9b0-67ce-4b66-803f-660d114d2931": {
             "link": {
@@ -1111,6 +1119,215 @@
             },
             "parent": "1600ed54-14c1-436b-9f56-6e77e0ebad36",
             "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "9ebab2d0-1173-40e7-80a8-4a97df5f0069": {
+            "name": "SceneAssets",
+            "translation": [
+                0.0,
+                -28.5151596,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "65d29dfa-0160-4e7e-ab2b-0e688aa0e181": {
+            "name": "WallPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "25"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "8ffc856c-7262-4dfa-8788-5b70bb3c7fc5": {
+            "name": "SceneSpawner",
+            "components": [
+                {
+                    "type": "scene-parser",
+                    "scene-parser": {
+                        "wallPrototype": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
+                        "floorPrototype": "dffbb35b-a1ea-44f3-b22f-cc14328e760a",
+                        "switchPrototype": "925ddca8-e5cb-40af-84d7-a52d90bf0acd",
+                        "oxygenPrototype": "2740976e-41a9-47c9-9ec7-0b051571fb98",
+                        "spawnPointPrototype": "8208aadc-b2a1-4cd7-aa84-e25dbe06ee9e",
+                        "exitPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
+                    }
+                }
+            ]
+        },
+        "dffbb35b-a1ea-44f3-b22f-cc14328e760a": {
+            "name": "FloorPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "b51607fc-9657-4732-8e31-b8ba43e3203e"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "925ddca8-e5cb-40af-84d7-a52d90bf0acd": {
+            "name": "SwitchPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "a0937b28-2b03-4e83-9929-2366d0380f5b"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "2740976e-41a9-47c9-9ec7-0b051571fb98": {
+            "name": "OxygenPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "22"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "8208aadc-b2a1-4cd7-aa84-e25dbe06ee9e": {
+            "name": "SpawnPointPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "968c0631-1b9f-4263-a32a-8bcc9bad6c9e"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "ef8be81b-dc65-4a61-8512-f9470a2d547c": {
+            "name": "ExitPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "8",
+                        "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         }
     },
     "meshes": {
@@ -1342,6 +1559,98 @@
             "link": {
                 "name": "M_Taipan",
                 "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "b51607fc-9657-4732-8e31-b8ba43e3203e": {
+            "name": "Red",
+            "Phong": {
+                "diffuseColor": [
+                    0.5843137,
+                    0.1443598,
+                    0.1443598,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "a0937b28-2b03-4e83-9929-2366d0380f5b": {
+            "name": "Orange",
+            "Phong": {
+                "diffuseColor": [
+                    0.7882353,
+                    0.4668511,
+                    0.152941,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    1.0,
+                    0.4705882,
+                    0.0,
+                    1.0
+                ]
+            }
+        },
+        "968c0631-1b9f-4263-a32a-8bcc9bad6c9e": {
+            "name": "Purple",
+            "Phong": {
+                "diffuseColor": [
+                    0.7801137,
+                    0.022176,
+                    0.8078431,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.8235292,
+                    0.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        "64394d02-1869-4065-9aa9-43bae65ff6a2": {
+            "name": "Blue",
+            "Phong": {
+                "diffuseColor": [
+                    0.152941,
+                    0.466851,
+                    0.7882353,
+                    1.0
+                ],
+                "specularColor": [
+                    9.999999974752427e-7,
+                    9.999899930335232e-7,
+                    9.999899930335232e-7,
+                    1.0
+                ],
+                "ambientColor": [
+                    0.0,
+                    0.0,
+                    1.0,
+                    1.0
+                ]
             }
         }
     },
