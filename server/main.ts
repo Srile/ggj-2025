@@ -1,12 +1,15 @@
 import * as Bun from "bun"
 import { Command, Message } from "./protocol.js";
 
+// https://render.com/docs/web-services#port-binding
+const PORT = process.env.PORT || 1000;
+
 const ROOMS = {
     "1337": []
 }
 
 const server = Bun.serve<{ authToken: string; }>({
-    port: 3000,
+    port: PORT,
     fetch(req, server) {
         server.upgrade(req, {
             data: "foobar",
