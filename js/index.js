@@ -13,6 +13,7 @@
 
 /* wle:auto-imports:start */
 import {BgResizeScaler} from './bg-resize-scaler.js';
+import {SceneParser} from './scene-parser.js';
 /* wle:auto-imports:end */
 
 import {loadRuntime} from '@wonderlandengine/api';
@@ -73,6 +74,7 @@ if (document.readyState === 'loading') {
 
 /* wle:auto-register:start */
 engine.registerComponent(BgResizeScaler);
+engine.registerComponent(SceneParser);
 /* wle:auto-register:end */
 
 try {
