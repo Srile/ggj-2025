@@ -19,11 +19,11 @@ const server = Bun.serve<{ authToken: string; }>({
         async message(ws, message) {
             const parsedMsg: Message = JSON.parse(String(message))
             console.log("ParsedMsg: %o", parsedMsg);
-            switch (parsedMsg.command) {
-                case "CONNECT":
+            switch (parsedMsg.command as Command) {
+                case Command.CONNECT:
                     ROOMS["1337"].push(ws)
                     break
-                case "DISCONNECT":
+                case Command.DISCONNECT:
                     ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
                     break
                 default:
@@ -33,6 +33,7 @@ const server = Bun.serve<{ authToken: string; }>({
                             message: `Unknown command ${parsedMsg.command}`
                         }
                     ))
+                    break
             }
         },
     },
