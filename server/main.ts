@@ -28,7 +28,7 @@ const server = Bun.serve<{ authToken: string; }>({
                     ws.send(JSON.stringify(
                         {
                             command: "SERVER_ERROR",
-                            message: "Unknown command"
+                            message: `Unknown command ${parsedMsg.command}`
                         }
                     ))
             }
@@ -48,5 +48,5 @@ async function sendUpdateGameState(ws) {
     ws.send("New game state")
 }
 
-setInterval(updateServer, 500);
+setInterval(updateServer, 1000);
 
