@@ -1,7 +1,5 @@
-export enum Command {
-    CONNECT = "CONNECT",
-    DISCONNECT = "DISCONNECT"
-}
+export type Command = "CONNECT"
+    | "DISCONNECT"
 
 export class Message {
     command: Command
