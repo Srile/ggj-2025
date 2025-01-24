@@ -19,7 +19,6 @@ const server = Bun.serve<{ authToken: string; }>({
         async message(ws, message) {
             const parsedMsg: Message = JSON.parse(String(message))
             console.log(`${parsedMsg.command}`);
-            ws.send("Received!");
             switch (parsedMsg.command) {
                 case Command.CONNECT:
                     ROOMS["1337"].push(ws)

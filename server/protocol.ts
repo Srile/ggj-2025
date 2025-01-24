@@ -1,6 +1,6 @@
 export enum Command {
-    CONNECT,
-    DISCONNECT
+    CONNECT = "CONNECT",
+    DISCONNECT = "DISCONNECT"
 }
 
 export class Message {
