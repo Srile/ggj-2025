@@ -1,5 +1,7 @@
 import * as Bun from "bun"
 import { Message } from "./protocol.js";
+import Game from "./src-game/game.js";
+import { render } from "./src-game/websocket_renderer.js";
 
 // https://render.com/docs/web-services#port-binding
 const PORT = process.env.PORT || 1000;
@@ -8,14 +10,22 @@ const ROOMS = {
     "1337": []
 }
 
+const GAME = new Game()
+GAME.init()
+
 const server = Bun.serve<{ authToken: string; }>({
     port: PORT,
     fetch(req, server) {
         server.upgrade(req, {
-            data: "foobar",
+            data: {
+                "clientId": crypto.randomUUID()
+            },
         });
     },
     websocket: {
+        async close(ws, code, message) {
+            ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
+        },
         async message(ws, message) {
             let parsedMsg: Message;
             try {
@@ -32,14 +42,13 @@ const server = Bun.serve<{ authToken: string; }>({
                 return
             }
 
-            console.log("ParsedMsg: %o", parsedMsg)
-            console.log("Command: %s", parsedMsg.command)
             switch (parsedMsg.command) {
                 case "CONNECT":
-                    ROOMS["1337"].push(ws)
+                    ROOMS[parsedMsg.roomId].push(ws)
                     break
                 case "DISCONNECT":
                     ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
+                    ws.close()
                     break
                 default:
                     ws.send(JSON.stringify(
@@ -57,13 +66,16 @@ const server = Bun.serve<{ authToken: string; }>({
 console.log(`Listening on localhost:${server.port}`);
 
 async function updateServer() {
+    const state = GAME.update({})
+    const response = render(state)
+
     for (const ws of ROOMS["1337"]) {
-        sendUpdateGameState(ws)
+        sendUpdateGameState(ws, response)
     }
     console.log("Connected clients: %o", ROOMS)
 }
-async function sendUpdateGameState(ws) {
-    ws.send("New game state")
+async function sendUpdateGameState(ws, responseObj) {
+    ws.send(JSON.stringify(responseObj))
 }
 
 setInterval(updateServer, 1000);
