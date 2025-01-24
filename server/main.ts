@@ -17,7 +17,21 @@ const server = Bun.serve<{ authToken: string; }>({
     },
     websocket: {
         async message(ws, message) {
-            const parsedMsg: Message = JSON.parse(String(message))
+            let parsedMsg: Message;
+            try {
+                parsedMsg = JSON.parse(String(message))
+            } catch (e) {
+                console.warn("Received invalid message: %s", message);
+                ws.send(JSON.stringify(
+                    {
+                        command: "SERVER_ERROR",
+                        message: `Invalid protocol. Closing connection.`
+                    }
+                ))
+                ws.close()
+                return
+            }
+
             console.log("ParsedMsg: %o", parsedMsg);
             switch (parsedMsg.command) {
                 case "CONNECT":
