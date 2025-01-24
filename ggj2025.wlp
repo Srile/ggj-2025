@@ -132,6 +132,985 @@
                 0.0,
                 1.0
             ]
+        },
+        "bb7e8490-b350-4397-835c-1d73b3999e3e": {
+            "name": "Players",
+            "translation": [
+                0.0,
+                0.0,
+                -3.8099877
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "416fe7fe-f0e7-4b67-9059-62bb34392c90": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                -1.9736196,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Monkey"
+        },
+        "6cab36f5-40f0-4ecc-8105-0b54b8cc0bd8": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "416fe7fe-f0e7-4b67-9059-62bb34392c90",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+                    }
+                }
+            ]
+        },
+        "b89f5dd4-2987-4993-beea-88c5343a980a": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "416fe7fe-f0e7-4b67-9059-62bb34392c90",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "b89f5dd4-2987-4993-beea-88c5343a980a",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "60e472f0-95bb-4ce1-bcac-98179ff92f91": {
+            "link": {
+                "name": "ear.L<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "71fa5f4c-ceb8-4f0e-87de-7c7b627e0cbb": {
+            "link": {
+                "name": "ear.R<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "b1ee3c21-ad73-46bf-8fe4-f897567f1a3d": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "1423deff-abab-4cbf-80e4-539d4ac134ab": {
+            "link": {
+                "name": "tail.02<tail.01<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "b1ee3c21-ad73-46bf-8fe4-f897567f1a3d",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "0ab09d6a-c284-4c25-9a66-6d2649cc9d64": {
+            "link": {
+                "name": "leg.F.L<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "9e4774af-3d27-4148-ad8a-41d6b1ceb0b9": {
+            "link": {
+                "name": "leg.B.L<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "f88f6d1e-7c20-4654-b5c6-0bf00dbc3b5d": {
+            "link": {
+                "name": "leg.F.R<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "5e65e8ee-5432-466c-8c3e-2df78733e16c": {
+            "link": {
+                "name": "leg.B.R<body<root<Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "parent": "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+            "skin": "f5ca21b8-5746-47f4-a615-4ba2d7a57eae"
+        },
+        "13483d53-c0b5-4c49-bbb4-ac1863f21eec": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                -1.1794261,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Gecko"
+        },
+        "1ea48afa-69f9-4163-b873-9dac0dd564ce": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13483d53-c0b5-4c49-bbb4-ac1863f21eec",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+                    }
+                }
+            ]
+        },
+        "ac041283-d5ee-4915-97e4-1f0fb1d897a7": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13483d53-c0b5-4c49-bbb4-ac1863f21eec",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "13de578f-67c3-4682-97eb-df19c7bc105a": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "ac041283-d5ee-4915-97e4-1f0fb1d897a7",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "3c6ef9a0-1727-4e74-92c5-256c0385e37b": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13de578f-67c3-4682-97eb-df19c7bc105a",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "8feebd7e-cc16-4b7b-ad01-4aa3050a24b1": {
+            "link": {
+                "name": "tail.02<tail.01<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "3c6ef9a0-1727-4e74-92c5-256c0385e37b",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "aece0d30-b3a4-484d-b0fa-d59bcecb809e": {
+            "link": {
+                "name": "leg.F.L<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13de578f-67c3-4682-97eb-df19c7bc105a",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "3ed744ea-4890-4d41-b49b-9a4ab1f43f70": {
+            "link": {
+                "name": "leg.B.L<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13de578f-67c3-4682-97eb-df19c7bc105a",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "bf6dff95-0b0b-4ff3-b1cd-e067796f71a6": {
+            "link": {
+                "name": "leg.F.R<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13de578f-67c3-4682-97eb-df19c7bc105a",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "90ba2c60-27cc-47d1-9c22-4307459a913a": {
+            "link": {
+                "name": "leg.B.R<body<root<Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "parent": "13de578f-67c3-4682-97eb-df19c7bc105a",
+            "skin": "87d90a91-2020-48a0-8f70-4f05ccd2a702"
+        },
+        "71473255-3efa-4640-889d-1d6ee9feaa74": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                -0.5483708,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Fish"
+        },
+        "52a8c507-5efb-41ef-9f6b-8cb08b2d83ec": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "71473255-3efa-4640-889d-1d6ee9feaa74",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+                    }
+                }
+            ]
+        },
+        "b9d92251-ccbb-4a9f-acbb-52f827708c19": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "71473255-3efa-4640-889d-1d6ee9feaa74",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "5e09216f-6b45-4510-b36b-70220e867dda": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "b9d92251-ccbb-4a9f-acbb-52f827708c19",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "767f2546-036d-4970-8a77-e91d81f31458": {
+            "link": {
+                "name": "fin.01<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "ce22a545-0492-4b51-8e78-5b21228343e7": {
+            "link": {
+                "name": "fin.02<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "fe430303-52da-4638-bf22-a2a275440830": {
+            "link": {
+                "name": "fin.03<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "75af8104-1a7a-4bcb-9a2f-ed5c3ba75e8f": {
+            "link": {
+                "name": "fin.L<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "af136a70-d311-46db-a9c5-082be500034d": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "c59459c9-e14a-4dcf-8d2a-b94bfe9bc993": {
+            "link": {
+                "name": "fin.R<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "6ce72255-2e79-40d3-b708-47d86996493f": {
+            "link": {
+                "name": "tail.02<body<root<Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "parent": "5e09216f-6b45-4510-b36b-70220e867dda",
+            "skin": "a078e894-13a8-4c23-9824-e9f757e6b244"
+        },
+        "a0c53e23-6ad9-49aa-9194-c2cbbec065b0": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                -2.8198349,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Squid"
+        },
+        "8ff0f4b8-d868-4739-ab41-82077e5f9f1a": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "a0c53e23-6ad9-49aa-9194-c2cbbec065b0",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+                    }
+                }
+            ]
+        },
+        "2ae624e7-1456-491a-981f-ebcdd96b20aa": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "a0c53e23-6ad9-49aa-9194-c2cbbec065b0",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "f101e60a-9070-45f6-930f-6ab9ff018174": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "2ae624e7-1456-491a-981f-ebcdd96b20aa",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "94195aef-361a-4d3e-bad6-1ea3aaf2cfb5": {
+            "link": {
+                "name": "tentacle.L.01<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "d6f9b481-3837-4452-a979-25f3cd745443": {
+            "link": {
+                "name": "tentacle.L.05<tentacle.L.01<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "94195aef-361a-4d3e-bad6-1ea3aaf2cfb5",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "6e70d3a3-2d0b-4eee-b6f6-a7fbde83a38e": {
+            "link": {
+                "name": "tentacle.R.01<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "fc346003-faae-4473-82f7-c253aa1c7d2f": {
+            "link": {
+                "name": "tentacle.R.05<tentacle.R.01<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "6e70d3a3-2d0b-4eee-b6f6-a7fbde83a38e",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "58f2098f-b07f-4c88-83ad-5d58721ff50e": {
+            "link": {
+                "name": "tentacle.L.02<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "ba94dc27-19d5-4e9e-bbce-f8ff32ce3d37": {
+            "link": {
+                "name": "tentacle.L.06<tentacle.L.02<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "58f2098f-b07f-4c88-83ad-5d58721ff50e",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "d7c79732-531b-49a5-88ac-cb1a1680da66": {
+            "link": {
+                "name": "tentacle.R.02<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "57cc07f2-ac3a-4572-9c87-0c2a1ca11b30": {
+            "link": {
+                "name": "tentacle.R.06<tentacle.R.02<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "d7c79732-531b-49a5-88ac-cb1a1680da66",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "2324626b-ffd0-4858-a77b-dff50bba17b0": {
+            "link": {
+                "name": "tentacle.L.03<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "361ed1e7-c441-4c62-94bd-2b2e2d03d043": {
+            "link": {
+                "name": "tentacle.L.07<tentacle.L.03<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "2324626b-ffd0-4858-a77b-dff50bba17b0",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "0d470abe-c4ea-489e-a2d3-1603df6b1dca": {
+            "link": {
+                "name": "tentacle.R.03<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "02bac97e-937e-421b-8312-29e690406d5d": {
+            "link": {
+                "name": "tentacle.R.07<tentacle.R.03<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "0d470abe-c4ea-489e-a2d3-1603df6b1dca",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "7ba95cef-30ac-43a4-a987-3a3596966fbd": {
+            "link": {
+                "name": "tentacle.L.04<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "98d9a14f-fe13-4786-b318-fb8615457c38": {
+            "link": {
+                "name": "tentacle.L.08<tentacle.L.04<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "7ba95cef-30ac-43a4-a987-3a3596966fbd",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "0f9052cc-fbb1-451f-8a74-a3af65b1dae0": {
+            "link": {
+                "name": "tentacle.R.04<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "f101e60a-9070-45f6-930f-6ab9ff018174",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "e7067e44-3d82-4e9e-b3dd-893728d1cdc3": {
+            "link": {
+                "name": "tentacle.R.08<tentacle.R.04<body<root<Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "parent": "0f9052cc-fbb1-451f-8a74-a3af65b1dae0",
+            "skin": "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c"
+        },
+        "21450b3a-7802-44c6-93b9-685b81f1623e": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                0.2137306,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Rat"
+        },
+        "f597ccfa-e8f6-4b02-85f5-b50f3521a1b8": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "21450b3a-7802-44c6-93b9-685b81f1623e",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+                    }
+                }
+            ]
+        },
+        "daa6ba51-48ce-4246-a26a-968e6425ff59": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "21450b3a-7802-44c6-93b9-685b81f1623e",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "be2bb4fb-6696-471b-ac3e-f942befbbcd0": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "daa6ba51-48ce-4246-a26a-968e6425ff59",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "0413587d-e0a6-4b83-9f27-7f75de8bea2c": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "20aa3966-153b-48d5-81a4-5a120dc0c8c3": {
+            "link": {
+                "name": "tail.02<tail.01<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "0413587d-e0a6-4b83-9f27-7f75de8bea2c",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "f4a023e1-1ee9-4c82-a558-4f0d8e8a827b": {
+            "link": {
+                "name": "ear.L<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "db294f1d-dd99-4a24-a2ba-a45b974860ca": {
+            "link": {
+                "name": "ear.R<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "1d16afe7-47ea-44e0-b90f-2c7255ed71b9": {
+            "link": {
+                "name": "leg.F.L<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "c4e0c0f5-2641-4dec-8e6b-7eb0a3353628": {
+            "link": {
+                "name": "leg.B.L<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "36d5c262-316b-4411-8e9d-25d39e11d732": {
+            "link": {
+                "name": "leg.F.R<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "1a0ec1f2-a256-41a8-8afe-5a0bfc88e24a": {
+            "link": {
+                "name": "leg.B.R<body<root<Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "parent": "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+            "skin": "ffdf99c7-d410-4d6d-bb97-e144b8411178"
+        },
+        "aaf7c33d-40c2-4e5d-bca7-99739b0f90b4": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                1.1609501,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Deer"
+        },
+        "90a87f6c-1b38-46fa-ae1c-cb7b4e3e169f": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "aaf7c33d-40c2-4e5d-bca7-99739b0f90b4",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+                    }
+                }
+            ]
+        },
+        "9e0cc19d-763b-428b-a638-f6e00b564f18": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "aaf7c33d-40c2-4e5d-bca7-99739b0f90b4",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "33d1b9b0-67ce-4b66-803f-660d114d2931": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "9e0cc19d-763b-428b-a638-f6e00b564f18",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "0f6e230d-8f59-4e7b-83ac-8a2fb916b363": {
+            "link": {
+                "name": "ear.L<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "5b4c3ed5-6483-435f-ac79-7f010c8bc666": {
+            "link": {
+                "name": "ear.R<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "f327b125-a21b-4c89-9d10-fc54eade1286": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "ff3fdc5e-41e5-4fa4-bdd4-273804de493b": {
+            "link": {
+                "name": "leg.F.L<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "b7f46cec-15cf-4889-9dc2-89cc60063fe1": {
+            "link": {
+                "name": "leg.B.L<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "39e51f6c-2c55-4673-bc3a-75d996eee7ab": {
+            "link": {
+                "name": "leg.F.R<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "b41f9b5b-1b2e-46b4-80f7-b0d9e26b3d2b": {
+            "link": {
+                "name": "leg.B.R<body<root<Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "parent": "33d1b9b0-67ce-4b66-803f-660d114d2931",
+            "skin": "6517f2f4-1759-4f21-b455-2826b9d91db3"
+        },
+        "1c242cba-3c24-4d7c-acad-f9f4625a96c9": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                2.0373306,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Bird"
+        },
+        "9f61ab7f-8e5f-4ec4-b04e-cd2c07e15779": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "1c242cba-3c24-4d7c-acad-f9f4625a96c9",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+                    }
+                }
+            ]
+        },
+        "8d88d086-3437-4615-be0a-592257dd7e7a": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "1c242cba-3c24-4d7c-acad-f9f4625a96c9",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "174d4a80-66c9-4a08-8a20-c876b31d73da": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "8d88d086-3437-4615-be0a-592257dd7e7a",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "060446c8-e1fb-4e0f-8bb7-7552fa5f7edd": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "1d32294c-bc2d-449e-8e65-808a8b8048dd": {
+            "link": {
+                "name": "tail.02<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "ad406906-7185-46b4-b614-e0376a178b28": {
+            "link": {
+                "name": "hair.01<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "e44a7bc4-acfa-4582-b020-ec33f11a40c9": {
+            "link": {
+                "name": "hair.02<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "8b2f46c0-891e-4f66-9142-6f162e5de949": {
+            "link": {
+                "name": "wing.L<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "08624358-0fc1-43b3-8fb4-d725f9b494c1": {
+            "link": {
+                "name": "wing.R<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "a9bbb51b-3562-488c-813c-864e797f0ce6": {
+            "link": {
+                "name": "feet.L<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "8e6ac932-c72b-4952-be9b-9b27c7950739": {
+            "link": {
+                "name": "feet.R<body<root<Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "parent": "174d4a80-66c9-4a08-8a20-c876b31d73da",
+            "skin": "0b817380-646b-489e-8e80-ec2a5854560a"
+        },
+        "03705545-8219-4f3d-b8b4-21148e11149e": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "bb7e8490-b350-4397-835c-1d73b3999e3e",
+            "translation": [
+                2.8385505,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                0.3999999,
+                0.3999999,
+                0.3999999
+            ],
+            "name": "Snake"
+        },
+        "852ba035-667b-4ec5-a680-f8cb8aab2623": {
+            "link": {
+                "name": "Mesh<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "03705545-8219-4f3d-b8b4-21148e11149e",
+            "components": [
+                {
+                    "mesh": {
+                        "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+                    }
+                }
+            ]
+        },
+        "2d3a373e-502c-441f-986f-465f770032c3": {
+            "link": {
+                "name": "root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "03705545-8219-4f3d-b8b4-21148e11149e",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "2d8a5145-0ce3-42a4-82cc-aebaadbc825f": {
+            "link": {
+                "name": "body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "2d3a373e-502c-441f-986f-465f770032c3",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "d0d4b3f3-ce6b-4bb6-a3a8-05c9dfc40a07": {
+            "link": {
+                "name": "tail.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "2d8a5145-0ce3-42a4-82cc-aebaadbc825f",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "a7d6c8cb-3e58-41f1-8367-97e393e09cae": {
+            "link": {
+                "name": "tail.02<tail.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "d0d4b3f3-ce6b-4bb6-a3a8-05c9dfc40a07",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "8da7b5e3-d3e8-40a7-8597-9883be098b74": {
+            "link": {
+                "name": "tail.03<tail.02<tail.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "a7d6c8cb-3e58-41f1-8367-97e393e09cae",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "5db8253a-370c-4fbf-a751-721c04dedccc": {
+            "link": {
+                "name": "neck.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "2d8a5145-0ce3-42a4-82cc-aebaadbc825f",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "1600ed54-14c1-436b-9f56-6e77e0ebad36": {
+            "link": {
+                "name": "neck.02<neck.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "5db8253a-370c-4fbf-a751-721c04dedccc",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
+        },
+        "0218178f-df72-4a04-a58c-2a043c694387": {
+            "link": {
+                "name": "head<neck.02<neck.01<body<root<Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "parent": "1600ed54-14c1-436b-9f56-6e77e0ebad36",
+            "skin": "a56191bf-fbcc-419f-b95d-29bd87a1ab97"
         }
     },
     "meshes": {
@@ -169,6 +1148,54 @@
             "link": {
                 "name": "PrimitiveCircle",
                 "file": "default"
+            }
+        },
+        "ae736cb5-b447-4006-8cfb-8164fb183fe3": {
+            "link": {
+                "name": "Colobus_LOD1",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "b5cdb458-33c0-4cb4-bef2-607db6bea5d9": {
+            "link": {
+                "name": "Gecko_LOD1",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "99d29491-fde7-44e3-a51f-7d958d0c321b": {
+            "link": {
+                "name": "Herring_LOD1",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "60b3e309-23c0-4790-a0e3-03d263dd88fe": {
+            "link": {
+                "name": "Inkfish_LOD1",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "ee3c6b45-f221-4043-ae16-4b7535112579": {
+            "link": {
+                "name": "Muskrat_LOD1",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "af156fa4-9caf-4af4-8c17-83c8cf246f50": {
+            "link": {
+                "name": "Pudu_LOD1",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "e1fc96e1-ce64-4188-afc2-cc5ce09f4003": {
+            "link": {
+                "name": "Sparrow_LOD1",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "0610bab3-045c-41d5-9a53-6082d092fa87": {
+            "link": {
+                "name": "Taipan_LOD1",
+                "file": "assets\\Players\\Taipan.glb"
             }
         }
     },
@@ -267,6 +1294,54 @@
                     0.1437908,
                     1.0
                 ]
+            }
+        },
+        "11e3c970-3618-4d3e-8f77-6490345b8561": {
+            "link": {
+                "name": "M_Colobus",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "213719de-de62-442c-8bd4-5ef771e4efca": {
+            "link": {
+                "name": "M_Gecko",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "cc7a9fc9-0932-4360-ba8c-918fb007983f": {
+            "link": {
+                "name": "M_Herring",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "1a19eaa0-2e69-47fd-b90c-b0f65f8971a7": {
+            "link": {
+                "name": "M_Inkfish",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "f1281b8b-c66a-4bfa-a8d1-3d832990aef6": {
+            "link": {
+                "name": "M_Muskrat",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "720f50ae-7611-4fd9-b456-0c7a4d7ec9dd": {
+            "link": {
+                "name": "M_Pudu",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "97b9ad46-cf10-4e70-92e6-4733ab3df6a9": {
+            "link": {
+                "name": "M_Sparrow",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "aad5e7aa-57c2-4eb9-a451-743f67f1d96e": {
+            "link": {
+                "name": "M_Taipan",
+                "file": "assets\\Players\\Taipan.glb"
             }
         }
     },
@@ -523,8 +1598,1020 @@
             "ids": "uuid"
         }
     },
-    "animations": {},
-    "skins": {},
+    "animations": {
+        "23a76d41-45d0-4a92-a64d-1c184573d96b": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "50a204bf-d9b3-4275-a7a7-38c8af120fe5": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "df2a1a60-da2b-47fe-b0c9-6b1c2363bdb0": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "db31c8ec-4b4c-445c-ba07-250f7de5715e": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "9492d294-1ec8-4929-b961-036ec839dabb": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "d8929751-5f19-4a7b-bc6a-ba3ee87d9caf": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "6fd8d215-88e4-4c26-9172-027b3732acea": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "63ee11d6-98b7-46d9-8ff0-63ee85b3c553": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "799c2a61-ab99-448b-b6bf-ca834011e732": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "ecd108ce-320c-4731-89e2-bea3f1646bb1": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "f05ad131-6067-4f97-8989-dbbaaa20c926": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "275e9ba8-bd18-4e24-acb5-4ac5d14fdb5d": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "bbf57d72-c1bc-4301-b35e-489b21954b4e": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "7940ffc0-64b0-4d56-917a-b077c91d9d93": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "79e16104-7f4d-4879-937d-7ff6f54f81d8": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "2d25d24c-f211-476b-86c8-12fa6dacfaeb": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "08e19acd-e7a1-4040-845b-ab21d2bed91e": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "3d9db18a-782d-4024-af80-9a4588633862": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "451b85ba-3fe2-41e1-81f8-8cf1c04f4b95": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "b155b96c-3806-4c07-a47d-57475a5640e6": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "4ffa2e94-9b69-4f00-867e-289aa34fd035": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "26d249ea-fa8d-491e-88cb-0128e3147be0": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "426ff849-68f3-45b4-a8d3-5ff63e0a8054": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "fb1142da-d67a-4b85-a63f-ebed30291d89": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "d4f02f48-79df-4e0f-987d-bf86b609ec1e": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "4e16f91a-0bbd-4287-a0ee-bb775618acf1": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "32337c9e-21f4-4815-b0a7-e03c71cf1d13": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "f88bdf9e-f982-45e5-ba77-d27b8b794612": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "d89fed3a-2d28-4047-a244-a15f5da71c06": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "a0290047-d29f-4062-9fbb-ab505515c848": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "d9f77496-f9b6-4128-990b-c3f3f9a38036": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "38d21993-3219-4bc3-94ed-85d93c4a17e6": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "db77fd49-20d2-4262-9a41-8ab5d169185b": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "14fcfb14-9bfd-4b62-85bb-e0d11bf95bb0": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "191ac6c6-ac4c-4c24-b079-067ed7da48a9": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "81862682-e634-4cc9-824a-4b9060ca6d1a": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "64c8d4e1-47b6-481a-9689-6bfa516df11f": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "a14862c4-20ce-407d-8bdf-4205c85509cf": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "606eefa4-4279-48f6-af2e-cab7811c7adf": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "4bf19d6b-2801-430d-9f63-3441e9ff9e16": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "0ef0efc5-3eef-48dd-9633-6aec97535daa": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "aa753fe9-2ce4-456f-a459-f976cfd5af13": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "d5a8c4b7-1849-440a-a24e-a3a62ccc37d5": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "028e4745-6ed0-473f-9dac-922621cf808a": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "7ef44d95-f232-4684-b668-2c2540ec7a65": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "34ad4385-f6c4-4be7-b784-5f75abb242a3": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "2cbc89d7-61e3-4543-97dd-55eb3982d3e0": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "ad0d3048-5d32-4bc7-afce-cffa22c03106": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "8d6c61c3-b881-4d10-acd3-7cedbd347d51": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "e5bcd9bc-6050-4ec1-a9d0-a14008c050a9": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "89ea56cd-cf2a-4fa6-b8c0-28dde445d92f": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "8b98fbc4-87bc-4e42-964f-edeb26612b5b": {
+            "link": {
+                "name": "Splash",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "a08c525e-a2a7-4fb7-8e2e-2141752480ba": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "de9d7e2d-4cfc-4015-b7a6-c95f828da1bb": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "4f77def6-1024-438f-87c9-5b0d68ca24cf": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "b5f0241f-904d-4266-b9cb-b269f7dd6e7b": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "dc0e606c-2c84-4ffc-9e1d-4fe7439f212a": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "728b9a85-22d6-43d8-840d-1328d9d0d751": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "bfe1a8f0-c11e-44cb-9b9f-6c52017d2eb7": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "6d3dd49b-ae4f-4dfb-b5d4-c1dfd7ce5722": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "0fa6dc39-551c-41c3-8438-95a26bbbd9e6": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "e4c40176-7938-4ece-815c-b06e88cbf9bf": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "7fb80fc6-1bb7-4811-a3ee-14cef623d297": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "b54c52bb-93d2-482c-a728-43fed68d2ae8": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "b6d7792d-d2aa-45be-bec3-6f095f0904da": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "397542f7-bae0-454e-b5a4-cb44dd63bc55": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "0938e23b-bcd2-47c6-8085-9fd25cdaad84": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "3932ea62-c44c-4332-86b8-d3007c1e5659": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "0defb4b4-0e8e-4f39-89ba-523f5d00465d": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "9518fdc3-72b0-4bd7-88ca-874156a7eb30": {
+            "link": {
+                "name": "Splash",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "362ae305-1555-48e7-a9b5-723c85f8931b": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "ac997fda-65e4-4511-86cc-51779c5970aa": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "9d94ba0e-4965-4d1c-a85a-3bc6aa94c6e3": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "b9ffd014-113d-4746-bc0c-3c0eda7b41aa": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "8bfc079a-e57c-4faa-9b2e-4294c42224e7": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "4ae61d20-1f9e-4d14-9351-abaacad4aefa": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "1eb0be99-67c7-424a-a9dc-a6bf26c29f36": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "bef3ed34-b06b-4ea5-abd9-49b694dbe37e": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "ff7f52e9-986c-4ada-8f4c-cf26cc2dd520": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "197eb704-9a53-448c-ba46-3e21c9760f38": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "5b6fc046-cad8-4e1a-baaa-2cffe1320338": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "ffa7e410-c498-4e69-bb3f-3b4d526e9ff8": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "55e8eb0b-634c-4985-bce8-c70c1f6c0505": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "cc7877ad-f100-4f61-abec-cdd063b5aef7": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "72a24804-7817-4e70-9b20-cccd56e892e3": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "a275ee66-83e4-4c74-9b5b-8c052dd1c3de": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "62193b3e-b176-473e-859f-a4c4673f4bf5": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "a4e4d298-7b6f-44ee-bb09-d9b2c9881410": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "989b36fd-e3ec-45e6-9a49-ada1d38bf110": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "fa53537d-5a9f-4964-b547-b66a07d968e2": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "d7e7ae78-4c06-4f94-ab46-5d20da3c02fb": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "e10cf320-3bfd-4291-992d-a4035f9ae94c": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "08aeeab5-18f4-4336-9431-40254b865cbd": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "2187b17f-2251-4fb3-a674-6df0942455d1": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "fbf81d31-8110-4bf4-9fe1-a1155b95571e": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "82b3668e-cb4c-4728-8dfa-28231e1f7754": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "b14361ea-e2d5-48e2-ad63-3c36cd76d280": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "4fb77578-a91a-4319-b005-bfcf70f232df": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "947c5435-6ac9-464b-83b6-462b91798145": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "d3bb0383-3388-48a4-8715-fa380d134def": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "e188438a-1f6d-4fb9-b2c9-57a4cdf1eaea": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "92e6e444-5125-4127-a5f4-ee35ba93b4f2": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "7d23b174-1f44-44ba-98fa-60413e014950": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "31ed06ae-1bb4-490d-b572-76fa4559ef1e": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "38cc4245-ede6-4d33-905c-fe00f40a1ca1": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "61f3fb0b-3db8-4b12-979b-f1a79c983455": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "2ce1d1f2-49af-41e7-900d-47eb27169171": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "c6f82d62-abea-4b82-86eb-1dc57febeb6e": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "023f4f9d-c7d1-4b71-a647-b0a682f24188": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "13c24808-997c-4f05-8cf9-ba994a382be9": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "d73c604c-5f26-4878-b6ce-8195ddcd36c0": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "f5075151-86a3-4c2f-a7d3-8cf229987665": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "e2fe5609-f3cd-4c21-8a07-0949913b7389": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "a7627d88-10b4-4ecb-8573-750de49071ce": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "167c1408-87f5-4871-ac95-aef0171ab8cd": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "27e5af45-4060-4497-a5d3-41ad82636b9b": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "f6d74d69-f541-4e64-82d5-d46b6801eed0": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "f34cc241-980f-4670-affc-69ad76a39c82": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "39887981-b909-485f-979f-4108def4f398": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "3a0d7cc9-a7f9-4a06-8756-3a6b04d9e20b": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "6cadd74a-27da-44c2-82ac-632facbfded8": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "e66b70e9-d551-4e18-8cbb-ca27bb052a05": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "5666c144-efac-42c9-9fbd-bc994d85c75a": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "9a61c61f-838b-4ea0-ae0c-6299a7bda389": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "81251edb-90dc-4008-8fc1-00d202201e7d": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "92c8595b-bd7c-4ecc-8387-4fdfadcfca29": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "8e2a0eb8-9ca5-43c3-8c7d-90eea0e7f822": {
+            "link": {
+                "name": "Attack",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "9de17aea-f80c-4f12-81b8-47409afce225": {
+            "link": {
+                "name": "Bounce",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "58cc0223-878f-40b8-bc47-eff5f799b5b3": {
+            "link": {
+                "name": "Clicked",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "42b75ac1-5e80-40c4-908b-d565542dde60": {
+            "link": {
+                "name": "Death",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "b05de432-1006-48a5-b370-976427acbc54": {
+            "link": {
+                "name": "Eat",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "7680e5e9-900e-499f-b636-922a5c80979d": {
+            "link": {
+                "name": "Fear",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "cb8f7a8f-7f82-4dbe-b2b9-37a482702c1e": {
+            "link": {
+                "name": "Fly",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "9afc18ca-8347-40be-b529-c8bb92a650da": {
+            "link": {
+                "name": "Hit",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "763b918a-67d9-42fc-aab5-deb0aed846f1": {
+            "link": {
+                "name": "Idle_A",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "47143740-bbeb-4fec-973d-ce5c0ecf438f": {
+            "link": {
+                "name": "Idle_B",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "ec15a6c7-a026-41b4-b1b4-6dd208634989": {
+            "link": {
+                "name": "Idle_C",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "cd53331f-acf4-4ecc-ab0e-a4bc3c487ffb": {
+            "link": {
+                "name": "Jump",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "87b022fb-cc49-42c4-b87a-bd1c932252af": {
+            "link": {
+                "name": "Roll",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "d4f2db2e-2841-4018-9a8f-d2342653ee4a": {
+            "link": {
+                "name": "Run",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "b83b0292-105c-4bd4-a3b0-f4a40f6bb42f": {
+            "link": {
+                "name": "Sit",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "80c4b513-1f8b-421a-9437-31aef58dd1cf": {
+            "link": {
+                "name": "Spin",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "2b15a5e6-2cef-4366-8a2c-059f416df76e": {
+            "link": {
+                "name": "Swim",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "7fe9834f-0fec-4b4d-9448-e02cf365f642": {
+            "link": {
+                "name": "Walk",
+                "file": "assets\\Players\\Taipan.glb"
+            }
+        }
+    },
+    "skins": {
+        "f5ca21b8-5746-47f4-a615-4ba2d7a57eae": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Colobus.glb"
+            },
+            "joints": [
+                "b89f5dd4-2987-4993-beea-88c5343a980a",
+                "19c33b0a-4f8f-4327-a2cd-e26aa50eea4f",
+                "60e472f0-95bb-4ce1-bcac-98179ff92f91",
+                "71fa5f4c-ceb8-4f0e-87de-7c7b627e0cbb",
+                "b1ee3c21-ad73-46bf-8fe4-f897567f1a3d",
+                "1423deff-abab-4cbf-80e4-539d4ac134ab",
+                "0ab09d6a-c284-4c25-9a66-6d2649cc9d64",
+                "9e4774af-3d27-4148-ad8a-41d6b1ceb0b9",
+                "f88f6d1e-7c20-4654-b5c6-0bf00dbc3b5d",
+                "5e65e8ee-5432-466c-8c3e-2df78733e16c"
+            ]
+        },
+        "87d90a91-2020-48a0-8f70-4f05ccd2a702": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Gecko.glb"
+            },
+            "joints": [
+                "ac041283-d5ee-4915-97e4-1f0fb1d897a7",
+                "13de578f-67c3-4682-97eb-df19c7bc105a",
+                "3c6ef9a0-1727-4e74-92c5-256c0385e37b",
+                "8feebd7e-cc16-4b7b-ad01-4aa3050a24b1",
+                "aece0d30-b3a4-484d-b0fa-d59bcecb809e",
+                "3ed744ea-4890-4d41-b49b-9a4ab1f43f70",
+                "bf6dff95-0b0b-4ff3-b1cd-e067796f71a6",
+                "90ba2c60-27cc-47d1-9c22-4307459a913a"
+            ]
+        },
+        "a078e894-13a8-4c23-9824-e9f757e6b244": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Herring.glb"
+            },
+            "joints": [
+                "b9d92251-ccbb-4a9f-acbb-52f827708c19",
+                "5e09216f-6b45-4510-b36b-70220e867dda",
+                "767f2546-036d-4970-8a77-e91d81f31458",
+                "ce22a545-0492-4b51-8e78-5b21228343e7",
+                "fe430303-52da-4638-bf22-a2a275440830",
+                "75af8104-1a7a-4bcb-9a2f-ed5c3ba75e8f",
+                "af136a70-d311-46db-a9c5-082be500034d",
+                "c59459c9-e14a-4dcf-8d2a-b94bfe9bc993",
+                "6ce72255-2e79-40d3-b708-47d86996493f"
+            ]
+        },
+        "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Inkfish.glb"
+            },
+            "joints": [
+                "2ae624e7-1456-491a-981f-ebcdd96b20aa",
+                "f101e60a-9070-45f6-930f-6ab9ff018174",
+                "94195aef-361a-4d3e-bad6-1ea3aaf2cfb5",
+                "d6f9b481-3837-4452-a979-25f3cd745443",
+                "6e70d3a3-2d0b-4eee-b6f6-a7fbde83a38e",
+                "fc346003-faae-4473-82f7-c253aa1c7d2f",
+                "58f2098f-b07f-4c88-83ad-5d58721ff50e",
+                "ba94dc27-19d5-4e9e-bbce-f8ff32ce3d37",
+                "d7c79732-531b-49a5-88ac-cb1a1680da66",
+                "57cc07f2-ac3a-4572-9c87-0c2a1ca11b30",
+                "2324626b-ffd0-4858-a77b-dff50bba17b0",
+                "361ed1e7-c441-4c62-94bd-2b2e2d03d043",
+                "0d470abe-c4ea-489e-a2d3-1603df6b1dca",
+                "02bac97e-937e-421b-8312-29e690406d5d",
+                "7ba95cef-30ac-43a4-a987-3a3596966fbd",
+                "98d9a14f-fe13-4786-b318-fb8615457c38",
+                "0f9052cc-fbb1-451f-8a74-a3af65b1dae0",
+                "e7067e44-3d82-4e9e-b3dd-893728d1cdc3"
+            ]
+        },
+        "ffdf99c7-d410-4d6d-bb97-e144b8411178": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Muskrat.glb"
+            },
+            "joints": [
+                "daa6ba51-48ce-4246-a26a-968e6425ff59",
+                "be2bb4fb-6696-471b-ac3e-f942befbbcd0",
+                "0413587d-e0a6-4b83-9f27-7f75de8bea2c",
+                "20aa3966-153b-48d5-81a4-5a120dc0c8c3",
+                "f4a023e1-1ee9-4c82-a558-4f0d8e8a827b",
+                "db294f1d-dd99-4a24-a2ba-a45b974860ca",
+                "1d16afe7-47ea-44e0-b90f-2c7255ed71b9",
+                "c4e0c0f5-2641-4dec-8e6b-7eb0a3353628",
+                "36d5c262-316b-4411-8e9d-25d39e11d732",
+                "1a0ec1f2-a256-41a8-8afe-5a0bfc88e24a"
+            ]
+        },
+        "6517f2f4-1759-4f21-b455-2826b9d91db3": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Pudu.glb"
+            },
+            "joints": [
+                "9e0cc19d-763b-428b-a638-f6e00b564f18",
+                "33d1b9b0-67ce-4b66-803f-660d114d2931",
+                "0f6e230d-8f59-4e7b-83ac-8a2fb916b363",
+                "5b4c3ed5-6483-435f-ac79-7f010c8bc666",
+                "f327b125-a21b-4c89-9d10-fc54eade1286",
+                "ff3fdc5e-41e5-4fa4-bdd4-273804de493b",
+                "b7f46cec-15cf-4889-9dc2-89cc60063fe1",
+                "39e51f6c-2c55-4673-bc3a-75d996eee7ab",
+                "b41f9b5b-1b2e-46b4-80f7-b0d9e26b3d2b"
+            ]
+        },
+        "0b817380-646b-489e-8e80-ec2a5854560a": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Sparrow.glb"
+            },
+            "joints": [
+                "8d88d086-3437-4615-be0a-592257dd7e7a",
+                "174d4a80-66c9-4a08-8a20-c876b31d73da",
+                "060446c8-e1fb-4e0f-8bb7-7552fa5f7edd",
+                "1d32294c-bc2d-449e-8e65-808a8b8048dd",
+                "ad406906-7185-46b4-b614-e0376a178b28",
+                "e44a7bc4-acfa-4582-b020-ec33f11a40c9",
+                "8b2f46c0-891e-4f66-9142-6f162e5de949",
+                "08624358-0fc1-43b3-8fb4-d725f9b494c1",
+                "a9bbb51b-3562-488c-813c-864e797f0ce6",
+                "8e6ac932-c72b-4952-be9b-9b27c7950739"
+            ]
+        },
+        "a56191bf-fbcc-419f-b95d-29bd87a1ab97": {
+            "link": {
+                "name": "Rig",
+                "file": "assets\\Players\\Taipan.glb"
+            },
+            "joints": [
+                "2d3a373e-502c-441f-986f-465f770032c3",
+                "2d8a5145-0ce3-42a4-82cc-aebaadbc825f",
+                "d0d4b3f3-ce6b-4bb6-a3a8-05c9dfc40a07",
+                "a7d6c8cb-3e58-41f1-8367-97e393e09cae",
+                "8da7b5e3-d3e8-40a7-8597-9883be098b74",
+                "5db8253a-370c-4fbf-a751-721c04dedccc",
+                "1600ed54-14c1-436b-9f56-6e77e0ebad36",
+                "0218178f-df72-4a04-a58c-2a043c694387"
+            ]
+        }
+    },
     "pipelines": {
         "33": {
             "link": {
@@ -644,6 +2731,54 @@
                 "name": "TemplateGrid_albedo.png",
                 "file": "assets\\TemplateGrid_albedo.png"
             }
+        },
+        "cacdd143-6174-4c96-b0f5-ecf512cce58e": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "c751f834-65bf-47e9-b29b-8a40187b2f1f": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "0cdab894-a960-4f09-8b3c-ee3050e05892": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "13c0fe64-eef9-450b-89df-f109cfe48722": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "ace1efe6-2029-4723-b592-8b4bcfe58ea8": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "178ebd42-d81e-4f00-84e0-f83bf2167318": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "a2d94765-2e37-4743-8849-48302af7bd96": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "1a21970e-ecd9-416f-8863-dfa3975845f3": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Players\\Taipan.glb"
+            }
         }
     },
     "images": {
@@ -651,6 +2786,54 @@
             "link": {
                 "name": "TemplateGrid_albedo.png",
                 "file": "assets\\TemplateGrid_albedo.png"
+            }
+        },
+        "64b35d81-b197-4ea7-be59-b5daa8c63aee": {
+            "link": {
+                "name": "T_Colobus",
+                "file": "assets\\Players\\Colobus.glb"
+            }
+        },
+        "3ff6430e-8bbd-4b79-90f2-dfe6d7bf9b37": {
+            "link": {
+                "name": "T_Gecko",
+                "file": "assets\\Players\\Gecko.glb"
+            }
+        },
+        "4e7cb133-dc84-40f7-a8dc-4d3482c36ee8": {
+            "link": {
+                "name": "T_Herring",
+                "file": "assets\\Players\\Herring.glb"
+            }
+        },
+        "4a5da3c2-0678-43ca-9141-a139b5a56ff9": {
+            "link": {
+                "name": "T_Inkfish",
+                "file": "assets\\Players\\Inkfish.glb"
+            }
+        },
+        "acdc3eac-1a47-40c8-9219-a67606f8c946": {
+            "link": {
+                "name": "T_Muskrat",
+                "file": "assets\\Players\\Muskrat.glb"
+            }
+        },
+        "e4666576-0057-4c69-925a-5fdb2db91b09": {
+            "link": {
+                "name": "T_Pudu",
+                "file": "assets\\Players\\Pudu.glb"
+            }
+        },
+        "c55b6a4a-a217-40b8-982f-604027f8f5a5": {
+            "link": {
+                "name": "T_Sparrow",
+                "file": "assets\\Players\\Sparrow.glb"
+            }
+        },
+        "1ef18b16-936f-450e-89d3-4103f7b3406f": {
+            "link": {
+                "name": "T_Taipan",
+                "file": "assets\\Players\\Taipan.glb"
             }
         }
     },
@@ -667,6 +2850,46 @@
         "78": {
             "fileName": "assets/TemplateGrid_albedo.png",
             "importerName": ""
+        },
+        "111d8268-1c7b-4720-bb6f-a1789b1d01cc": {
+            "fileName": "assets/Players/Colobus.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "5733f7f2-2202-44b5-8e19-331419a0bd32": {
+            "fileName": "assets/Players/Gecko.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "4e045cea-f3f2-4418-9446-8db8d3029288": {
+            "fileName": "assets/Players/Herring.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "ac02b439-37a4-47f3-8d45-8ee7f6700f53": {
+            "fileName": "assets/Players/Inkfish.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "6fea639c-3b09-49e2-b13c-b8fc09e26483": {
+            "fileName": "assets/Players/Muskrat.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "49c41145-4e1d-4c55-976b-693fa39188ab": {
+            "fileName": "assets/Players/Pudu.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "a1133fc1-769b-4426-85fd-a87479df2b78": {
+            "fileName": "assets/Players/Sparrow.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "8a1853fd-806e-492a-b4e7-b83eaa11f4e8": {
+            "fileName": "assets/Players/Taipan.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
         }
     },
     "morphTargets": {}
