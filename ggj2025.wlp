@@ -64,7 +64,7 @@
                 }
             ],
             "translation": [
-                1.3617744798466447e-7,
+                1.361774479846645e-7,
                 0.000004,
                 -1.1675535915856017e-7
             ],
@@ -1328,6 +1328,34 @@
                 1.0,
                 1.0
             ]
+        },
+        "ce5d958f-28fe-42c8-8b9b-1bcf6ccab6c3": {
+            "name": "Bubble",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "9",
+                        "material": "58feade2-ff60-448c-9458-219b129c029c"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                1.8054141,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
         }
     },
     "meshes": {
@@ -1652,6 +1680,27 @@
                     1.0
                 ]
             }
+        },
+        "58feade2-ff60-448c-9458-219b129c029c": {
+            "name": "Bubble",
+            "pipeline": "748f1f39-e185-42cd-9296-9300ed1cca2c",
+            "Bubble": {
+                "diffuseColor": [
+                    0.7372548,
+                    0.7372548,
+                    0.7372548,
+                    0.5
+                ],
+                "specularColor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "time": -0.6999999,
+                "strength": 0.2,
+                "shininess": 0
+            }
         }
     },
     "shaders": {
@@ -1874,6 +1923,12 @@
         "73": {
             "link": {
                 "name": "lib\\Uniforms.glsl",
+                "file": "default"
+            }
+        },
+        "15917ec3-073e-4301-897e-ba1977491534": {
+            "link": {
+                "name": "Bubble.frag",
                 "file": "default"
             }
         }
@@ -3032,6 +3087,16 @@
             "features": {
                 "DEPRECATED_LIGHT_ATTENUATION": true
             }
+        },
+        "748f1f39-e185-42cd-9296-9300ed1cca2c": {
+            "link": {
+                "name": "Bubble",
+                "file": "default"
+            },
+            "blending": true,
+            "blendSrcRgb": "source alpha",
+            "blendDestRgb": "one minus source alpha",
+            "blendDestAlpha": "one"
         }
     },
     "textures": {
