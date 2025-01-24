@@ -22,8 +22,10 @@ const server = Bun.serve<{ authToken: string; }>({
             switch (parsedMsg.command) {
                 case Command.CONNECT:
                     ROOMS["1337"].push(ws)
+                    break
                 case Command.DISCONNECT:
                     ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
+                    break
                 default:
                     ws.send(JSON.stringify(
                         {
