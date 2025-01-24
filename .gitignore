@@ -1,6 +1,7 @@
 # WL
 deploy/
 cache/
+.editor/
 
 # Logs
 logs
