@@ -19,7 +19,7 @@ const server = Bun.serve<{ authToken: string; }>({
         async message(ws, message) {
             let parsedMsg: Message;
             try {
-                parsedMsg = JSON.parse(String(message))
+                parsedMsg = JSON.parse(String(message)) as Message
             } catch (e) {
                 console.warn("Received invalid message: %s", message);
                 ws.send(JSON.stringify(
