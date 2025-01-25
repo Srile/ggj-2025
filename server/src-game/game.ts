@@ -25,12 +25,13 @@ export default class Game {
 
         if (!!this.state._actions) {
             console.log("Actions: %o", this.state._actions)
-            for (const action of this.state._actions) {
-                const playerId = String(this.state._clientsToPlayers[action.clientId])
+            for (const clientId of Object.keys(this.state._actions)) {
+                const action = this.state._actions[clientId]
+                const playerId = String(this.state._clientsToPlayers[clientId])
                 const player = this.state.entities[playerId]
-                this.state = entity_act(this.state, player, action.action)
+                this.state = entity_act(this.state, player, action)
             }
-            this.state._actions = []
+            this.state._actions = {}
         }
         //this.state = systems_per_turn_update(this.state)
 
@@ -66,7 +67,7 @@ export default class Game {
     }
 
     addAction(action: ClientIdWithAction): State {
-        this.state._actions.push(action)
+        this.state._actions[action.clientId] = action.action
         return this.state
     }
 

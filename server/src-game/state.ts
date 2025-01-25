@@ -19,7 +19,7 @@ export interface State {
     lastSpacePositionByEntity: object
     tools: object,
 
-    _actions: Array<ClientIdWithAction>,
+    _actions: object, // clientId to Action
     _usedPlayerNumbers: Set<number>,
     _clientsToPlayers: object,
     _events: Array<Event>,
@@ -44,7 +44,7 @@ export function states_create(roomId: string): State {
         lastSpacePositionByEntity: {},
         tools: {},
 
-        _actions: [],
+        _actions: {},
         _usedPlayerNumbers: new Set(),
         _clientsToPlayers: {},
         _events: [],
