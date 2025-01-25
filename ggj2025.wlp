@@ -1283,15 +1283,14 @@
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "8",
-                        "material": "968c0631-1b9f-4263-a32a-8bcc9bad6c9e"
-                    },
-                    "active": true
+                        "material": "bbfb6e1c-9277-4fd3-8226-d9487877e022",
+                        "mesh": "bd97cee4-157f-47f7-8c2d-9f2b3fd9e119"
+                    }
                 }
             ],
             "translation": [
                 0.0,
-                1.0,
+                1.25,
                 0.0
             ],
             "rotation": [
@@ -1301,9 +1300,9 @@
                 1.0
             ],
             "scaling": [
-                1.0,
-                1.0,
-                1.0
+                0.5,
+                0.1,
+                0.5
             ]
         },
         "ef8be81b-dc65-4a61-8512-f9470a2d547c": {
