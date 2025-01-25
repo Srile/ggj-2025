@@ -27,8 +27,6 @@ export class WebSocketClient {
             sceneParser.setupLevel(message.map);
         } 
 
-        console.log('eve', message);
-
         for (let i = 0; i < events.length; i++) {
             const event = events[i];
             const handler = this.messageHandlers.get(event.type);

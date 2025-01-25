@@ -18,6 +18,7 @@ export class GameManager extends Component {
     }
 
     joinGame() {
+        if(this.ws) return;
         this.ws = new WebSocketClient('wss://ggj-2025.onrender.com');
 
         playerController.registerNetworkEvents();
@@ -26,11 +27,6 @@ export class GameManager extends Component {
     sendMovement(dir) {
         if(!this.ws) return console.error("game-manager: Can't move, server not joined");
 
-        console.log({command: "ACTION", action: dir});
         this.ws.send({command: "ACTION", action: dir});
-    }
-
-    update(dt) {
-        /* Called every frame. */
     }
 }

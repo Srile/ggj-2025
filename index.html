@@ -160,6 +160,53 @@
       margin-bottom: 2rem;
     }
 
+    #arrow-display {
+      position: fixed;
+      z-index: 1002;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 3px solid white;
+    }
+
+    .arrow {
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .arrow.active {
+      opacity: 1;
+    }
+
+    #health-container {
+      z-index: 1002;
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid white;
+    }
+
+    #health-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #5744ff, #0004ff);
+      transition: width 0.3s ease-out;
+    }
+
     </style>
     {{ if settings.runtime.pwa.enable }}
     <link rel="manifest" href="manifest.json">
@@ -210,6 +257,12 @@
 
     <div id="gameScreen" class="screen">
       <canvas id="canvas" style="width: 100%; height: 100%; display: block;" tabindex="0"></canvas>
+      <div id="arrow-display">
+        <div id="arrow" class="arrow">→</div>
+      </div>
+      <div id="health-container">
+        <div id="health-bar"></div>
+      </div>
     </div>
 
     <div id="endScreen" class="screen">
@@ -268,6 +321,35 @@
           fullscreenBtn.textContent = '⛶';
         }
       });
+
+      const arrow = document.getElementById('arrow');
+      const arrowRotations = {
+        'ArrowUp': '270deg',
+        'w': '270deg',
+        'W': '270deg',
+        'ArrowRight': '0deg',
+        'd': '0deg',
+        'D': '0deg',
+        'ArrowDown': '90deg',
+        's': '90deg',
+        'S': '90deg',
+        'ArrowLeft': '180deg',
+        'a': '180deg',
+        'A': '180deg'
+      };
+
+      document.addEventListener('keydown', (event) => {
+        if (arrowRotations.hasOwnProperty(event.key)) {
+          arrow.style.transform = `rotate(${arrowRotations[event.key]})`;
+          arrow.classList.add('active');
+        }
+      });
+
+      function setHealth(percentage) {
+        const healthBar = document.getElementById('health-bar');
+        const clampedHealth = Math.max(0, Math.min(100, percentage));
+        healthBar.style.width = `${clampedHealth}%`;
+      }
     </script>
 
   </body>
