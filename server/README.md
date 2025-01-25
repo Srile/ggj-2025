@@ -8,7 +8,7 @@ Game server is reachable under wss://ggj-2025.onrender.com
 
 Clients may send JSON Strings:
 
-0. Connect/disconnect to/from a room:
+0. Connect/disconnect to/from a room. Connecting also spawns you on the first free player position:
 
 ```json
 {
