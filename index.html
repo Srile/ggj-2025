@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-25T20:40:59.098" as="script">
+    <title>ggj2025</title>
+    <meta charset="utf-8" />
+
+    <meta property="og:title" content="ggj2025" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Wonderland Engine based project." />
+
+    <meta property="twitter:description" content="Wonderland Engine based project." />
+    <meta property="twitter:title" content="ggj2025" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="white">
+    <style>
+    html {
+        height: 100%;
+    }
+    body {
+        height: 100%;
+        margin: 0px;
+        background-image: linear-gradient(black, #2b2b2b);
+    }
+    .xr-button-container {
+      display: block;
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+#canvas {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .xr-button-label {
+      fill: white;
+    }
+
+    .xr-button-frame {
+      stroke: white;
+    }
+
+    #version {
+      text-align: right;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: white;
+      font-size: 18pt;
+      font-family: monospace;
+      /*display: none; */
+      z-index: 99999;
+    }
+
+    #version a {
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+
+    #version:hover a{
+      opacity: 1;
+    }
+
+    .screen {
+      display: none;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      width: 100%;
+      background-color: burlywood;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      position: relative;
+      max-width: 32rem;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button {
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .primary-btn {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background: #2563eb;
+    }
+
+    .secondary-btn {
+      background: #e5e7eb;
+    }
+
+    .secondary-btn:hover {
+      background: #d1d5db;
+    }
+
+    .fullscreen-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    #arrow-display {
+      position: fixed;
+      z-index: 1002;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 3px solid white;
+    }
+
+    .arrow {
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .arrow.active {
+      opacity: 1;
+    }
+
+    #health-container {
+      z-index: 1002;
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 3px solid white;
+    }
+
+    #health-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #5744ff, #0004ff);
+      transition: width 0.3s ease-out;
+    }
+
+    </style>
+    
+
+    <script type="module" src="ggj2025-bundle.js?t=2025-01-25T20:40:59.098"></script>
+
+    
+    </script>
+    
+  </head>
+  <body>
+    <div id="version">
+        <a>Wonderland Engine 1.2.4</a>
+    </div>
+    <div class="xr-button-container">
+      
+      
+    </div>
+
+    <button id="fullscreenBtn" class="button secondary-btn fullscreen-btn">⛶</button>
+
+    <div id="menuScreen" class="screen active">
+      <div class="logo">Game Logo</div>
+      <button class="button primary-btn" onclick="connectToServer()">Play Game</button>
+      <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
+    </div>
+
+    <div id="gameScreen" class="screen">
+      <canvas id="canvas" style="width: 100%; height: 100%; display: block;" tabindex="0"></canvas>
+      <div id="arrow-display">
+        <div id="arrow" class="arrow">→</div>
+      </div>
+      <div id="health-container">
+        <div id="health-bar"></div>
+      </div>
+    </div>
+
+    <div id="endScreen" class="screen">
+      <h1 id="winnerText"></h1>
+      <h2>Next level in...</h2>
+      <h3 id="countdown"></h3>
+      <button class="button primary-btn" onclick="returnToMenu()">Disconnect</button>
+    </div>
+
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="hideInstructions()">✕</button>
+        <h2>How to Play</h2>
+        <p>Add your game instructions here...</p>
+      </div>
+    </div>
+
+    <script>
+      function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(screen => {
+          screen.classList.remove('active');
+        });
+        document.getElementById(screenId).classList.add('active');
+      }
+
+      function connectToServer() {
+        window.gameManager.joinGame();
+      }
+  
+      function startGame() {
+        showScreen('gameScreen');
+      }
+  
+      function endGame(winner) {
+        document.getElementById('winnerText').textContent = 'Player '+ winner + ' Wins!';
+        showScreen('endScreen');
+      }
+  
+      function returnToMenu() {
+        window.gameManager.disconnect();
+        showScreen('menuScreen');
+      }
+  
+      function showInstructions() {
+        document.getElementById('instructionsModal').classList.add('active');
+      }
+  
+      function hideInstructions() {
+        document.getElementById('instructionsModal').classList.remove('active');
+      }
+  
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+          fullscreenBtn.textContent = '⮌';
+        } else {
+          document.exitFullscreen();
+          fullscreenBtn.textContent = '⛶';
+        }
+      });
+
+      const arrow = document.getElementById('arrow');
+      const arrowRotations = {
+        'ArrowUp': '270deg',
+        'w': '270deg',
+        'W': '270deg',
+        'ArrowRight': '0deg',
+        'd': '0deg',
+        'D': '0deg',
+        'ArrowDown': '90deg',
+        's': '90deg',
+        'S': '90deg',
+        'ArrowLeft': '180deg',
+        'a': '180deg',
+        'A': '180deg'
+      };
+
+      document.addEventListener('keydown', (event) => {
+        if (arrowRotations.hasOwnProperty(event.key)) {
+          arrow.style.transform = `rotate(${arrowRotations[event.key]})`;
+          arrow.classList.add('active');
+        }
+      });
+
+      function setHealth(percentage) {
+        const healthBar = document.getElementById('health-bar');
+        const clampedHealth = Math.max(0, Math.min(100, percentage));
+        healthBar.style.width = `${clampedHealth}%`;
+      }
+    </script>
+
+  </body>
+</html>
