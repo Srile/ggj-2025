@@ -15,7 +15,11 @@ export class WebSocketClient {
       
       this.ws.onopen = () => {
         console.log('Connected to server');
-        this.send({command: "CONNECT", roomId: "1337"});
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('roomId');
+
+        this.send({command: "CONNECT", roomId: roomId || "1337"});
       };
   
       this.ws.onmessage = (event) => {
