@@ -9,6 +9,17 @@ export type Action = "W"
     | "S"
     | "D"
 
+export type EventType = "ENTITY_MOVED"
+
+export interface Event {
+    type: EventType
+    entityId: string | null
+    oldX: number | null
+    oldY: number | null
+    newX: number | null
+    newY: number | null
+}
+
 export interface Message {
     command: Command
     action: Action | null
@@ -17,4 +28,5 @@ export interface Message {
     player: number | null
     map: string | null
     entities: object | null // entityId/playerNumber as string mapped to position
+    events: Array<Event>
 }

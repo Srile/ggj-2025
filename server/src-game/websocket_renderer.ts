@@ -11,6 +11,7 @@ export function render(state: State, clientId: string): Message {
         player: state._clientsToPlayers[clientId],
         turn: state.turn,
         entities: render_entities(state),
+        events: state._events,
         map: render_map(state, "1337"),
     }
 }

@@ -41,7 +41,7 @@ function entityInteractOrMove(state: State, entity: Entity, dx: number, dy: numb
 
     } else if (_entity_can_move(map, entity, dx, dy)) {
         state = _entity_move(state, map, entity, dx, dy)
-        state._energyQueue.push({entityId: entity.id, energyDelta: -1 * recursion}) // Pushing rocks
+        //state._energyQueue.push({entityId: entity.id, energyDelta: -1 * recursion}) // Pushing rocks
 
     }
 
@@ -58,6 +58,8 @@ function _entity_can_move(map: Map, entity: Entity, dx: number, dy: number): boo
 }
 
 function _entity_move(state: State, map: any, entity: Entity, dx: number, dy: number): State {
+    const oldX = entity.x;
+    const oldY = entity.y;
     entity.x += dx;
     entity.y += dy;
 
@@ -87,6 +89,15 @@ function _entity_move(state: State, map: any, entity: Entity, dx: number, dy: nu
         }
     }
     */
+
+    state._events.push({
+        type: "ENTITY_MOVED",
+        entityId: entity.id,
+        oldX: oldX,
+        oldY: oldY,
+        newX: entity.x,
+        newY: entity.y,
+    })
 
     return state;
 }

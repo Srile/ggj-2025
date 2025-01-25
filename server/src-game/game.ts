@@ -24,6 +24,7 @@ export default class Game {
 
     update(actions: Array<ClientIdWithAction>): State {
         this.state.turn++
+        this.state._events = []
 
         if (!!actions) {
             console.log("Actions: %o", actions)

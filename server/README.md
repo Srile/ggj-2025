@@ -46,7 +46,18 @@ Server may send the following JSON Strings:
         "1": {"x": 5, "y": 4, "oxygen": 20, "oxygenMax": 20},
         "2": {"x": 6, "y": 4, "oxygen": 20, "oxygenMax": 20},
         "3": {"x": 7, "y": 4, "oxygen": 20, "oxygenMax": 20},
-    }
+    },
+    "events": [
+        {
+            "type": "ENTITY_MOVED",
+            "entityId": "0",
+            "oldX": 4,
+            "oldY": 4,
+            "newX": 5,
+            "newY": 4
+        }
+    ]
+
 }
 ```
 

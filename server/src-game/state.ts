@@ -1,3 +1,5 @@
+import { Event } from "../protocol.js"
+
 export interface State {
     _AIs: object,
     _combatQueue: Array<{entityId: string, otherEntityId: string}>,
@@ -15,6 +17,7 @@ export interface State {
 
     _usedPlayerNumbers: Set<number>,
     _clientsToPlayers: object,
+    _events: Array<Event>,
     _maps: object,
     turn: number
 }
@@ -37,6 +40,7 @@ export function states_create(): State {
 
         _usedPlayerNumbers: new Set(),
         _clientsToPlayers: {},
+        _events: [],
         _maps: {},
         turn: -1 // negative: waiting state
     }
