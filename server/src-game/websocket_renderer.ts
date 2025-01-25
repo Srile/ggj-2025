@@ -1,4 +1,5 @@
 import { Message } from "../protocol.js";
+import { Entity } from "./entity.js";
 import { Map } from "./map.js";
 import { State } from "./state.js";
 
@@ -9,9 +10,23 @@ export function render(state: State, clientId: string): Message {
         roomId: "1337",
         player: state._clientsToPlayers[clientId],
         turn: state.turn,
-        entities: state.entities,
+        entities: render_entities(state),
         map: render_map(state, "1337"),
     }
+}
+
+function render_entities(state: State): object {
+    const entities = {}
+    for (const entityId of Object.keys(state.entities)) {
+        const entity: Entity = state.entities[entityId]
+        entities[entityId] = {
+            x: entity.x,
+            y: entity.y,
+            oxygen: entity.oxygen,
+            oxygenMax: entity.oxygenMax
+        }
+    }
+    return entities
 }
 
 function render_map(state: State, mapId: string): string {
