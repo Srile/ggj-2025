@@ -44,6 +44,17 @@ export function generate_rogue_dungeon(numberOfPlayers: number) {
         }
     }
 
+    let bubblesToSpawn = numberOfPlayers * 4;
+    while (bubblesToSpawn > 0) {
+        const x = getRandomInt(32)
+        const y = getRandomInt(32)
+        const tile = map.getTile(x, y)
+        if (tile.type === MANIFEST.tiles.water) {
+            map.setTile(x, y, MANIFEST.tiles.oxygen)
+            bubblesToSpawn--;
+        }
+    }
+
     return map;
 }
 
