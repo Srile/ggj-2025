@@ -12,6 +12,7 @@
  */
 
 /* wle:auto-imports:start */
+import {CameraController} from './camera-controller.js';
 import {GameManager} from './game-manager.js';
 import {PlayerController} from './player-controller.js';
 import {SceneParser} from './scene-parser.js';
@@ -74,6 +75,7 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(CameraController);
 engine.registerComponent(GameManager);
 engine.registerComponent(PlayerController);
 engine.registerComponent(SceneParser);

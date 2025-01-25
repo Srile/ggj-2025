@@ -95,10 +95,7 @@ export class SceneParser extends Component {
 
     setupLevel(mapString) {
         this.spawnLevel(mapString);
-    
-        setTimeout(() => {
-            playerController.initializePlayers();
-        }, 300);
+        playerController.initializePlayers();
     }
 
     getAssetPrototypeFromCharacter(char) {

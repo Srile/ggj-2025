@@ -1,3 +1,4 @@
+import { playerController } from "./player-controller";
 import { sceneParser } from "./scene-parser";
 
 export class WebSocketClient {
@@ -25,6 +26,7 @@ export class WebSocketClient {
             this.connectedToGame = true;
             startGame();
             sceneParser.setupLevel(message.map);
+            playerController.setCameraPositionFromPlayerIndex(message.player);
         } 
 
         for (let i = 0; i < events.length; i++) {
