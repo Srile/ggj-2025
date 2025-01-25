@@ -12,7 +12,7 @@
  */
 
 /* wle:auto-imports:start */
-import {BgResizeScaler} from './bg-resize-scaler.js';
+import {GameManager} from './game-manager.js';
 import {PlayerController} from './player-controller.js';
 import {SceneParser} from './scene-parser.js';
 /* wle:auto-imports:end */
@@ -74,7 +74,7 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
-engine.registerComponent(BgResizeScaler);
+engine.registerComponent(GameManager);
 engine.registerComponent(PlayerController);
 engine.registerComponent(SceneParser);
 /* wle:auto-register:end */

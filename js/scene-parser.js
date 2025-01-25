@@ -89,12 +89,16 @@ export class SceneParser extends Component {
 
     start() {
         if(this.debug) {
-            this.spawnLevel(testString);
-    
-            setTimeout(() => {
-                playerController.initializePlayers();
-            }, 300);
+            this.setupLevel(testString)
         }
+    }
+
+    setupLevel(mapString) {
+        this.spawnLevel(mapString);
+    
+        setTimeout(() => {
+            playerController.initializePlayers();
+        }, 300);
     }
 
     getAssetPrototypeFromCharacter(char) {

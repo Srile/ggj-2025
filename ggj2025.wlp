@@ -1182,11 +1182,9 @@
                         "switchPrototype": "925ddca8-e5cb-40af-84d7-a52d90bf0acd",
                         "oxygenPrototype": "2740976e-41a9-47c9-9ec7-0b051571fb98",
                         "spawnPointPrototype": "8208aadc-b2a1-4cd7-aa84-e25dbe06ee9e",
-                        "exitPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
+                        "exitPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c",
+                        "debug": false
                     }
-                },
-                {
-                    "type": "bg-resize-scaler"
                 }
             ]
         },
@@ -1333,6 +1331,14 @@
                 1.0,
                 1.0,
                 1.0
+            ]
+        },
+        "d2eb1bef-e521-4139-b3b3-a3d3a138da39": {
+            "name": "Empty",
+            "components": [
+                {
+                    "type": "game-manager"
+                }
             ]
         }
     },
