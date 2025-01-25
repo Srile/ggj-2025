@@ -11,6 +11,8 @@ export type Action = "W"
 
 export type EventType = "ENTITY_MOVED"
     | "ENTITY_WON"
+    | "COUNTDOWN"
+    | "MAP_CHANGED"
 
 export interface Event {
     type: EventType
@@ -19,6 +21,7 @@ export interface Event {
     oldY: number | null
     newX: number | null
     newY: number | null
+    countdown: number | null
 }
 
 export interface Message {

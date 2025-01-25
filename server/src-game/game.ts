@@ -1,6 +1,7 @@
-import { entities_create, entities_destroy } from "./entity.js";
+import { MAP } from "../example_map.js";
+import { entities_create, entities_destroy, Entity } from "./entity.js";
 import { entity_act } from "./entity_map.js";
-import { maps_create_all_manual } from "./map.js";
+import { Map, maps_create_all_manual, maps_parse } from "./map.js";
 import { ClientIdWithAction, State, states_create } from "./state.js";
 
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
@@ -32,6 +33,48 @@ export default class Game {
                 this.state = entity_act(this.state, player, action)
             }
             this.state._actions = {}
+        }
+
+        if (this.state.countdown > -1) {
+            if (this.state.countdown === 0) {
+                // new map
+                let map: Map = maps_parse(MAP)
+                this.state._maps[map.id] = map
+                this.state.currentMapId = map.id
+
+                this.state._events.push({
+                    type: "MAP_CHANGED",
+                    entityId: null,
+                    oldX: null,
+                    oldY: null,
+                    newX: null,
+                    newY: null,
+                    countdown: null
+                })
+
+                for (const clientId of Object.keys(this.state._clientsToPlayers)) {
+                    const playerNumber = this.state._clientsToPlayers[clientId]
+                    const playerId = String(playerNumber)
+                    const playerEntity: Entity = this.state.entities[playerId]
+                    playerEntity.mapId = this.state.currentMapId
+                    const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
+                    playerEntity.x = spawnPoint[0]
+                    playerEntity.y = spawnPoint[1]
+                }
+
+            } else {
+                this.state._events.push({
+                    type: "COUNTDOWN",
+                    entityId: null,
+                    oldX: null,
+                    oldY: null,
+                    newX: null,
+                    newY: null,
+                    countdown: this.state.countdown
+                })
+
+            }
+            this.state.countdown--
         }
         //this.state = systems_per_turn_update(this.state)
 

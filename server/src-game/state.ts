@@ -25,6 +25,7 @@ export interface State {
     _events: Array<Event>,
     _maps: object,
     _roomId: string,
+    countdown: number,
     currentMapId: string,
     turn: number
 }
@@ -50,6 +51,7 @@ export function states_create(roomId: string): State {
         _events: [],
         _maps: {},
         _roomId: roomId,
+        countdown: -1,
         currentMapId: "",
         turn: -1 // negative: waiting state
     }

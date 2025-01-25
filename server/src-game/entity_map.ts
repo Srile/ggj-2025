@@ -78,6 +78,7 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
         oldY: oldY,
         newX: entity.x,
         newY: entity.y,
+        countdown: null
     })
 
     // Exit
@@ -91,7 +92,9 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
             oldY: null,
             newX: null,
             newY: null,
+            countdown: null
         })
+        state.countdown = 5;
     }
 
     // Move{north, east, south, west} tile
