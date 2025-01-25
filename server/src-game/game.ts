@@ -92,6 +92,13 @@ export default class Game {
                     newX: spawnPoint[0],
                     newY: spawnPoint[1],
                 })
+                const playerEntity = this.state.entities[playerId]
+                this.state._events.push({
+                    type: "OXYGEN_CHANGED",
+                    entityId: playerId,
+                    oxygen: playerEntity.oxygen,
+                    oxygenMax: playerEntity.oxygenMax
+                })
             }
         } else {
             // Game full
