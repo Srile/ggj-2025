@@ -28,9 +28,6 @@
                         "mesh": "7",
                         "material": "20"
                     }
-                },
-                {
-                    "type": "bg-resize-scaler"
                 }
             ],
             "scaling": [
@@ -59,7 +56,7 @@
                     "view": {
                         "projectionType": "orthographic",
                         "far": 100.0,
-                        "extent": 32.0
+                        "extent": 64.0
                     }
                 }
             ],
@@ -69,10 +66,10 @@
                 -1.1675535915856017e-7
             ],
             "rotation": [
-                -0.5000004,
+                -0.7071068,
                 0.0,
                 0.0,
-                0.8660251
+                0.7071068
             ],
             "scaling": [
                 0.9999999,
@@ -1181,6 +1178,9 @@
                         "spawnPointPrototype": "8208aadc-b2a1-4cd7-aa84-e25dbe06ee9e",
                         "exitPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
                     }
+                },
+                {
+                    "type": "bg-resize-scaler"
                 }
             ]
         },

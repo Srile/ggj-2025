@@ -48,8 +48,8 @@ const characterRegistry = {
 const characterRegistryKeys = Object.keys(characterRegistry);
 
 /* Grid Variables */
-const startingXPosition = -10;
-const startingZPosition = -10;
+const startingXPosition = -32;
+const startingZPosition = -32;
 
 const gridWidth = 2;
 
@@ -109,6 +109,7 @@ export class SceneParser extends Component {
                 tempVec[0] = currentXPosition;
                 tempVec[2] = currentZPosition;
                 newAsset.setPositionWorld(tempVec);
+                // newAsset.setScalingLocal([0.9,0.9,0.9])
             }
         }
     }
