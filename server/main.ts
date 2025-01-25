@@ -2,15 +2,17 @@ import * as Bun from "bun"
 import { Message } from "./protocol.js";
 import Game from "./src-game/game.js";
 import { render } from "./src-game/websocket_renderer.js";
+import { State } from "./src-game/state.js";
 
 // https://render.com/docs/web-services#port-binding
 const PORT = process.env.PORT || 1000;
 
-const WEBSOCKETS = {}
+const WEBSOCKETS = {} // ClientId to WS
 const ROOMS = {
     "1337": []
 }
 
+let ACTION_QUEUE = []
 const GAME = new Game()
 GAME.init()
 
@@ -27,6 +29,7 @@ const server = Bun.serve<{ clientId: string; }>({
         async close(ws, code, message) {
             console.log("Close %s", ws.data.clientId)
             delete WEBSOCKETS[ws.data.clientId]
+            GAME.removePlayer(ws.data.clientId)
         },
         async open(ws) {
             console.log("Open %s", ws.data.clientId)
@@ -51,12 +54,30 @@ const server = Bun.serve<{ clientId: string; }>({
             switch (parsedMsg.command) {
                 case "CONNECT":
                     ROOMS[parsedMsg.roomId].push(ws.data.clientId)
+                    const state = GAME.addPlayer(ws.data.clientId)
+                    if (!!state) {
+                        sendUpdatedGameState(ws, state)
+                    } else {
+                        ws.send(JSON.stringify(
+                            {
+                                command: "SERVER_ERROR",
+                                message: `Room ${parsedMsg.roomId} full!`
+                            }
+                        ))
+                    }
+
                     break
                 case "DISCONNECT":
                     for (const roomId of Object.keys(ROOMS)) {
                         ROOMS[roomId] = ROOMS[roomId].filter(clientId => clientId !== ws.data.clientId)
                     }
                     ws.close()
+                    break
+                case "ACTION":
+                    const clientId: string = ws.data.clientId
+                    ACTION_QUEUE.push({
+                        clientId: parsedMsg.action
+                    })
                     break
                 default:
                     ws.send(JSON.stringify(
@@ -74,19 +95,22 @@ const server = Bun.serve<{ clientId: string; }>({
 console.log(`Listening on localhost:${server.port}`);
 
 async function updateServer() {
-    const state = GAME.update({})
-    const response = render(state)
+    console.log("Connected clients: %s", Object.keys(WEBSOCKETS).length)
+
+    const state = GAME.update(ACTION_QUEUE)
+    ACTION_QUEUE = []
 
     for (const clientId of ROOMS["1337"]) {
         const ws = WEBSOCKETS[clientId]
         if (!!ws) {
-            sendUpdateGameState(ws, response)
+            sendUpdatedGameState(ws, state)
         }
     }
-    console.log("Connected clients: %s", ROOMS["1337"].length)
+
 }
-async function sendUpdateGameState(ws, responseObj) {
-    ws.send(JSON.stringify(responseObj))
+async function sendUpdatedGameState(ws, state: State) {
+    const response = render(state, ws.data.clientId)
+    ws.send(JSON.stringify(response))
 }
 
 setInterval(updateServer, 1000);

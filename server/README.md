@@ -20,16 +20,15 @@ Clients may send JSON Strings:
 ```json
 {
     "command": "DISCONNECT",
-    "roomId": "RoomID"
 }
 ```
 
-1. Player movement. Send playerId (`"0"` to `"7"`) with the movement key (`"W"`, `"A"`, `"S"`, `"D"`):
+1. Player movement. Send movement key (`"W"`, `"A"`, `"S"`, `"D"`):
 
 ```json
 {
-    "command": "MOVE",
-    "0": "W"
+    "command": "ACTION",
+    "action": "W"
 }
 ```
 
@@ -39,7 +38,7 @@ Server may send the following JSON Strings:
 {
     "command": "SERVER_RESPONSE",
     "room": "RoomID",
-    "playerId": "0",
+    "playerNumber": 0,
     "turn": 5,
     "map": "map string\nmap string\n",
     "players": {

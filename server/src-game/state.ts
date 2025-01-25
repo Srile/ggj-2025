@@ -13,6 +13,9 @@ export interface State {
     lastSpacePositionByEntity: object
     maps: object,
     tools: object,
+
+    _usedPlayerNumbers: Set<number>,
+    _clientsToPlayers: object,
     turn: number
 }
 
@@ -32,6 +35,9 @@ export function states_create(): State {
         lastSpacePositionByEntity: {},
         maps: {},
         tools: {},
+
+        _usedPlayerNumbers: new Set(),
+        _clientsToPlayers: {},
         turn: 0
     }
 }

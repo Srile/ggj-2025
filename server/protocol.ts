@@ -1,7 +1,19 @@
 export type Command = "CONNECT"
     | "DISCONNECT"
+    | "ACTION"
+    | "SERVER_ERROR"
+    | "SERVER_RESPONSE"
+
+
+export type Action = "W"
+    | "A"
+    | "S"
+    | "D"
 
 export interface Message {
     command: Command
+    action: Action | null
     roomId: string | null
+    playerNumber: number | null
+    map: string | null
 }
