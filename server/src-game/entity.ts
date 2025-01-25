@@ -44,3 +44,24 @@ export function entities_get_by(state: State, mapId: string): Array<Entity> {
     }
     return entities_on_map
 }
+
+export function entities_get_at(state: State, mapId: string, x: number, y: number): Entity | null {
+    let entities_at_pos = entities_get_by(state, mapId).filter(e => e.x === x && e.y === y)
+    if (entities_at_pos.length > 0) {
+        return entities_at_pos[0]
+    }
+    return null
+}
+
+export function interactOrCombat(state: State, entityA: Entity, entityB: Entity) {
+    if (entityA === entityB) { // Weird AI bug not moving when using entityInteractOrMove (with dx and dy === 0), thus NPCs would interact with themselves
+        return state
+    }
+
+    // Combat
+    const entityId = entityA.id
+    const otherEntityId = entityB.id
+    console.log("TODO combat between %s and %s", entityId, otherEntityId)
+
+    return state
+}
