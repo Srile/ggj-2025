@@ -2,12 +2,20 @@ import {Component, Property} from '@wonderlandengine/api';
 import { setHierarchyActive } from './utils';
 import { currentPlayerSpawnPositions, gridWidth, sceneParser } from './scene-parser';
 import { vec3 } from 'gl-matrix';
+import { gameManager } from './game-manager';
 
 const ROTATION_DIRECTIONS = {
     up: 180,
     down: 0,
     right: 90,
     left: 270,
+}
+
+function movementDirectionToString(moveDirectionX, moveDirectionZ) {
+    if(moveDirectionX > 0) return "D";
+    else if(moveDirectionX < 0) return "A";
+    else if(moveDirectionZ > 0) return "S";
+    else if(moveDirectionZ < 0) return "W";
 }
 
 const ACTIVE_PLAYER_COUNT = 4;
@@ -42,9 +50,22 @@ export class PlayerController extends Component {
     }
 
     start() {
-        if(sceneParser.debug) {
-            this.registerKeyboardInput();
-        }
+        this.registerKeyboardInput();
+    }
+
+    registerNetworkEvents() {
+        gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
+    }
+
+    handleNetworkMove(data) {
+        const {oldX, oldY, newX, newY, entityId} = data;
+        
+        const playerIndex = Number(entityId);
+
+        if(newX > oldX) this.movePlayer(playerIndex, 1 * gridWidth, 0);
+        else if(newX < oldX) this.movePlayer(playerIndex, -1 * gridWidth, 0);
+        else if(newY > oldY) this.movePlayer(playerIndex, 0, 1 * gridWidth);
+        else if(newY < oldY) this.movePlayer(playerIndex, 0, -1 * gridWidth);
     }
 
     registerKeyboardInput() {
@@ -53,23 +74,31 @@ export class PlayerController extends Component {
 
             switch(event.key) {
               case 'ArrowUp':
-                this.movePlayer(0, 0, -1 * gridWidth);
+                this.handleMovement(0, 0, -1 * gridWidth);
                 // Handle up arrow
                 break;
               case 'ArrowDown':
-                this.movePlayer(0, 0, 1 * gridWidth);
+                this.handleMovement(0, 0, 1 * gridWidth);
                 // Handle down arrow
                 break;
               case 'ArrowLeft':
-                this.movePlayer(0, -1 * gridWidth, 0);
+                this.handleMovement(0, -1 * gridWidth, 0);
                 // Handle left arrow
                 break;
               case 'ArrowRight':
-                this.movePlayer(0, 1 * gridWidth, 0);
+                this.handleMovement(0, 1 * gridWidth, 0);
                 // Handle right arrow
                 break;
             }
           });
+    }
+
+    handleMovement(playerIndex, moveDirectionX, moveDirectionZ) {
+        if(sceneParser.debug) {
+            this.movePlayer(playerIndex, moveDirectionX, moveDirectionZ);
+        } else {
+            gameManager.sendMovement(movementDirectionToString(moveDirectionX, moveDirectionZ));
+        }
     }
 
     movePlayer(playerIndex, moveDirectionX, moveDirectionZ) {

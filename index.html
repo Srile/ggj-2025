@@ -204,7 +204,7 @@
 
     <div id="menuScreen" class="screen active">
       <div class="logo">Game Logo</div>
-      <button class="button primary-btn" onclick="startGame()">Play Game</button>
+      <button class="button primary-btn" onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
 
@@ -231,6 +231,10 @@
           screen.classList.remove('active');
         });
         document.getElementById(screenId).classList.add('active');
+      }
+
+      function connectToServer() {
+        window.gameManager.joinGame();
       }
   
       function startGame() {
