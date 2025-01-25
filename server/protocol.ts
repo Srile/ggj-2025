@@ -10,6 +10,7 @@ export type Action = "W"
     | "D"
 
 export type EventType = "ENTITY_MOVED"
+    | "ENTITY_WON"
 
 export interface Event {
     type: EventType

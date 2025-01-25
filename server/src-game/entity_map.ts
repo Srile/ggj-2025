@@ -53,8 +53,8 @@ function _entity_can_move(map: Map, entity: Entity, dx: number, dy: number): boo
     let y = entity.y + dy;
     let tileType = map.getTile(x, y).type;
     return x >= 0 && x < map.widthTiles && y >= 0 && y < map.heightTiles
-        && !(tileType === MANIFEST.tiles.wall
-             || tileType === MANIFEST.tiles.exit);
+        && !(tileType === MANIFEST.tiles.wall);
+//             || tileType === MANIFEST.tiles.exit);
 }
 
 function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: number): State {
@@ -71,10 +71,27 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
     }
     */
 
+    state._events.push({
+        type: "ENTITY_MOVED",
+        entityId: entity.id,
+        oldX: oldX,
+        oldY: oldY,
+        newX: entity.x,
+        newY: entity.y,
+    })
+
     // Exit
     let tile = map.getTile(entity.x, entity.y);
-    if (tile.type.name.startsWith('exit')) {
-        state = _enterPortalOrPlanet(state, entity, tile)
+    if (tile.type.name.startsWith('Exit')) {
+        //state = _enterPortalOrPlanet(state, entity, tile)
+        state._events.push({
+            type: "ENTITY_WON",
+            entityId: entity.id,
+            oldX: null,
+            oldY: null,
+            newX: null,
+            newY: null,
+        })
     }
 
     // Move{north, east, south, west} tile
@@ -89,15 +106,6 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
         }
     }
     */
-
-    state._events.push({
-        type: "ENTITY_MOVED",
-        entityId: entity.id,
-        oldX: oldX,
-        oldY: oldY,
-        newX: entity.x,
-        newY: entity.y,
-    })
 
     return state;
 }
