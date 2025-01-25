@@ -3,6 +3,7 @@ import { setHierarchyActive } from './utils';
 import { currentPlayerSpawnPositions, gridWidth, sceneParser } from './scene-parser';
 import { vec3 } from 'gl-matrix';
 import { gameManager } from './game-manager';
+import { cameraController } from './camera-controller';
 
 const ROTATION_DIRECTIONS = {
     up: 180,
@@ -51,6 +52,10 @@ export class PlayerController extends Component {
 
     start() {
         this.registerKeyboardInput();
+    }
+
+    setCameraPositionFromPlayerIndex(playerIndex) {
+        cameraController.setPositionAbovePlayer(this.currentSelectedPlayerObjects[playerIndex]);
     }
 
     registerNetworkEvents() {

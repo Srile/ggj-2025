@@ -46,7 +46,6 @@ const characterRegistry = {
     exit: 'O',
 }
 
-let currentSpawnPointIndex = 0;
 export const currentPlayerSpawnPositions = [
     vec3.create(),
     vec3.create(),
@@ -95,10 +94,7 @@ export class SceneParser extends Component {
 
     setupLevel(mapString) {
         this.spawnLevel(mapString);
-    
-        setTimeout(() => {
-            playerController.initializePlayers();
-        }, 300);
+        playerController.initializePlayers();
     }
 
     getAssetPrototypeFromCharacter(char) {
@@ -144,22 +140,16 @@ export class SceneParser extends Component {
                     
                     return;
                 } else if(characterRegistry.spawnPoint.includes(char)) {
-                    vec3.copy(currentPlayerSpawnPositions[currentSpawnPointIndex], position);
-                    currentPlayerSpawnPositions[currentSpawnPointIndex][1] = 1.0;
-                    currentSpawnPointIndex++;
+                    const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char)
+                    vec3.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
+                    currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
                     return;
                 }
             }
         }
     }
 
-    initializeNewLevel() {
-        currentSpawnPointIndex = 0;
-    }
-
     spawnLevel(levelString) {
-        this.initializeNewLevel();
-
         let currentXPosition = startingXPosition;
         let currentZPosition = startingZPosition;
         for (let i = 0; i < levelString.length; i++) {
