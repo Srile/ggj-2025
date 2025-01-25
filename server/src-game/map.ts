@@ -3,6 +3,7 @@ import { BOTMOS_OPTIONS } from "./config.js";
 import { entities_destroy, entities_get_by } from "./entity.js";
 import { items_destroy, items_get_by } from "./item.js";
 import { MANIFEST, Tile as TileType } from "./manifest.js";
+import { generate_rogue_dungeon } from "./rot_map_generator.js";
 import { State } from "./state.js";
 
 export const CHUNK_SIZE = {
@@ -24,7 +25,8 @@ export function tiles_create(type: TileType, options={}): Tile {
 }
 
 export function maps_create_all_manual(state: State): State {
-    let map: Map = maps_parse(MAP)
+    //let map: Map = maps_parse(MAP)
+    let map: Map = generate_rogue_dungeon(4)
     state._maps[map.id] = map
     state.currentMapId = map.id
     return state
