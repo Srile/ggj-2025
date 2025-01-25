@@ -107,7 +107,7 @@ export class Map {
 const ICON2TILETYPE = {
     "#": MANIFEST.tiles.wall,
     ".": MANIFEST.tiles.water,
-    "o": MANIFEST.tiles.water,
+    "o": MANIFEST.tiles.oxygen,
     "O": MANIFEST.tiles.exit,
     "0": MANIFEST.tiles.startplayer0,
     "1": MANIFEST.tiles.startplayer1,
