@@ -73,7 +73,15 @@ Server may send the following JSON Strings:
             "entityId": "0",
             "oxygen": 19,
             "oxygenMax": 20
+        },
+        {
+            "type": "TILE_CHANGED",
+            "oldTile": "o",
+            "newTile": ".",
+            "tileX": 1,
+            "tileY": 1
         }
+
     ]
 
 }

@@ -84,6 +84,16 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
             entityId: entity.id,
         })
         state.countdown = 5;
+    } else if (tile.type === MANIFEST.tiles.oxygen) {
+        entity.oxygen = Math.min(entity.oxygen + 5, entity.oxygenMax)
+        map.setTile(entity.x, entity.y, MANIFEST.tiles.water)
+        state._events.push({
+            type: "TILE_CHANGED",
+            oldTile: MANIFEST.tiles.oxygen.icon,
+            newTile: MANIFEST.tiles.water.icon,
+            tileX: entity.x,
+            tileY: entity.y
+        })
     }
 
     // Oxygen cost for movement

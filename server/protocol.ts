@@ -13,6 +13,7 @@ export type EventType = "ENTITY_MOVED"
     | "ENTITY_WON"
     | "COUNTDOWN"
     | "MAP_CHANGED"
+    | "TILE_CHANGED"
     | "OXYGEN_CHANGED"
     | "PLAYER_JOINED"
     | "PLAYER_LEFT"
@@ -27,6 +28,10 @@ export interface Event {
     oxygen?: number
     oxygenMax?: number
     countdown?: number
+    oldTile?: string
+    newTile?: string
+    tileX?: number
+    tileY?: number
 }
 
 export interface Message {
