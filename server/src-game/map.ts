@@ -92,6 +92,11 @@ export class Map {
         const oldTile = this._tiles[tileIndex]
         this._tiles[tileIndex] = tiles_create(tileType, options)
 
+        const icon: string = tileType.icon
+        if (SPAWN_ICONS.has(icon)) {
+            this._spawnPoints[icon] = [x, y]
+        }
+
         return oldTile
     }
 
