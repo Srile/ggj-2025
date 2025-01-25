@@ -24,16 +24,24 @@ export class WebSocketClient {
 
         if(!this.connectedToGame) {
             this.connectedToGame = true;
-            startGame();
             sceneParser.setupLevel(message.map);
             playerController.setCameraPositionFromPlayerIndex(message.player);
+            startGame();
         } 
 
         for (let i = 0; i < events.length; i++) {
             const event = events[i];
-            const handler = this.messageHandlers.get(event.type);
-            if (handler) {
-              handler(event);
+            
+            if(event.type === "MAP_CHANGED") {
+              sceneParser.cleanLevel();
+              sceneParser.setupLevel(message.map);
+              playerController.setCameraPositionFromPlayerIndex(message.player);
+              startGame();
+            } else {
+              const handler = this.messageHandlers.get(event.type);
+              if (handler) {
+                handler(event);
+              }
             }
         }
       };

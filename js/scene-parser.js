@@ -97,6 +97,10 @@ export class SceneParser extends Component {
         playerController.initializePlayers();
     }
 
+    cleanLevel() {
+        this.currentLevelAsssetContainer.destroy();
+    }
+
     getAssetPrototypeFromCharacter(char) {
         for (let i = 0; i < characterRegistryKeys.length; i++) {
             const key = characterRegistryKeys[i];
@@ -152,6 +156,9 @@ export class SceneParser extends Component {
     spawnLevel(levelString) {
         let currentXPosition = startingXPosition;
         let currentZPosition = startingZPosition;
+
+        this.currentLevelAsssetContainer = this.object.addChild();
+
         for (let i = 0; i < levelString.length; i++) {
             const char = levelString[i];
             if(isNewLine(char)) {
@@ -160,11 +167,12 @@ export class SceneParser extends Component {
             } else {
                 const asset = this.getAssetPrototypeFromCharacter(char);
                 currentXPosition += gridWidth;
-                const newAsset = asset.clone(this.object);
+                const newAsset = asset.clone(this.currentLevelAsssetContainer);
                 tempVec[0] = currentXPosition;
                 tempVec[2] = currentZPosition;
                 this.checkCharacterLogic(char, tempVec)
                 newAsset.setPositionWorld(tempVec);
+                
                 // newAsset.setScalingLocal([0.9,0.9,0.9])
             }
         }

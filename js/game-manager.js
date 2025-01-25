@@ -22,6 +22,27 @@ export class GameManager extends Component {
         this.ws = new WebSocketClient('wss://ggj-2025.onrender.com');
 
         playerController.registerNetworkEvents();
+        this.registerNetworkEvents();
+    }
+
+    registerNetworkEvents() {
+        this.ws.onMessage("COUNTDOWN", this.handleCountdown.bind(this));
+        this.ws.onMessage("MAP_CHANGED", this.handleMapChanged.bind(this));
+    }
+
+    handleCountdown(data) {
+        const { countdown } = data;
+
+        const countdownEl = document.querySelector('#countdown');
+        countdownEl.innerText = countdown;
+    }
+
+    handleMapChanged() {
+        
+    }
+
+    disconnect() {
+        this.ws.close();
     }
 
     sendMovement(dir) {

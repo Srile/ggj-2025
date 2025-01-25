@@ -1302,7 +1302,7 @@
                         "mesh": "8",
                         "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
                     },
-                    "active": false
+                    "active": true
                 }
             ],
             "translation": [
@@ -1451,20 +1451,6 @@
                 "file": "assets\\Objects\\Switch.glb"
             },
             "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
-        },
-        "fbffc0d8-27cf-4b7b-98f8-5852d52fb6a5": {
-            "link": {
-                "name": "Circle",
-                "file": "assets\\Objects\\Portal.glb"
-            },
-            "parent": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
-        },
-        "31463f53-3f14-4c50-85a9-b1e40159cec0": {
-            "link": {
-                "name": "Base",
-                "file": "assets\\Objects\\Portal.glb"
-            },
-            "parent": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
         }
     },
     "meshes": {

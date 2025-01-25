@@ -267,7 +267,9 @@
 
     <div id="endScreen" class="screen">
       <h1 id="winnerText"></h1>
-      <button class="button primary-btn" onclick="returnToMenu()">Return to Menu</button>
+      <h2>Next level in...</h2>
+      <h3 id="countdown"></h3>
+      <button class="button primary-btn" onclick="returnToMenu()">Disconnect</button>
     </div>
 
     <div id="instructionsModal" class="modal">
@@ -300,6 +302,7 @@
       }
   
       function returnToMenu() {
+        window.gameManager.disconnect();
         showScreen('menuScreen');
       }
   

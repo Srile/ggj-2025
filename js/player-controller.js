@@ -61,6 +61,12 @@ export class PlayerController extends Component {
     registerNetworkEvents() {
         gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
         gameManager.ws.onMessage("ENTITY_WON", this.handleGameWon.bind(this));
+        gameManager.ws.onMessage("OXYGEN_CHANGED", this.handleOxygenChaned.bind(this));
+    }
+
+    handleOxygenChaned(data) {
+        const {oxygen} = data;
+        setHealth(oxygen);
     }
 
     handleNetworkMove(data) {
