@@ -130,5 +130,5 @@ async function sendUpdatedGameState(ws, state: State) {
     ws.send(JSON.stringify(response))
 }
 
-setInterval(updateRooms, 1000);
+setInterval(updateRooms, 500);
 
