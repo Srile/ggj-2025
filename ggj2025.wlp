@@ -283,7 +283,7 @@
             "translation": [
                 -1.1794258,
                 0.0,
-                3.5762786865234375e-7
+                3.576278686523438e-7
             ],
             "rotation": [
                 0.0,
@@ -1145,20 +1145,6 @@
         "65d29dfa-0160-4e7e-ab2b-0e688aa0e181": {
             "name": "WallPrototype",
             "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "8",
-                        "material": "25"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                1.0,
-                0.0
-            ],
             "rotation": [
                 0.0,
                 0.0,
@@ -1169,6 +1155,11 @@
                 1.0,
                 1.0,
                 1.0
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                0.0
             ]
         },
         "8ffc856c-7262-4dfa-8788-5b70bb3c7fc5": {
@@ -1197,24 +1188,32 @@
                     "mesh": {
                         "mesh": "8",
                         "material": "b51607fc-9657-4732-8e31-b8ba43e3203e"
+                    },
+                    "active": false
+                },
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "7",
+                        "material": "e397907a-f912-45b0-995e-84426df91f1e"
                     }
                 }
             ],
             "translation": [
                 0.0,
                 1.0,
-                0.0
+                0.0000016
             ],
             "rotation": [
+                -0.7071068,
                 0.0,
                 0.0,
-                0.0,
-                1.0
+                0.7071068
             ],
             "scaling": [
                 1.0,
-                1.0,
-                1.0
+                0.9999963,
+                0.9999963
             ]
         },
         "925ddca8-e5cb-40af-84d7-a52d90bf0acd": {
@@ -1226,7 +1225,8 @@
                     "mesh": {
                         "mesh": "8",
                         "material": "a0937b28-2b03-4e83-9929-2366d0380f5b"
-                    }
+                    },
+                    "active": false
                 }
             ],
             "translation": [
@@ -1241,9 +1241,9 @@
                 1.0
             ],
             "scaling": [
-                1.0,
-                1.0,
-                1.0
+                0.75,
+                0.75,
+                0.75
             ]
         },
         "2740976e-41a9-47c9-9ec7-0b051571fb98": {
@@ -1255,7 +1255,8 @@
                     "mesh": {
                         "mesh": "9",
                         "material": "58feade2-ff60-448c-9458-219b129c029c"
-                    }
+                    },
+                    "active": true
                 }
             ],
             "translation": [
@@ -1284,7 +1285,8 @@
                     "mesh": {
                         "mesh": "8",
                         "material": "968c0631-1b9f-4263-a32a-8bcc9bad6c9e"
-                    }
+                    },
+                    "active": true
                 }
             ],
             "translation": [
@@ -1313,7 +1315,8 @@
                     "mesh": {
                         "mesh": "8",
                         "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
-                    }
+                    },
+                    "active": true
                 }
             ],
             "translation": [
@@ -1340,6 +1343,128 @@
                     "type": "game-manager"
                 }
             ]
+        },
+        "8c9c06d7-56a1-4bc9-bb7a-7bfd8e4e148a": {
+            "link": {
+                "name": "Trunk",
+                "file": "assets\\Objects\\Plant.glb"
+            },
+            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "3270df6f-dcd1-44bd-82ae-c2639bc9b861": {
+            "link": {
+                "name": "Flower",
+                "file": "assets\\Objects\\Plant.glb"
+            },
+            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
+            "rotation": [
+                -0.1824982,
+                0.4306477,
+                0.8585889,
+                0.2099093
+            ],
+            "scaling": [
+                0.0765468,
+                0.0765468,
+                0.0765468
+            ]
+        },
+        "b93acc22-bc15-4329-8a8c-f34d74e6b0a8": {
+            "link": {
+                "name": "Flower.001",
+                "file": "assets\\Objects\\Plant.glb"
+            },
+            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
+            "rotation": [
+                -0.4769537,
+                0.1693897,
+                0.3574095,
+                0.784908
+            ],
+            "scaling": [
+                0.0765468,
+                0.0765468,
+                0.0765468
+            ]
+        },
+        "b4d6e71f-af44-4ae2-9d5a-b38de6e4dfe8": {
+            "link": {
+                "name": "Flower.002",
+                "file": "assets\\Objects\\Plant.glb"
+            },
+            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
+            "rotation": [
+                -0.6863701,
+                -0.4419051,
+                -0.2082819,
+                0.5387341
+            ],
+            "scaling": [
+                0.0765468,
+                0.0765468,
+                0.0765468
+            ]
+        },
+        "aa5b8932-b019-497b-9b15-ac6663b84e26": {
+            "name": "Light.001",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "light",
+                    "light": {
+                        "intensity": 19.1000003
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                2.483097,
+                2.2304916
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ]
+        },
+        "1f914ab4-6b0a-41c2-b5da-0280191a3af1": {
+            "link": {
+                "name": "Lever",
+                "file": "assets\\Objects\\Switch.glb"
+            },
+            "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd",
+            "components": [
+                null,
+                {
+                    "animation": {
+                        "preview": false
+                    }
+                }
+            ]
+        },
+        "684434ec-5ddf-4fff-872c-024b0d2c5118": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Switch.glb"
+            },
+            "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
         }
     },
     "meshes": {
@@ -1425,6 +1550,42 @@
             "link": {
                 "name": "Taipan_LOD1",
                 "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "84117e3f-2d4b-4b35-9bc1-6000554d35ab": {
+            "link": {
+                "name": "Plane",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "90de55c1-8df1-4ed5-8218-01a3f62d9118": {
+            "link": {
+                "name": "Cone",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "e3768d88-f8ed-4889-bccc-8c1e47b0efea": {
+            "link": {
+                "name": "Cone.001",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "3e367c08-6b01-4631-8463-991b3ce5488a": {
+            "link": {
+                "name": "Cone.002",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "552c10fc-eec8-4282-ad84-466f038ccda6": {
+            "link": {
+                "name": "Circle",
+                "file": "assets\\Objects\\Switch.glb"
+            }
+        },
+        "5e0270b4-e31a-4da3-9f03-0aa9428513e9": {
+            "link": {
+                "name": "Circle.002",
+                "file": "assets\\Objects\\Switch.glb"
             }
         }
     },
@@ -1685,6 +1846,31 @@
                 "strength": 0.2,
                 "shininess": 0
             }
+        },
+        "a8ee2fb8-a2e5-46e2-9112-b28dd436e4d4": {
+            "link": {
+                "name": "Material.001",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "29f0dfaa-5819-4244-9f92-cf9ba1262f18": {
+            "link": {
+                "name": "Material.002",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "e397907a-f912-45b0-995e-84426df91f1e": {
+            "name": "Floor",
+            "pipeline": "38",
+            "Phong": {
+                "diffuseTexture": "956d3635-d14d-4c1f-88d3-15b6dd1f876e"
+            }
+        },
+        "85268b54-2200-4de2-b49d-daeb96ef8d30": {
+            "link": {
+                "name": "Material.001",
+                "file": "assets\\Objects\\Switch.glb"
+            }
         }
     },
     "shaders": {
@@ -1913,6 +2099,12 @@
         "15917ec3-073e-4301-897e-ba1977491534": {
             "link": {
                 "name": "Bubble.frag",
+                "file": "default"
+            }
+        },
+        "537e49b0-0c1c-4e94-b02d-950ae93252e8": {
+            "link": {
+                "name": "Overlay.frag",
                 "file": "default"
             }
         }
@@ -2811,6 +3003,12 @@
                 "name": "Walk",
                 "file": "assets\\Players\\Taipan.glb"
             }
+        },
+        "8db2d370-3d23-4bb0-933c-97ae366604fa": {
+            "link": {
+                "name": "LeverAction",
+                "file": "assets\\Objects\\Switch.glb"
+            }
         }
     },
     "skins": {
@@ -3082,6 +3280,12 @@
             "blendSrcRgb": "source alpha",
             "blendDestRgb": "one minus source alpha",
             "blendDestAlpha": "one"
+        },
+        "62fcd1d2-af0c-46d4-ad9a-78ba38410830": {
+            "link": {
+                "name": "Overlay",
+                "file": "default"
+            }
         }
     },
     "textures": {
@@ -3137,6 +3341,30 @@
             "link": {
                 "name": "texture_0",
                 "file": "assets\\Players\\Taipan.glb"
+            }
+        },
+        "956d3635-d14d-4c1f-88d3-15b6dd1f876e": {
+            "link": {
+                "name": "floor.png",
+                "file": "assets\\floor.png"
+            }
+        },
+        "77d3f2e4-d181-4660-9f39-06eaac09a7c5": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "185cf3be-4402-406d-aeff-c71652379493": {
+            "link": {
+                "name": "texture_1",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "1ee48261-4365-442b-8726-47b285e70d43": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Objects\\Switch.glb"
             }
         }
     },
@@ -3194,6 +3422,30 @@
                 "name": "T_Taipan",
                 "file": "assets\\Players\\Taipan.glb"
             }
+        },
+        "6ea71df6-bc90-4eec-a499-bd2a4e2df4be": {
+            "link": {
+                "name": "floor.png",
+                "file": "assets\\floor.png"
+            }
+        },
+        "2397e976-82fd-4ec3-b59e-772b10656f99": {
+            "link": {
+                "name": "Flower",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "781e3691-70b9-4c8c-8d73-12558fe3313b": {
+            "link": {
+                "name": "Plant",
+                "file": "assets\\Objects\\Plant.glb"
+            }
+        },
+        "026a5348-c318-41f8-8035-340e26bbb95d": {
+            "link": {
+                "name": "BaseColor",
+                "file": "assets\\Objects\\Switch.glb"
+            }
         }
     },
     "fonts": {
@@ -3247,6 +3499,20 @@
         },
         "8a1853fd-806e-492a-b4e7-b83eaa11f4e8": {
             "fileName": "assets/Players/Taipan.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "3061d5ea-2386-41e1-a4de-8bb382e8a9c4": {
+            "fileName": "assets/floor.png",
+            "importerName": ""
+        },
+        "da210dd2-3f72-471d-a671-24d7371b5642": {
+            "fileName": "assets/Objects/Plant.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "bb1b9ba4-c288-452e-983e-26c978e631e3": {
+            "fileName": "assets/Objects/Switch.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
         }
