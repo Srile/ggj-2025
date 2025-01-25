@@ -28,6 +28,11 @@ const server = Bun.serve<{ clientId: string; }>({
                 const game = ROOMS2GAME[CLIENTS2ROOM[ws.data.clientId]]
                 game.removePlayer(ws.data.clientId)
                 delete CLIENTS2ROOM[ws.data.clientId]
+                if (!!!game.getClientIds().length) {
+                    const roomId = game.roomId
+                    ROOMS2GAME[roomId] = undefined
+                    delete ROOMS2GAME[roomId]
+                }
             }
         },
         async open(ws) {
