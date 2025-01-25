@@ -14,6 +14,7 @@ export interface Message {
     command: Command
     action: Action | null
     roomId: string | null
-    playerNumber: number | null
+    turn: number | null
+    player: number | null
     map: string | null
 }
