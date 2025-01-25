@@ -8,13 +8,8 @@ import { State } from "./src-game/state.js";
 const PORT = process.env.PORT || 10000;
 
 const WEBSOCKETS = {} // ClientId to WS
-const ROOMS = {
-    "1337": []
-}
-
-let ACTION_QUEUE: Array<ClientIdWithAction> = []
-const GAME = new Game()
-GAME.init()
+const ROOMS2GAME = {}
+const CLIENTS2ROOM = {}
 
 const server = Bun.serve<{ clientId: string; }>({
     port: PORT,
@@ -29,7 +24,11 @@ const server = Bun.serve<{ clientId: string; }>({
         async close(ws, code, message) {
             console.log("Close %s", ws.data.clientId)
             delete WEBSOCKETS[ws.data.clientId]
-            GAME.removePlayer(ws.data.clientId)
+            if (Object.hasOwn(CLIENTS2ROOM, ws.data.clientId)) {
+                const game = ROOMS2GAME[CLIENTS2ROOM[ws.data.clientId]]
+                game.removePlayer(ws.data.clientId)
+                delete CLIENTS2ROOM[ws.data.clientId]
+            }
         },
         async open(ws) {
             console.log("Open %s", ws.data.clientId)
@@ -53,8 +52,17 @@ const server = Bun.serve<{ clientId: string; }>({
 
             switch (parsedMsg.command) {
                 case "CONNECT":
-                    ROOMS[parsedMsg.roomId].push(ws.data.clientId)
-                    const state = GAME.addPlayer(ws.data.clientId)
+                    //ROOMS[parsedMsg.roomId].push(ws.data.clientId)
+                    CLIENTS2ROOM[ws.data.clientId] = parsedMsg.roomId
+                    let game: Game;
+                    if (Object.hasOwn(ROOMS2GAME, parsedMsg.roomId)) {
+                        game = ROOMS2GAME[parsedMsg.roomId]
+                    } else {
+                        ROOMS2GAME[parsedMsg.roomId] = new Game(parsedMsg.roomId)
+                        game = ROOMS2GAME[parsedMsg.roomId]
+                        game.init()
+                    }
+                    const state = game.addPlayer(ws.data.clientId)
                     if (!!state) {
                         sendUpdatedGameState(ws, state)
                     } else {
@@ -68,16 +76,17 @@ const server = Bun.serve<{ clientId: string; }>({
 
                     break
                 case "DISCONNECT":
-                    for (const roomId of Object.keys(ROOMS)) {
-                        ROOMS[roomId] = ROOMS[roomId].filter(clientId => clientId !== ws.data.clientId)
-                    }
                     ws.close()
                     break
                 case "ACTION":
-                    ACTION_QUEUE.push({
-                        clientId: ws.data.clientId,
-                        action: parsedMsg.action
-                    })
+                    if (Object.hasOwn(CLIENTS2ROOM, ws.data.clientId)) {
+                        const roomId = CLIENTS2ROOM[ws.data.clientId]
+                        const game: Game = ROOMS2GAME[roomId]
+                        game.addAction({
+                            clientId: ws.data.clientId,
+                            action: parsedMsg.action
+                        })
+                    }
                     break
                 default:
                     ws.send(JSON.stringify(
@@ -94,24 +103,24 @@ const server = Bun.serve<{ clientId: string; }>({
 
 console.log(`Listening on localhost:${server.port}`);
 
-async function updateServer() {
-    console.log("Connected clients: %s", Object.keys(WEBSOCKETS).length)
+async function updateRooms() {
+    //console.log("Connected clients: %s", Object.keys(WEBSOCKETS).length)
 
-    const state = GAME.update(ACTION_QUEUE)
-    ACTION_QUEUE = []
-
-    for (const clientId of ROOMS["1337"]) {
-        const ws = WEBSOCKETS[clientId]
-        if (!!ws) {
-            sendUpdatedGameState(ws, state)
+    for (const roomId of Object.keys(ROOMS2GAME)) {
+        const game: Game = ROOMS2GAME[roomId]
+        const newState = game.update()
+        for (const clientId of game.getClientIds()) {
+            const ws = WEBSOCKETS[clientId]
+            if (!!ws) {
+                sendUpdatedGameState(ws, newState)
+            }
         }
     }
-
 }
 async function sendUpdatedGameState(ws, state: State) {
     const response = render(state, ws.data.clientId)
     ws.send(JSON.stringify(response))
 }
 
-setInterval(updateServer, 1000);
+setInterval(updateRooms, 1000);
 

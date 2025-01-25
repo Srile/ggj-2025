@@ -1,5 +1,10 @@
 import { Event } from "../protocol.js"
 
+export interface ClientIdWithAction {
+    clientId: string,
+    action: string
+}
+
 export interface State {
     _AIs: object,
     _combatQueue: Array<{entityId: string, otherEntityId: string}>,
@@ -15,6 +20,7 @@ export interface State {
     lastSpacePositionByEntity: object
     tools: object,
 
+    _actions: Array<ClientIdWithAction>,
     _usedPlayerNumbers: Set<number>,
     _clientsToPlayers: object,
     _events: Array<Event>,
@@ -38,6 +44,7 @@ export function states_create(): State {
         lastSpacePositionByEntity: {},
         tools: {},
 
+        _actions: [],
         _usedPlayerNumbers: new Set(),
         _clientsToPlayers: {},
         _events: [],

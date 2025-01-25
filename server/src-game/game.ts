@@ -1,19 +1,18 @@
 import { entities_create, entities_destroy } from "./entity.js";
 import { entity_act } from "./entity_map.js";
 import { maps_create_all_manual } from "./map.js";
-import { State, states_create } from "./state.js";
+import { ClientIdWithAction, State, states_create } from "./state.js";
 
-export interface ClientIdWithAction {
-    clientId: string,
-    action: string
-}
+
 
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
 
 export default class Game {
     state: State;
+    roomId: string;
 
-    constructor() {
+    constructor(roomId: string) {
+        this.roomId = roomId
     }
 
     init(): State {
@@ -22,17 +21,18 @@ export default class Game {
         return this.state
     }
 
-    update(actions: Array<ClientIdWithAction>): State {
+    update(): State {
         this.state.turn++
         this.state._events = []
 
-        if (!!actions) {
-            console.log("Actions: %o", actions)
-            for (const action of actions) {
+        if (!!this.state._actions) {
+            console.log("Actions: %o", this.state._actions)
+            for (const action of this.state._actions) {
                 const playerId = String(this.state._clientsToPlayers[action.clientId])
                 const player = this.state.entities[playerId]
                 this.state = entity_act(this.state, player, action.action)
             }
+            this.state._actions = []
         }
         //this.state = systems_per_turn_update(this.state)
 
@@ -65,5 +65,14 @@ export default class Game {
         this.state = entities_destroy(this.state, String(playerNumber))
         console.log("RemovedPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
         return this.state
+    }
+
+    addAction(action: ClientIdWithAction): State {
+        this.state._actions.push(action)
+        return this.state
+    }
+
+    getClientIds(): Array<string> {
+        return Object.keys(this.state._clientsToPlayers)
     }
 }
