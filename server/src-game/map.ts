@@ -1,5 +1,4 @@
 import { MAP } from "../example_map.js";
-import { BOTMOS_OPTIONS } from "./config.js";
 import { entities_destroy, entities_get_by } from "./entity.js";
 import { items_destroy, items_get_by } from "./item.js";
 import { MANIFEST, Tile as TileType } from "./manifest.js";
