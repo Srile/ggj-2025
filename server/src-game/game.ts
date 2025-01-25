@@ -1,6 +1,12 @@
 import { entities_create, entities_destroy } from "./entity.js";
+import { entity_act } from "./entity_map.js";
 import { maps_create_all_manual } from "./map.js";
 import { State, states_create } from "./state.js";
+
+export interface ClientIdWithAction {
+    clientId: string,
+    action: string
+}
 
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
 
@@ -16,11 +22,19 @@ export default class Game {
         return this.state
     }
 
-    update(actions: Array<object>): State {
+    update(actions: Array<ClientIdWithAction>): State {
+        this.state.turn++
+
         if (!!actions) {
             console.log("Actions: %o", actions)
+            for (const action of actions) {
+                const playerId = String(this.state._clientsToPlayers[action.clientId])
+                const player = this.state.entities[playerId]
+                this.state = entity_act(this.state, player, action.action)
+            }
         }
-        this.state.turn++
+        //this.state = systems_per_turn_update(this.state)
+
         return this.state
     }
 

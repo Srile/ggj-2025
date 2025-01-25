@@ -38,6 +38,6 @@ export function states_create(): State {
         _usedPlayerNumbers: new Set(),
         _clientsToPlayers: {},
         _maps: {},
-        turn: 0
+        turn: -1 // negative: waiting state
     }
 }

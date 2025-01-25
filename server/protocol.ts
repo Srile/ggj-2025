@@ -4,7 +4,6 @@ export type Command = "CONNECT"
     | "SERVER_ERROR"
     | "SERVER_RESPONSE"
 
-
 export type Action = "W"
     | "A"
     | "S"

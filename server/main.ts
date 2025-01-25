@@ -1,6 +1,6 @@
 import * as Bun from "bun"
 import { Message } from "./protocol.js";
-import Game from "./src-game/game.js";
+import Game, { ClientIdWithAction } from "./src-game/game.js";
 import { render } from "./src-game/websocket_renderer.js";
 import { State } from "./src-game/state.js";
 
@@ -12,7 +12,7 @@ const ROOMS = {
     "1337": []
 }
 
-let ACTION_QUEUE = []
+let ACTION_QUEUE: Array<ClientIdWithAction> = []
 const GAME = new Game()
 GAME.init()
 
@@ -74,10 +74,10 @@ const server = Bun.serve<{ clientId: string; }>({
                     ws.close()
                     break
                 case "ACTION":
-                    const clientId: string = ws.data.clientId
-                    const actionObj = {}
-                    actionObj[clientId] = parsedMsg.action
-                    ACTION_QUEUE.push(actionObj)
+                    ACTION_QUEUE.push({
+                        clientId: ws.data.clientId,
+                        action: parsedMsg.action
+                    })
                     break
                 default:
                     ws.send(JSON.stringify(
