@@ -55,15 +55,24 @@ Server may send the following JSON Strings:
             "oldX": 4,
             "oldY": 4,
             "newX": 5,
-            "newY": 4
+            "newY": 4,
         },
         {
             "type": "ENTITY_WON",
             "entityId": "0",
-            "oldX": null,
-            "oldY": null,
-            "newX": null,
-            "newY": null
+        },
+        {
+            "type": "COUNTDOWN",
+            "countdown": 5,
+        },
+        {
+            "type": "MAP_CHANGED"
+        },
+        {
+            "type": "OXYGEN_CHANGED",
+            "entityId": "0",
+            "oxygen": 19,
+            "oxygenMax": 20
         }
     ]
 

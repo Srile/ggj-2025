@@ -44,13 +44,7 @@ export default class Game {
                 this.state.currentMapId = map.id
 
                 this.state._events.push({
-                    type: "MAP_CHANGED",
-                    entityId: null,
-                    oldX: null,
-                    oldY: null,
-                    newX: null,
-                    newY: null,
-                    countdown: null
+                    type: "MAP_CHANGED"
                 })
 
                 for (const clientId of Object.keys(this.state._clientsToPlayers)) {
@@ -66,11 +60,6 @@ export default class Game {
             } else {
                 this.state._events.push({
                     type: "COUNTDOWN",
-                    entityId: null,
-                    oldX: null,
-                    oldY: null,
-                    newX: null,
-                    newY: null,
                     countdown: this.state.countdown
                 })
 
@@ -99,7 +88,6 @@ export default class Game {
                     oldY: spawnPoint[1],
                     newX: spawnPoint[0],
                     newY: spawnPoint[0],
-                    countdown: null
                 })
             }
         } else {
@@ -119,11 +107,6 @@ export default class Game {
         this.state._events.push({
             type: "PLAYER_LEFT",
             entityId: playerId,
-            oldX: null,
-            oldY: null,
-            newX: null,
-            newY: null,
-            countdown: null
         })
         console.log("RemovedPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
         return this.state

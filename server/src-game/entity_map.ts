@@ -78,7 +78,6 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
         oldY: oldY,
         newX: entity.x,
         newY: entity.y,
-        countdown: null
     })
 
     // Exit
@@ -88,14 +87,18 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
         state._events.push({
             type: "ENTITY_WON",
             entityId: entity.id,
-            oldX: null,
-            oldY: null,
-            newX: null,
-            newY: null,
-            countdown: null
         })
         state.countdown = 5;
     }
+
+    // Oxygen cost for movement
+    entity.oxygen = Math.max(entity.oxygen - 1, 0)
+    state._events.push({
+        type: "OXYGEN_CHANGED",
+        entityId: entity.id,
+        oxygen: entity.oxygen,
+        oxygenMax: entity.oxygenMax
+    })
 
     // Move{north, east, south, west} tile
     /*

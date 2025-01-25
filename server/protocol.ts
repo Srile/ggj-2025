@@ -13,17 +13,20 @@ export type EventType = "ENTITY_MOVED"
     | "ENTITY_WON"
     | "COUNTDOWN"
     | "MAP_CHANGED"
+    | "OXYGEN_CHANGED"
     | "PLAYER_JOINED"
     | "PLAYER_LEFT"
 
 export interface Event {
     type: EventType
-    entityId: string | null
-    oldX: number | null
-    oldY: number | null
-    newX: number | null
-    newY: number | null
-    countdown: number | null
+    entityId?: string
+    oldX?: number
+    oldY?: number
+    newX?: number
+    newY?: number
+    oxygen?: number
+    oxygenMax?: number
+    countdown?: number
 }
 
 export interface Message {
