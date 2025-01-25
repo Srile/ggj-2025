@@ -6,13 +6,13 @@ jobs:
     container:
       image: wonderlandengine/editor:1.2.4
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Package
       run: /usr/local/bin/entrypoint.sh WonderlandEditor --windowless --package --project ggj2025.wlp --output deploy/ --credentials "$WLE_CREDENTIALS"
       env:
           WLE_CREDENTIALS: ${{ secrets.WLE_CREDENTIALS }}
     - name: Upload package artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: game-deploy
         path: deploy/
@@ -20,9 +20,9 @@ jobs:
     needs: package
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Download package artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: game-deploy
         path: deploy
