@@ -58,6 +58,14 @@ Server may send the following JSON Strings:
             "newY": 4,
         },
         {
+            "type": "ENTITY_ATTACKED",
+            "entityId": "0",
+        },
+        {
+            "type": "ENTITY_HIT",
+            "entityId": "1",
+        },
+        {
             "type": "ENTITY_WON",
             "entityId": "0",
         },

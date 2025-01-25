@@ -17,6 +17,8 @@ export type EventType = "ENTITY_MOVED"
     | "OXYGEN_CHANGED"
     | "PLAYER_JOINED"
     | "PLAYER_LEFT"
+    | "ENTITY_ATTACKED"
+    | "ENTITY_HIT"
 
 export interface Event {
     type: EventType

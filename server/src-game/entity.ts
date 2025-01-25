@@ -63,5 +63,28 @@ export function interactOrCombat(state: State, entityA: Entity, entityB: Entity)
     const otherEntityId = entityB.id
     console.log("Combat between %s and %s", entityId, otherEntityId)
 
+    entityA.oxygen = Math.max(entityA.oxygen - 1, 0)
+    state._events.push({
+        type: "ENTITY_ATTACKED",
+        entityId: entityId,
+    })
+    state._events.push({
+        type: "OXYGEN_CHANGED",
+        entityId: entityId,
+        oxygen: entityA.oxygen,
+        oxygenMax: entityA.oxygenMax
+    })
+    entityB.oxygen = Math.max(entityB.oxygen - 5, 0)
+    state._events.push({
+        type: "ENTITY_HIT",
+        entityId: otherEntityId,
+    })
+    state._events.push({
+        type: "OXYGEN_CHANGED",
+        entityId: otherEntityId,
+        oxygen: entityB.oxygen,
+        oxygenMax: entityB.oxygenMax
+    })
+
     return state
 }
