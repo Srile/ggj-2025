@@ -13,7 +13,7 @@ Clients may send JSON Strings:
 ```json
 {
     "command": "CONNECT",
-    "roomId": "RoomID"
+    "roomId": "1337"
 }
 ```
 
@@ -37,7 +37,7 @@ Server may send the following JSON Strings:
 ```json
 {
     "command": "SERVER_RESPONSE",
-    "roomId": "RoomID",
+    "roomId": "1337",
     "player": 0,
     "turn": 5,
     "map": "map string\nmap string\n",
