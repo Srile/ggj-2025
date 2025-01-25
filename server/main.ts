@@ -6,6 +6,7 @@ import { render } from "./src-game/websocket_renderer.js";
 // https://render.com/docs/web-services#port-binding
 const PORT = process.env.PORT || 1000;
 
+const WEBSOCKETS = {}
 const ROOMS = {
     "1337": []
 }
@@ -13,7 +14,7 @@ const ROOMS = {
 const GAME = new Game()
 GAME.init()
 
-const server = Bun.serve<{ authToken: string; }>({
+const server = Bun.serve<{ clientId: string; }>({
     port: PORT,
     fetch(req, server) {
         server.upgrade(req, {
@@ -24,7 +25,12 @@ const server = Bun.serve<{ authToken: string; }>({
     },
     websocket: {
         async close(ws, code, message) {
-            ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
+            console.log("Close %s", ws.data.clientId)
+            delete WEBSOCKETS[ws.data.clientId]
+        },
+        async open(ws) {
+            console.log("Open %s", ws.data.clientId)
+            WEBSOCKETS[ws.data.clientId] = ws
         },
         async message(ws, message) {
             let parsedMsg: Message;
@@ -44,10 +50,12 @@ const server = Bun.serve<{ authToken: string; }>({
 
             switch (parsedMsg.command) {
                 case "CONNECT":
-                    ROOMS[parsedMsg.roomId].push(ws)
+                    ROOMS[parsedMsg.roomId].push(ws.data.clientId)
                     break
                 case "DISCONNECT":
-                    ROOMS["1337"] = ROOMS["1337"].filter(socket => socket !== ws)
+                    for (const roomId of Object.keys(ROOMS)) {
+                        ROOMS[roomId] = ROOMS[roomId].filter(clientId => clientId !== ws.data.clientId)
+                    }
                     ws.close()
                     break
                 default:
@@ -69,8 +77,11 @@ async function updateServer() {
     const state = GAME.update({})
     const response = render(state)
 
-    for (const ws of ROOMS["1337"]) {
-        sendUpdateGameState(ws, response)
+    for (const clientId of ROOMS["1337"]) {
+        const ws = WEBSOCKETS[clientId]
+        if (!!ws) {
+            sendUpdateGameState(ws, response)
+        }
     }
     console.log("Connected clients: %s", ROOMS["1337"].length)
 }
