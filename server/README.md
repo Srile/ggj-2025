@@ -1,5 +1,7 @@
 # Unterwater Zoo Race
 
+Game can be played under https://srile.github.io/ggj-2025/
+
 ## Server
 
 * Game server is reachable under [wss://ggj-2025.onrender.com](wss://ggj-2025.onrender.com)
