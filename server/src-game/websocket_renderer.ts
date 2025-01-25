@@ -7,12 +7,12 @@ export function render(state: State, clientId: string): Message {
     return {
         command: "SERVER_RESPONSE",
         action: null,
-        roomId: "1337",
+        roomId: state._roomId,
         player: state._clientsToPlayers[clientId],
         turn: state.turn,
         entities: render_entities(state),
         events: state._events,
-        map: render_map(state, "1337"),
+        map: render_map(state),
     }
 }
 
@@ -30,8 +30,8 @@ function render_entities(state: State): object {
     return entities
 }
 
-function render_map(state: State, mapId: string): string {
-    const map: Map = state._maps[mapId]
+function render_map(state: State): string {
+    const map: Map = state._maps[state.currentMapId]
     let buffer = ""
     for (let y = 0; y < map.heightTiles; y++) {
         for (let x = 0; x < map.widthTiles; x++) {

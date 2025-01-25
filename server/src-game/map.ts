@@ -24,8 +24,9 @@ export function tiles_create(type: TileType, options={}): Tile {
 }
 
 export function maps_create_all_manual(state: State): State {
-    let map = maps_parse(MAP)
-    state._maps["1337"] = map
+    let map: Map = maps_parse(MAP)
+    state._maps[map.id] = map
+    state.currentMapId = map.id
     return state
 }
 
@@ -139,7 +140,7 @@ export function maps_parse(mapString: string): Map {
     }
 
     const createdMap = new Map(
-        "1337",
+        crypto.randomUUID(),
         width,
         height,
         tiles

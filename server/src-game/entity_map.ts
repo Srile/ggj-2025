@@ -57,7 +57,7 @@ function _entity_can_move(map: Map, entity: Entity, dx: number, dy: number): boo
              || tileType === MANIFEST.tiles.exit);
 }
 
-function _entity_move(state: State, map: any, entity: Entity, dx: number, dy: number): State {
+function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: number): State {
     const oldX = entity.x;
     const oldY = entity.y;
     entity.x += dx;

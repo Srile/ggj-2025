@@ -3,8 +3,6 @@ import { entity_act } from "./entity_map.js";
 import { maps_create_all_manual } from "./map.js";
 import { ClientIdWithAction, State, states_create } from "./state.js";
 
-
-
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
 
 export default class Game {
@@ -16,7 +14,7 @@ export default class Game {
     }
 
     init(): State {
-        this.state = states_create()
+        this.state = states_create(this.roomId)
         this.state = maps_create_all_manual(this.state)
         return this.state
     }
@@ -46,9 +44,9 @@ export default class Game {
             this.state._usedPlayerNumbers.add(playerNumber)
             this.state._clientsToPlayers[clientId] = playerNumber
             const playerId = String(playerNumber)
-            const spawnPoint = this.state._maps["1337"].getSpawnPointForPlayer(playerId) // TODO hardcoded mapId
+            const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
             if (!!spawnPoint) {
-                this.state = entities_create(this.state, playerId, "1337", spawnPoint[0], spawnPoint[1])
+                this.state = entities_create(this.state, playerId, this.state.currentMapId, spawnPoint[0], spawnPoint[1])
             }
         } else {
             // Game full

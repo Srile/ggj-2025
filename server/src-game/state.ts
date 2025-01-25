@@ -14,7 +14,6 @@ export interface State {
     _menuOpen: boolean,
     actionLog: Array<string>,
     chatLog: Array<string>,
-    currentMapId: string,
     entities: object,
     items: object,
     lastSpacePositionByEntity: object
@@ -25,10 +24,12 @@ export interface State {
     _clientsToPlayers: object,
     _events: Array<Event>,
     _maps: object,
+    _roomId: string,
+    currentMapId: string,
     turn: number
 }
 
-export function states_create(): State {
+export function states_create(roomId: string): State {
     return {
         _AIs: {},
         _combatQueue: [],
@@ -38,7 +39,6 @@ export function states_create(): State {
         _menuOpen: true,
         actionLog: [],
         chatLog: [],
-        currentMapId: "",
         entities: {},
         items: {},
         lastSpacePositionByEntity: {},
@@ -49,6 +49,8 @@ export function states_create(): State {
         _clientsToPlayers: {},
         _events: [],
         _maps: {},
+        _roomId: roomId,
+        currentMapId: "",
         turn: -1 // negative: waiting state
     }
 }
