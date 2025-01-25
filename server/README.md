@@ -56,6 +56,14 @@ Server may send the following JSON Strings:
             "oldY": 4,
             "newX": 5,
             "newY": 4
+        },
+        {
+            "type": "ENTITY_WON",
+            "entityId": "0",
+            "oldX": null,
+            "oldY": null,
+            "newX": null,
+            "newY": null
         }
     ]
 
