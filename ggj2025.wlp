@@ -136,7 +136,7 @@
             "translation": [
                 0.0,
                 1.0,
-                -3.8099877
+                0.0
             ],
             "rotation": [
                 0.0,
@@ -148,7 +148,13 @@
                 1.0,
                 1.0,
                 1.0
-            ]
+            ],
+            "components": [
+                {
+                    "type": "player-controller"
+                }
+            ],
+            "parent": "8ffc856c-7262-4dfa-8788-5b70bb3c7fc5"
         },
         "416fe7fe-f0e7-4b67-9059-62bb34392c90": {
             "link": {
@@ -1249,8 +1255,8 @@
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "8",
-                        "material": "22"
+                        "mesh": "9",
+                        "material": "58feade2-ff60-448c-9458-219b129c029c"
                     }
                 }
             ],
@@ -1315,34 +1321,6 @@
             "translation": [
                 0.0,
                 1.0,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "ce5d958f-28fe-42c8-8b9b-1bcf6ccab6c3": {
-            "name": "Bubble",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "9",
-                        "material": "58feade2-ff60-448c-9458-219b129c029c"
-                    }
-                }
-            ],
-            "translation": [
-                0.0,
-                1.8054141,
                 0.0
             ],
             "rotation": [
