@@ -1316,7 +1316,7 @@
                         "mesh": "8",
                         "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
                     },
-                    "active": true
+                    "active": false
                 }
             ],
             "translation": [
@@ -1331,9 +1331,9 @@
                 1.0
             ],
             "scaling": [
-                1.0,
-                1.0,
-                1.0
+                0.85,
+                0.85,
+                0.85
             ]
         },
         "d2eb1bef-e521-4139-b3b3-a3d3a138da39": {
@@ -1465,6 +1465,20 @@
                 "file": "assets\\Objects\\Switch.glb"
             },
             "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
+        },
+        "fbffc0d8-27cf-4b7b-98f8-5852d52fb6a5": {
+            "link": {
+                "name": "Circle",
+                "file": "assets\\Objects\\Portal.glb"
+            },
+            "parent": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
+        },
+        "31463f53-3f14-4c50-85a9-b1e40159cec0": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Portal.glb"
+            },
+            "parent": "ef8be81b-dc65-4a61-8512-f9470a2d547c"
         }
     },
     "meshes": {
@@ -1586,6 +1600,18 @@
             "link": {
                 "name": "Circle.002",
                 "file": "assets\\Objects\\Switch.glb"
+            }
+        },
+        "ea1c9289-ee15-4af2-ad6e-7048c3e38a84": {
+            "link": {
+                "name": "Circle",
+                "file": "assets\\Objects\\Portal.glb"
+            }
+        },
+        "bd97cee4-157f-47f7-8c2d-9f2b3fd9e119": {
+            "link": {
+                "name": "Cylinder.001",
+                "file": "assets\\Objects\\Portal.glb"
             }
         }
     },
@@ -1870,6 +1896,18 @@
             "link": {
                 "name": "Material.001",
                 "file": "assets\\Objects\\Switch.glb"
+            }
+        },
+        "14cfb1eb-3910-447f-9cbc-76238cedeade": {
+            "link": {
+                "name": "Portal",
+                "file": "assets\\Objects\\Portal.glb"
+            }
+        },
+        "bbfb6e1c-9277-4fd3-8226-d9487877e022": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Portal.glb"
             }
         }
     },
@@ -3366,6 +3404,12 @@
                 "name": "texture_0",
                 "file": "assets\\Objects\\Switch.glb"
             }
+        },
+        "3e84a264-cecc-458e-84c0-1cb86ef915a7": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Objects\\Portal.glb"
+            }
         }
     },
     "images": {
@@ -3446,6 +3490,12 @@
                 "name": "BaseColor",
                 "file": "assets\\Objects\\Switch.glb"
             }
+        },
+        "85027557-bf43-4835-a04e-770ea56bbbe4": {
+            "link": {
+                "name": "BaseColor",
+                "file": "assets\\Objects\\Portal.glb"
+            }
         }
     },
     "fonts": {
@@ -3513,6 +3563,11 @@
         },
         "bb1b9ba4-c288-452e-983e-26c978e631e3": {
             "fileName": "assets/Objects/Switch.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "fa54d0e1-67b1-4c56-8efb-915e93445301": {
+            "fileName": "assets/Objects/Portal.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
         }
