@@ -23,15 +23,11 @@ export function entity_act(state: State, entity: Entity, command: string): State
     return state;
 }
 
-function entityInteractOrMove(state: State, entity: Entity, dx: number, dy: number, recursion=0): State { // TODO dirty hack with the recursion
-    // Check for collision:
-    /*
-    entity -> combat (hostile), interact (friendly)
-    tile -> mine (rock), block movement (wall)
+function entityInteractOrMove(state: State, entity: Entity, dx: number, dy: number): State {
+    if (entity.oxygen <= 0) {
+        return state;
+    }
 
-    if movement can happen:
-    move, pickup items on-tile movement, go through portals on-tile movement
-    */
     const map = state._maps[entity.mapId]
     const entity_at_target_position = entities_get_at(state, map.id, entity.x + dx, entity.y + dy)
 
@@ -41,7 +37,6 @@ function entityInteractOrMove(state: State, entity: Entity, dx: number, dy: numb
 
     } else if (_entity_can_move(map, entity, dx, dy)) {
         state = _entity_move(state, map, entity, dx, dy)
-        //state._energyQueue.push({entityId: entity.id, energyDelta: -1 * recursion}) // Pushing rocks
 
     }
 
