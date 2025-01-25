@@ -2,7 +2,8 @@
 
 ## Server
 
-Game server is reachable under wss://ggj-2025.onrender.com
+* Game server is reachable under [wss://ggj-2025.onrender.com](wss://ggj-2025.onrender.com)
+* Test messages can be sent with https://piehost.com/websocket-tester
 
 ### Protocol
 
