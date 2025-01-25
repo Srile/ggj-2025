@@ -1,4 +1,3 @@
-import { MAP } from "../example_map.js";
 import { Message } from "../protocol.js";
 import { Map } from "./map.js";
 import { State } from "./state.js";
@@ -9,8 +8,9 @@ export function render(state: State, clientId: string): Message {
         action: null,
         roomId: "1337",
         player: state._clientsToPlayers[clientId],
+        turn: state.turn,
+        entities: state.entities,
         map: render_map(state, "1337"),
-        turn: state.turn
     }
 }
 

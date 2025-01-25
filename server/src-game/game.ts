@@ -1,3 +1,4 @@
+import { entities_create, entities_destroy } from "./entity.js";
 import { maps_create_all_manual } from "./map.js";
 import { State, states_create } from "./state.js";
 
@@ -29,11 +30,16 @@ export default class Game {
             const playerNumber = [...availablePlayerNumbers.keys()][0]
             this.state._usedPlayerNumbers.add(playerNumber)
             this.state._clientsToPlayers[clientId] = playerNumber
+            const playerId = String(playerNumber)
+            const spawnPoint = this.state._maps["1337"].getSpawnPointForPlayer(playerId) // TODO hardcoded mapId
+            if (!!spawnPoint) {
+                this.state = entities_create(this.state, playerId, "1337", spawnPoint[0], spawnPoint[1])
+            }
         } else {
             // Game full
             return null
         }
-        console.log("AddPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
+        console.log("AddedPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
         return this.state
     }
 
@@ -41,7 +47,8 @@ export default class Game {
         const playerNumber: number = this.state._clientsToPlayers[clientId]
         this.state._usedPlayerNumbers.delete(playerNumber)
         delete this.state._clientsToPlayers[clientId]
-        console.log("RemovePlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
+        this.state = entities_destroy(this.state, String(playerNumber))
+        console.log("RemovedPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
         return this.state
     }
 }

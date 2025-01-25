@@ -17,4 +17,5 @@ export interface Message {
     turn: number | null
     player: number | null
     map: string | null
+    entities: object | null // entityId/playerNumber as string mapped to position
 }

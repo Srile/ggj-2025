@@ -48,13 +48,15 @@ export function maps_destroy(state: State, mapId: string): State {
     return state
 }
 
+const SPAWN_ICONS = new Set(["0", "1", "2", "3", "4", "5", "6", "7"])
+
 export class Map {
     id: string;
     widthTiles: number;
     heightTiles: number;
     seed: number | null;
     private _tiles: Tile[];
-    private _cacheMovementMap: any | null;
+    private _spawnPoints: object;
 
     constructor(id: string, width_tiles: number, height_tiles: number, tiles: Tile[]=[]) {
         this.id = id;
@@ -62,7 +64,15 @@ export class Map {
         this.heightTiles = height_tiles;
         this.seed = null
         this._tiles = tiles;
-        this._cacheMovementMap = null
+
+        for (let y = 0; y < this.heightTiles; y++) {
+            for (let x = 0; x < this.widthTiles; x++) {
+                const icon: string = this.getTile(x, y)?.type?.icon
+                if (SPAWN_ICONS.has(icon)) {
+                    this._spawnPoints[icon] = [x, y]
+                }
+            }
+        }
     }
 
     getTile(x: number, y: number): Tile | any {
@@ -76,13 +86,19 @@ export class Map {
     }
 
     setTile(x: number, y: number, tileType: TileType, options={}): Tile {
-        this._cacheMovementMap = null
-
         let tileIndex = y * this.widthTiles + x
         const oldTile = this._tiles[tileIndex]
         this._tiles[tileIndex] = tiles_create(tileType, options)
 
         return oldTile
+    }
+
+    getSpawnPointForPlayer(playerId: string): Array<number> | null {
+        if (Object.hasOwn(this._spawnPoints, playerId)) {
+            return this._spawnPoints[playerId]
+        }
+
+        return null
     }
 }
 

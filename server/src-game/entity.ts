@@ -5,13 +5,23 @@ export interface Entity {
     mapId: string,
     x: number,
     y: number,
-    energy: number,
-    energyMax: number,
-    gold: number,
-    matter: number,
-    message: string | null,
-    interactions: number,
-    options: any
+    oxygen: number,
+    oxygenMax: number,
+}
+
+export function entities_create(state: State, id: string, mapId: string, x=0, y=0,): State {
+    const entity = {
+        "id": id,
+        "mapId": mapId,
+        "x": x,
+        "y": y,
+        "oxygen": 20,
+        "oxygenMax": 20,
+    }
+
+    state.entities[entity.id] = entity
+
+    return state
 }
 
 export function entities_destroy(state: State, entityId: string) {
