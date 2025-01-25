@@ -65,6 +65,7 @@ export class Map {
         this.seed = null
         this._tiles = tiles;
 
+        this._spawnPoints = {}
         for (let y = 0; y < this.heightTiles; y++) {
             for (let x = 0; x < this.widthTiles; x++) {
                 const icon: string = this.getTile(x, y)?.type?.icon

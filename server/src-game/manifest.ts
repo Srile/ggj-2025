@@ -31,16 +31,12 @@ export class Tile {
     name: any;
     description: any;
     icon: any;
-    fg: string;
-    bg: string;
     energyDelta: number;
 
-    constructor(name: string, description: string, icon: string=null, fg: string="white", bg: string="black", energyDelta: number=0) {
+    constructor(name: string, description: string, icon: string=null, energyDelta: number=0) {
         this.name = name;
         this.description = description;
         this.icon = icon;
-        this.fg = fg; // foreground
-        this.bg = bg; // background
         this.energyDelta = energyDelta;
     }
 }
