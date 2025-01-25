@@ -37,15 +37,15 @@ Server may send the following JSON Strings:
 ```json
 {
     "command": "SERVER_RESPONSE",
-    "room": "RoomID",
-    "playerNumber": 0,
+    "roomId": "RoomID",
+    "player": 0,
     "turn": 5,
     "map": "map string\nmap string\n",
-    "players": {
-        "0": [1, 2],
-        "1": [1, 3],
-        "2": [1, 4],
-        "3": [1, 5],
+    "entities": {
+        "0": {"x": 4, "y": 4, "oxygen": 20, "oxygenMax": 20},
+        "1": {"x": 5, "y": 4, "oxygen": 20, "oxygenMax": 20},
+        "2": {"x": 6, "y": 4, "oxygen": 20, "oxygenMax": 20},
+        "3": {"x": 7, "y": 4, "oxygen": 20, "oxygenMax": 20},
     }
 }
 ```
