@@ -55,6 +55,7 @@ export class PlayerController extends Component {
 
     registerNetworkEvents() {
         gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
+        gameManager.ws.onMessage("ENTITY_WON", this.handleGameWon.bind(this));
     }
 
     handleNetworkMove(data) {
@@ -66,26 +67,42 @@ export class PlayerController extends Component {
         else if(newX < oldX) this.movePlayer(playerIndex, -1 * gridWidth, 0);
         else if(newY > oldY) this.movePlayer(playerIndex, 0, 1 * gridWidth);
         else if(newY < oldY) this.movePlayer(playerIndex, 0, -1 * gridWidth);
+
+        const arrow = document.getElementById('arrow');
+        arrow.classList.remove('active');
+    }
+
+    handleGameWon(data) {
+        const { entityId } = data;
+        // TODO: Load next level
+        endGame(entityId);
     }
 
     registerKeyboardInput() {
         document.addEventListener('keydown', (event) => {
             if(activePlayerPositions[0].isMoving) return;
-
             switch(event.key) {
               case 'ArrowUp':
+              case 'w':
+              case 'W':
                 this.handleMovement(0, 0, -1 * gridWidth);
                 // Handle up arrow
                 break;
               case 'ArrowDown':
+              case 's':
+              case 'S':
                 this.handleMovement(0, 0, 1 * gridWidth);
                 // Handle down arrow
                 break;
               case 'ArrowLeft':
+              case 'A':
+              case 'a':
                 this.handleMovement(0, -1 * gridWidth, 0);
                 // Handle left arrow
                 break;
               case 'ArrowRight':
+              case 'D':
+              case 'd':
                 this.handleMovement(0, 1 * gridWidth, 0);
                 // Handle right arrow
                 break;
