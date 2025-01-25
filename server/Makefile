@@ -1,7 +1,7 @@
 .PHONY: all deploy install_dependencies help
 
 all: ## Runs the server
-	@bun main.ts
+	@PORT=3000 bun main.ts
 
 deploy:
 	git push ooz

@@ -11,11 +11,11 @@ export interface State {
     entities: object,
     items: object,
     lastSpacePositionByEntity: object
-    maps: object,
     tools: object,
 
     _usedPlayerNumbers: Set<number>,
     _clientsToPlayers: object,
+    _maps: object,
     turn: number
 }
 
@@ -33,11 +33,11 @@ export function states_create(): State {
         entities: {},
         items: {},
         lastSpacePositionByEntity: {},
-        maps: {},
         tools: {},
 
         _usedPlayerNumbers: new Set(),
         _clientsToPlayers: {},
+        _maps: {},
         turn: 0
     }
 }

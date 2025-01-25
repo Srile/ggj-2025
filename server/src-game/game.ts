@@ -1,3 +1,4 @@
+import { maps_create_all_manual } from "./map.js";
 import { State, states_create } from "./state.js";
 
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
@@ -10,7 +11,7 @@ export default class Game {
 
     init(): State {
         this.state = states_create()
-
+        this.state = maps_create_all_manual(this.state)
         return this.state
     }
 
