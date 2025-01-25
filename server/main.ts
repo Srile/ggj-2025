@@ -75,9 +75,9 @@ const server = Bun.serve<{ clientId: string; }>({
                     break
                 case "ACTION":
                     const clientId: string = ws.data.clientId
-                    ACTION_QUEUE.push({
-                        clientId: parsedMsg.action
-                    })
+                    const actionObj = {}
+                    actionObj[clientId] = parsedMsg.action
+                    ACTION_QUEUE.push(actionObj)
                     break
                 default:
                     ws.send(JSON.stringify(
