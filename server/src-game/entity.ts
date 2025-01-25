@@ -61,7 +61,7 @@ export function interactOrCombat(state: State, entityA: Entity, entityB: Entity)
     // Combat
     const entityId = entityA.id
     const otherEntityId = entityB.id
-    console.log("TODO combat between %s and %s", entityId, otherEntityId)
+    console.log("Combat between %s and %s", entityId, otherEntityId)
 
     return state
 }

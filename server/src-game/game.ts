@@ -50,11 +50,14 @@ export default class Game {
                 for (const clientId of Object.keys(this.state._clientsToPlayers)) {
                     const playerNumber = this.state._clientsToPlayers[clientId]
                     const playerId = String(playerNumber)
+                    console.log("Changing map for playerId: %s", playerId)
                     const playerEntity: Entity = this.state.entities[playerId]
-                    playerEntity.mapId = this.state.currentMapId
-                    const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
-                    playerEntity.x = spawnPoint[0]
-                    playerEntity.y = spawnPoint[1]
+                    if (!!playerEntity) {
+                        playerEntity.mapId = this.state.currentMapId
+                        const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
+                        playerEntity.x = spawnPoint[0]
+                        playerEntity.y = spawnPoint[1]
+                    }
                 }
 
             } else {
@@ -87,7 +90,7 @@ export default class Game {
                     oldX: spawnPoint[0],
                     oldY: spawnPoint[1],
                     newX: spawnPoint[0],
-                    newY: spawnPoint[0],
+                    newY: spawnPoint[1],
                 })
             }
         } else {
