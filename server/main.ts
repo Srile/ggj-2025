@@ -29,8 +29,9 @@ const server = Bun.serve<{ clientId: string; }>({
             delete WEBSOCKETS[ws.data.clientId]
             if (Object.hasOwn(CLIENTS2ROOM, ws.data.clientId)) {
                 const game = ROOMS2GAME[CLIENTS2ROOM[ws.data.clientId]]
-                game.removePlayer(ws.data.clientId)
+                const newState = game.removePlayer(ws.data.clientId)
                 delete CLIENTS2ROOM[ws.data.clientId]
+                broadcastGameState(game, newState)
                 if (!!!game.getClientIds().length) {
                     const roomId = game.roomId
                     ROOMS2GAME[roomId] = undefined
@@ -116,11 +117,14 @@ async function updateRooms() {
     for (const roomId of Object.keys(ROOMS2GAME)) {
         const game: Game = ROOMS2GAME[roomId]
         const newState = game.update()
-        for (const clientId of game.getClientIds()) {
-            const ws = WEBSOCKETS[clientId]
-            if (!!ws) {
-                sendUpdatedGameState(ws, newState)
-            }
+        broadcastGameState(game, newState)
+    }
+}
+function broadcastGameState(game: Game, state: State) {
+    for (const clientId of game.getClientIds()) {
+        const ws = WEBSOCKETS[clientId]
+        if (!!ws) {
+            sendUpdatedGameState(ws, state)
         }
     }
 }

@@ -92,6 +92,15 @@ export default class Game {
             const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
             if (!!spawnPoint) {
                 this.state = entities_create(this.state, playerId, this.state.currentMapId, spawnPoint[0], spawnPoint[1])
+                this.state._events.push({
+                    type: "PLAYER_JOINED",
+                    entityId: playerId,
+                    oldX: spawnPoint[0],
+                    oldY: spawnPoint[1],
+                    newX: spawnPoint[0],
+                    newY: spawnPoint[0],
+                    countdown: null
+                })
             }
         } else {
             // Game full
@@ -105,7 +114,17 @@ export default class Game {
         const playerNumber: number = this.state._clientsToPlayers[clientId]
         this.state._usedPlayerNumbers.delete(playerNumber)
         delete this.state._clientsToPlayers[clientId]
-        this.state = entities_destroy(this.state, String(playerNumber))
+        const playerId = String(playerNumber)
+        this.state = entities_destroy(this.state, playerId)
+        this.state._events.push({
+            type: "PLAYER_LEFT",
+            entityId: playerId,
+            oldX: null,
+            oldY: null,
+            newX: null,
+            newY: null,
+            countdown: null
+        })
         console.log("RemovedPlayer state._clientsToPlayers: %o", this.state._clientsToPlayers)
         return this.state
     }

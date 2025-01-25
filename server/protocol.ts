@@ -13,6 +13,8 @@ export type EventType = "ENTITY_MOVED"
     | "ENTITY_WON"
     | "COUNTDOWN"
     | "MAP_CHANGED"
+    | "PLAYER_JOINED"
+    | "PLAYER_LEFT"
 
 export interface Event {
     type: EventType
