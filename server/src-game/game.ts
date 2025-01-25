@@ -26,6 +26,7 @@ export default class Game {
         const availablePlayerNumbers: Set<number> = PLAYER_NUMBERS.difference(this.state._usedPlayerNumbers)
         if (availablePlayerNumbers.size > 0) {
             const playerNumber = [...availablePlayerNumbers.keys()][0]
+            this.state._usedPlayerNumbers.add(playerNumber)
             this.state._clientsToPlayers[clientId] = playerNumber
         } else {
             // Game full
