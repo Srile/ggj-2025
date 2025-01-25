@@ -5,7 +5,7 @@ import { render } from "./src-game/websocket_renderer.js";
 import { State } from "./src-game/state.js";
 
 // https://render.com/docs/web-services#port-binding
-const PORT = process.env.PORT || 1000;
+const PORT = process.env.PORT || 10000;
 
 const WEBSOCKETS = {} // ClientId to WS
 const ROOMS = {
