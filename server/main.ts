@@ -57,7 +57,6 @@ const server = Bun.serve<{ clientId: string; }>({
 
             switch (parsedMsg.command) {
                 case "CONNECT":
-                    //ROOMS[parsedMsg.roomId].push(ws.data.clientId)
                     CLIENTS2ROOM[ws.data.clientId] = parsedMsg.roomId
                     let game: Game;
                     if (Object.hasOwn(ROOMS2GAME, parsedMsg.roomId)) {
@@ -109,7 +108,7 @@ const server = Bun.serve<{ clientId: string; }>({
 console.log(`Listening on localhost:${server.port}`);
 
 async function updateRooms() {
-    //console.log("Connected clients: %s", Object.keys(WEBSOCKETS).length)
+    console.log("%s connected clients, %s rooms", Object.keys(WEBSOCKETS).length, Object.keys(ROOMS2GAME).length)
 
     for (const roomId of Object.keys(ROOMS2GAME)) {
         const game: Game = ROOMS2GAME[roomId]
