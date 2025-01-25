@@ -72,7 +72,7 @@ const server = Bun.serve<{ clientId: string; }>({
                     }
                     const state = game.addPlayer(ws.data.clientId)
                     if (!!state) {
-                        sendUpdatedGameState(ws, state)
+                        broadcastGameState(game, state)
                     } else {
                         ws.send(JSON.stringify(
                             {
@@ -133,5 +133,5 @@ async function sendUpdatedGameState(ws, state: State) {
     ws.send(JSON.stringify(response))
 }
 
-setInterval(updateRooms, 500);
+setInterval(updateRooms, 1000);
 
