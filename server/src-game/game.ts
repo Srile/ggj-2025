@@ -2,6 +2,7 @@ import { MAP } from "../example_map.js";
 import { entities_create, entities_destroy, Entity } from "./entity.js";
 import { entity_act } from "./entity_map.js";
 import { Map, maps_create_all_manual, maps_parse } from "./map.js";
+import { generate_rogue_dungeon } from "./rot_map_generator.js";
 import { ClientIdWithAction, State, states_create } from "./state.js";
 
 const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
@@ -38,7 +39,7 @@ export default class Game {
         if (this.state.countdown > -1) {
             if (this.state.countdown === 0) {
                 // new map
-                let map: Map = maps_parse(MAP)
+                let map: Map = generate_rogue_dungeon(Object.keys(this.state._clientsToPlayers).length)
                 this.state._maps[map.id] = map
                 this.state.currentMapId = map.id
 

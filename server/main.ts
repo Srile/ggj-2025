@@ -1,8 +1,9 @@
 import * as Bun from "bun"
 import { Message } from "./protocol.js";
-import Game, { ClientIdWithAction } from "./src-game/game.js";
+import Game from "./src-game/game.js";
 import { render } from "./src-game/websocket_renderer.js";
 import { State } from "./src-game/state.js";
+import { generate_rogue_dungeon } from "./src-game/rot_map_generator.js";
 
 // https://render.com/docs/web-services#port-binding
 const PORT = process.env.PORT || 10000;
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 10000;
 const WEBSOCKETS = {} // ClientId to WS
 const ROOMS2GAME = {}
 const CLIENTS2ROOM = {}
+
+generate_rogue_dungeon()
 
 const server = Bun.serve<{ clientId: string; }>({
     port: PORT,
