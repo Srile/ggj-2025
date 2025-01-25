@@ -60,13 +60,15 @@ const characterRegistryKeys = Object.keys(characterRegistry);
 const startingXPosition = -32;
 const startingZPosition = -32;
 
-const gridWidth = 2;
+export const gridWidth = 2;
 
 export function isNewLine(char) {
     return char === '\n' || char === '\r';
 }
 
 const tempVec = vec3.create();
+
+export let sceneParser;
 
 export class SceneParser extends Component {
     static TypeName = 'scene-parser';
@@ -80,6 +82,10 @@ export class SceneParser extends Component {
         exitPrototype: Property.object(),
         debug: Property.bool(true),
     };
+
+    init() {
+        sceneParser = this;
+    }
 
     start() {
         if(this.debug) {
@@ -119,19 +125,15 @@ export class SceneParser extends Component {
                     case characterRegistry.wall:
 
                         return;
-                        break;
                     case characterRegistry.floor:
 
                         return;
-                        break;
                     case characterRegistry.oxygen:
 
                         return;
-                        break;
                     case characterRegistry.exit:
 
                         return;
-                        break;
                 }
             } else {
                 if(characterRegistry.switch.includes(char)) {
