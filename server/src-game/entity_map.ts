@@ -31,7 +31,7 @@ function entityInteractOrMove(state: State, entity: Entity, dx: number, dy: numb
     const map = state._maps[entity.mapId]
     const entity_at_target_position = entities_get_at(state, map.id, entity.x + dx, entity.y + dy)
 
-    if (!!entity_at_target_position) {
+    if (!!entity_at_target_position && entity_at_target_position.oxygen > 0) {
         // Friend or foe
         state = interactOrCombat(state, entity, entity_at_target_position)
 
