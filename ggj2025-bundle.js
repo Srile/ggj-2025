@@ -3695,6 +3695,46 @@ async function loadRuntime(runtime, options = {}) {
   return engine2;
 }
 
+// js/animate-bubble.js
+var tempVec = new Float32Array(3);
+var AnimateBubble = class extends Component3 {
+  start() {
+    console.log("start() with param", this.param);
+    this.t = Math.random();
+    const mesh = this.object.getComponent("mesh");
+    this.material = mesh.material;
+  }
+  update(dt) {
+    this.t += dt;
+    tempVec[0] = 1 + Math.sin(this.speed * this.t * Math.PI) * 0.125;
+    tempVec[1] = 1 + Math.sin(this.speed * this.t * Math.PI + 0.5 * Math.PI) * 0.125;
+    tempVec[2] = 1 + Math.sin(this.speed * this.t * Math.PI + Math.PI) * 0.125;
+    this.object.setScalingLocal(tempVec);
+    this.material.time = this.t;
+  }
+};
+__publicField(AnimateBubble, "TypeName", "animate-bubble");
+/* Properties that are configurable in the editor */
+__publicField(AnimateBubble, "Properties", {
+  speed: Property.float(1)
+});
+
+// js/animate-portal.js
+var UP = [0, 1, 0];
+var AnimatePortal = class extends Component3 {
+  start() {
+    console.log("start() with param", this.param);
+  }
+  update(dt) {
+    this.object.rotateAxisAngleDegObject(UP, this.speed * dt);
+  }
+};
+__publicField(AnimatePortal, "TypeName", "animate-portal");
+/* Properties that are configurable in the editor */
+__publicField(AnimatePortal, "Properties", {
+  speed: Property.float(1)
+});
+
 // node_modules/gl-matrix/esm/common.js
 var EPSILON = 1e-6;
 var ARRAY_TYPE = typeof Float32Array !== "undefined" ? Float32Array : Array;
@@ -4096,7 +4136,7 @@ var forEach = function() {
 // js/camera-controller.js
 var isDragging = false;
 var lastMousePosition = { x: 0, y: 0 };
-var tempVec = vec3_exports.create();
+var tempVec2 = vec3_exports.create();
 var cameraController;
 var CameraController = class extends Component3 {
   start() {
@@ -4105,8 +4145,8 @@ var CameraController = class extends Component3 {
     if (this.camera.projectionType === ProjectionType.Orthographic) {
       this.extent = this.camera.extent;
     } else {
-      this.object.getPositionLocal(tempVec);
-      this.extent = tempVec[2];
+      this.object.getPositionLocal(tempVec2);
+      this.extent = tempVec2[2];
     }
     this.engine.canvas.addEventListener("wheel", this.handleScroll.bind(this));
     this.engine.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
@@ -4115,12 +4155,12 @@ var CameraController = class extends Component3 {
     this.engine.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   setPositionAbovePlayer(player) {
-    player.getPositionWorld(tempVec);
-    tempVec[1] = 20;
-    tempVec[2] += 10;
-    this.object.parent.setPositionWorld(tempVec);
-    this.object.getPositionLocal(tempVec);
-    this.extent = tempVec[2];
+    player.getPositionWorld(tempVec2);
+    tempVec2[1] = 20;
+    tempVec2[2] += 10;
+    this.object.parent.setPositionWorld(tempVec2);
+    this.object.getPositionLocal(tempVec2);
+    this.extent = tempVec2[2];
   }
   handleScroll(event) {
     const deltaY = event.deltaY;
@@ -4130,10 +4170,10 @@ var CameraController = class extends Component3 {
       this.extent = Math.min(40, Math.max(20, this.extent));
       this.camera.extent = this.extent;
     } else {
-      this.object.getPositionLocal(tempVec);
+      this.object.getPositionLocal(tempVec2);
       this.extent = Math.min(20, Math.max(0, this.extent));
-      tempVec[2] = this.extent;
-      this.object.setPositionLocal(tempVec);
+      tempVec2[2] = this.extent;
+      this.object.setPositionLocal(tempVec2);
     }
   }
   handleMouseDown(event) {
@@ -4150,10 +4190,10 @@ var CameraController = class extends Component3 {
       return;
     const deltaX = event.clientX - lastMousePosition.x;
     const deltaY = event.clientY - lastMousePosition.y;
-    tempVec[0] = -deltaX * 0.05;
-    tempVec[1] = 0;
-    tempVec[2] = -deltaY * 0.05;
-    this.object.parent.translateWorld(tempVec);
+    tempVec2[0] = -deltaX * 0.05;
+    tempVec2[1] = 0;
+    tempVec2[2] = -deltaY * 0.05;
+    this.object.parent.translateWorld(tempVec2);
     lastMousePosition = {
       x: event.clientX,
       y: event.clientY
@@ -4180,7 +4220,7 @@ function setHierarchyActive(object, b) {
 }
 
 // js/scene-parser.js
-var UP = [0, 1, 0];
+var UP2 = [0, 1, 0];
 var testString = `
 ################################
 #A.oooooooooooooooooooooooooo.B#
@@ -4238,7 +4278,7 @@ var gridWidth = 2;
 function isNewLine(char) {
   return char === "\n" || char === "\r";
 }
-var tempVec2 = vec3_exports.create();
+var tempVec3 = vec3_exports.create();
 var sceneParser;
 var SceneParser = class extends Component3 {
   init() {
@@ -4285,15 +4325,15 @@ var SceneParser = class extends Component3 {
       if (char === value) {
         switch (char) {
           case characterRegistry.wall:
-            object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
+            object.rotateAxisAngleDegLocal(UP2, Math.random() * 360);
             break;
           case characterRegistry.oxygen:
-            object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
+            object.rotateAxisAngleDegLocal(UP2, Math.random() * 360);
             break;
         }
       } else {
         if (characterRegistry.switchActivated.includes(char)) {
-          object.rotateAxisAngleDegLocal(UP, 180);
+          object.rotateAxisAngleDegLocal(UP2, 180);
         } else if (characterRegistry.spawnPoint.includes(char)) {
           const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char);
           vec3_exports.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
@@ -4318,10 +4358,10 @@ var SceneParser = class extends Component3 {
     }
     const asset = this.getAssetPrototypeFromCharacter(char);
     const newAsset = asset.clone(this.currentLevelAsssetContainer);
-    tempVec2[0] = startingXPosition + gridWidth * x;
-    tempVec2[2] = startingZPosition + gridWidth * y;
-    this.checkCharacterLogic(char, tempVec2, newAsset);
-    newAsset.setPositionWorld(tempVec2);
+    tempVec3[0] = startingXPosition + gridWidth * x;
+    tempVec3[2] = startingZPosition + gridWidth * y;
+    this.checkCharacterLogic(char, tempVec3, newAsset);
+    newAsset.setPositionWorld(tempVec3);
     this.map[y][x] = {
       object: newAsset,
       char
@@ -4341,10 +4381,10 @@ var SceneParser = class extends Component3 {
       } else {
         this.map[y].push(null);
         this.spawnTile(x, y, char);
-        tempVec2[0] = startingXPosition + gridWidth * x;
-        tempVec2[2] = startingZPosition + gridWidth * y;
+        tempVec3[0] = startingXPosition + gridWidth * x;
+        tempVec3[2] = startingZPosition + gridWidth * y;
         const newFloor = floorAsset.clone(this.currentLevelAsssetContainer);
-        newFloor.setPositionWorld(tempVec2);
+        newFloor.setPositionWorld(tempVec3);
         x++;
       }
     }
@@ -4391,7 +4431,7 @@ var activePlayerPositions = {
   2: { isMoving: false, startPosition: vec3_exports.create(), targetPosition: vec3_exports.create() },
   3: { isMoving: false, startPosition: vec3_exports.create(), targetPosition: vec3_exports.create() }
 };
-var tempVec3 = vec3_exports.create();
+var tempVec4 = vec3_exports.create();
 var playerController;
 var PlayerController = class extends Component3 {
   init() {
@@ -4417,12 +4457,12 @@ var PlayerController = class extends Component3 {
     const entityIds = Object.keys(entities);
     for (let i = 0; i < entityIds.length; i++) {
       const positions = entities[entityIds[i]];
-      tempVec3[0] = startingXPosition + gridWidth * positions.x;
-      tempVec3[1] = 0;
-      tempVec3[2] = startingZPosition + gridWidth * positions.y;
+      tempVec4[0] = startingXPosition + gridWidth * positions.x;
+      tempVec4[1] = 0;
+      tempVec4[2] = startingZPosition + gridWidth * positions.y;
       const id = entityIds[i];
       const index = Number(id);
-      this.currentSelectedPlayerObjects[index].setPositionLocal(tempVec3);
+      this.currentSelectedPlayerObjects[index].setPositionLocal(tempVec4);
       setHierarchyActive(this.currentSelectedPlayerObjects[index], true);
     }
   }
@@ -4516,8 +4556,8 @@ var PlayerController = class extends Component3 {
     const player = this.currentSelectedPlayerObjects[playerIndex];
     player.getPositionLocal(activePlayerPositions[playerIndex].startPosition);
     player.getPositionLocal(activePlayerPositions[playerIndex].targetPosition);
-    vec3_exports.set(tempVec3, moveDirectionX, 0, moveDirectionZ);
-    vec3_exports.add(activePlayerPositions[playerIndex].targetPosition, activePlayerPositions[playerIndex].targetPosition, tempVec3);
+    vec3_exports.set(tempVec4, moveDirectionX, 0, moveDirectionZ);
+    vec3_exports.add(activePlayerPositions[playerIndex].targetPosition, activePlayerPositions[playerIndex].targetPosition, tempVec4);
     activePlayerLerpTime[playerIndex] = 0;
     activePlayerPositions[playerIndex].isMoving = true;
     player.resetRotation();
@@ -4571,8 +4611,8 @@ var PlayerController = class extends Component3 {
           activePlayerLerpTime[i] = 1;
           activePlayerPositions[i].isMoving = false;
         }
-        vec3_exports.lerp(tempVec3, activePlayerPositions[i].startPosition, activePlayerPositions[i].targetPosition, activePlayerLerpTime[i]);
-        this.currentSelectedPlayerObjects[i].setPositionLocal(tempVec3);
+        vec3_exports.lerp(tempVec4, activePlayerPositions[i].startPosition, activePlayerPositions[i].targetPosition, activePlayerLerpTime[i]);
+        this.currentSelectedPlayerObjects[i].setPositionLocal(tempVec4);
       }
     }
   }
@@ -4748,6 +4788,8 @@ if (document.readyState === "loading") {
 } else {
   setupButtonsXR();
 }
+engine.registerComponent(AnimateBubble);
+engine.registerComponent(AnimatePortal);
 engine.registerComponent(CameraController);
 engine.registerComponent(GameManager);
 engine.registerComponent(PlayerController);
