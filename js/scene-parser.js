@@ -168,7 +168,7 @@ export class SceneParser extends Component {
         const newAsset = asset.clone(this.currentLevelAsssetContainer);
         tempVec[0] = startingXPosition + gridWidth*x;
         tempVec[2] = startingZPosition + gridWidth*y;
-        this.checkCharacterLogic(char, tempVec);
+        this.checkCharacterLogic(char, tempVec, newAsset);
         newAsset.setPositionWorld(tempVec);
         this.map[y][x] = {
             object: newAsset,
@@ -192,14 +192,7 @@ export class SceneParser extends Component {
                 this.map[y].push(null);
                 x++;
                 this.spawnTile(x, y, char);
-                const asset = this.getAssetPrototypeFromCharacter(char);
-                currentXPosition += gridWidth;
-                const newAsset = asset.clone(this.currentLevelAsssetContainer);
-                tempVec[0] = currentXPosition;
-                tempVec[2] = currentZPosition;
-                this.checkCharacterLogic(char, tempVec, newAsset)
-                newAsset.setPositionWorld(tempVec);
-                
+
                 // newAsset.setScalingLocal([0.9,0.9,0.9])
             }
         }

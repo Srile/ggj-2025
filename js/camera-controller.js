@@ -32,7 +32,7 @@ export class CameraController extends Component {
         player.getPositionWorld(tempVec)
         tempVec[1] = 20.0;
         tempVec[2] += 10.0;
-        this.object.setPositionWorld(tempVec);
+        this.object.parent.setPositionWorld(tempVec);
         this.object.getPositionLocal(tempVec);
         this.extent = tempVec[2];
     }
@@ -48,7 +48,7 @@ export class CameraController extends Component {
           this.camera.extent = this.extent;
         } else {
           this.object.getPositionLocal(tempVec)
-          this.extent = Math.min(25, Math.max(8, this.extent));
+          this.extent = Math.min(20, Math.max(0, this.extent));
           console.log('e', this.extent);
           tempVec[2] = this.extent;
           this.object.setPositionLocal(tempVec)
@@ -79,8 +79,7 @@ export class CameraController extends Component {
     tempVec[1] = 0;
     tempVec[2] = -deltaY * 0.05;
   
-    this.object.translateWorld(tempVec);
-    this.object.getPositionWorld(tempVec)
+    this.object.parent.translateWorld(tempVec);
 
     lastMousePosition = {
       x: event.clientX,
