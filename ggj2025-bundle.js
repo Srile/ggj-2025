@@ -4401,6 +4401,7 @@ var PlayerController = class extends Component3 {
   setCameraPositionFromPlayerIndex(playerIndex) {
     cameraController.setPositionAbovePlayer(this.currentSelectedPlayerObjects[playerIndex]);
     this.ownPlayerIndex = playerIndex;
+    this.currentPlayerIndicatorMesh.clone(this.currentSelectedPlayerObjects[playerIndex]);
   }
   registerNetworkEvents() {
     gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
@@ -4558,7 +4559,8 @@ var PlayerController = class extends Component3 {
 };
 __publicField(PlayerController, "TypeName", "player-controller");
 __publicField(PlayerController, "Properties", {
-  playerMovementSpeed: Property.float(5)
+  playerMovementSpeed: Property.float(5),
+  currentPlayerIndicatorMesh: Property.object()
 });
 
 // js/networking.js
