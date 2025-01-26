@@ -40,7 +40,7 @@ export default class Game {
         if (this.state.countdown > -1) {
             if (this.state.countdown === 0) {
                 // new map
-                let map: Map = generate_rogue_dungeon(Object.keys(this.state._clientsToPlayers).length)
+                let map: Map = generate_rogue_dungeon(4)
                 this.state._maps[map.id] = map
                 this.state.currentMapId = map.id
 
