@@ -4118,7 +4118,7 @@ var CameraController = class extends Component3 {
     player.getPositionWorld(tempVec);
     tempVec[1] = 20;
     tempVec[2] += 10;
-    this.object.setPositionWorld(tempVec);
+    this.object.parent.setPositionWorld(tempVec);
     this.object.getPositionLocal(tempVec);
     this.extent = tempVec[2];
   }
@@ -4131,7 +4131,7 @@ var CameraController = class extends Component3 {
       this.camera.extent = this.extent;
     } else {
       this.object.getPositionLocal(tempVec);
-      this.extent = Math.min(25, Math.max(8, this.extent));
+      this.extent = Math.min(20, Math.max(0, this.extent));
       console.log("e", this.extent);
       tempVec[2] = this.extent;
       this.object.setPositionLocal(tempVec);
@@ -4154,8 +4154,7 @@ var CameraController = class extends Component3 {
     tempVec[0] = -deltaX * 0.05;
     tempVec[1] = 0;
     tempVec[2] = -deltaY * 0.05;
-    this.object.translateWorld(tempVec);
-    this.object.getPositionWorld(tempVec);
+    this.object.parent.translateWorld(tempVec);
     lastMousePosition = {
       x: event.clientX,
       y: event.clientY
@@ -4312,7 +4311,7 @@ var SceneParser = class extends Component3 {
     const newAsset = asset.clone(this.currentLevelAsssetContainer);
     tempVec2[0] = startingXPosition + gridWidth * x;
     tempVec2[2] = startingZPosition + gridWidth * y;
-    this.checkCharacterLogic(char, tempVec2);
+    this.checkCharacterLogic(char, tempVec2, newAsset);
     newAsset.setPositionWorld(tempVec2);
     this.map[y][x] = {
       object: newAsset,
@@ -4333,13 +4332,6 @@ var SceneParser = class extends Component3 {
         this.map[y].push(null);
         x++;
         this.spawnTile(x, y, char);
-        const asset = this.getAssetPrototypeFromCharacter(char);
-        currentXPosition += gridWidth;
-        const newAsset = asset.clone(this.currentLevelAsssetContainer);
-        tempVec2[0] = currentXPosition;
-        tempVec2[2] = currentZPosition;
-        this.checkCharacterLogic(char, tempVec2, newAsset);
-        newAsset.setPositionWorld(tempVec2);
       }
     }
   }
@@ -4621,8 +4613,8 @@ var GameManager = class extends Component3 {
   }
   handleTileChanged(data) {
     const { oldTile, newTile, tileX, tileY } = data;
-    sceneParser.removeTile(tileX, tileY);
-    sceneParser.spawnTile(tileX, tileY, newTile);
+    sceneParser.removeTile(tileX + 1, tileY);
+    sceneParser.spawnTile(tileX + 1, tileY, newTile);
   }
   handleEntityAttacked(data) {
     const { entity } = data;
