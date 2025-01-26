@@ -4226,6 +4226,7 @@ var sceneParser;
 var SceneParser = class extends Component3 {
   init() {
     sceneParser = this;
+    this.map = null;
   }
   start() {
     if (this.debug) {
@@ -4238,6 +4239,7 @@ var SceneParser = class extends Component3 {
   }
   cleanLevel() {
     this.currentLevelAsssetContainer.destroy();
+    this.map = null;
   }
   getAssetPrototypeFromCharacter(char) {
     for (let i = 0; i < characterRegistryKeys.length; i++) {
@@ -4282,23 +4284,38 @@ var SceneParser = class extends Component3 {
       }
     }
   }
+  removeTile(x, y) {
+    this.map[y][x].object.destroy();
+    this.map[y][x] = null;
+  }
+  spawnTile(x, y, char) {
+    if (this.map[y][x])
+      this.removeTile(x, y);
+    const asset = this.getAssetPrototypeFromCharacter(char);
+    const newAsset = asset.clone(this.currentLevelAsssetContainer);
+    tempVec2[0] = startingXPosition + gridWidth * x;
+    tempVec2[2] = startingZPosition + gridWidth * y;
+    this.checkCharacterLogic(char, tempVec2);
+    newAsset.setPositionWorld(tempVec2);
+    this.map[y][x] = {
+      object: newAsset,
+      char
+    };
+  }
   spawnLevel(levelString) {
-    let currentXPosition = startingXPosition;
-    let currentZPosition = startingZPosition;
     this.currentLevelAsssetContainer = this.object.addChild();
-    for (let i = 0; i < levelString.length; i++) {
-      const char = levelString[i];
+    let x = 0;
+    let y = 0;
+    this.map = [[]];
+    for (const char of levelString) {
       if (isNewLine(char)) {
-        currentXPosition = startingXPosition;
-        currentZPosition += gridWidth;
+        this.map.push([]);
+        y++;
+        x = 0;
       } else {
-        const asset = this.getAssetPrototypeFromCharacter(char);
-        currentXPosition += gridWidth;
-        const newAsset = asset.clone(this.currentLevelAsssetContainer);
-        tempVec2[0] = currentXPosition;
-        tempVec2[2] = currentZPosition;
-        this.checkCharacterLogic(char, tempVec2);
-        newAsset.setPositionWorld(tempVec2);
+        this.map[y].push(null);
+        x++;
+        this.spawnTile(x, y, char);
       }
     }
   }
@@ -4569,14 +4586,25 @@ var GameManager = class extends Component3 {
   }
   registerNetworkEvents() {
     this.ws.onMessage("COUNTDOWN", this.handleCountdown.bind(this));
-    this.ws.onMessage("MAP_CHANGED", this.handleMapChanged.bind(this));
+    this.ws.onMessage("TILE_CHANGED", this.handleTileChanged.bind(this));
+    this.ws.onMessage("ENTITY_ATTACKED", this.handleEntityAttacked.bind(this));
+    this.ws.onMessage("ENTITY_HIT", this.handleEntityHit.bind(this));
   }
   handleCountdown(data) {
     const { countdown } = data;
     const countdownEl = document.querySelector("#countdown");
     countdownEl.innerText = countdown;
   }
-  handleMapChanged() {
+  handleTileChanged(data) {
+    const { oldTile, newTile, tileX, tileY } = data;
+    sceneParser.removeTile(tileX, tileY);
+    sceneParser.spawnTile(tileX, tileY, newTile);
+  }
+  handleEntityAttacked(data) {
+    const { entity } = data;
+  }
+  handleEntityHit(data) {
+    const { entity } = data;
   }
   disconnect() {
     this.ws.close();
