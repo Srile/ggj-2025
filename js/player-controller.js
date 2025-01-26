@@ -42,7 +42,8 @@ export class PlayerController extends Component {
     static TypeName = 'player-controller';
 
     static Properties = {
-        playerMovementSpeed: Property.float(5.0)
+        playerMovementSpeed: Property.float(5.0),
+        currentPlayerIndicatorMesh: Property.object(),
     }
 
     init() {
@@ -57,6 +58,8 @@ export class PlayerController extends Component {
     setCameraPositionFromPlayerIndex(playerIndex) {
         cameraController.setPositionAbovePlayer(this.currentSelectedPlayerObjects[playerIndex]);
         this.ownPlayerIndex = playerIndex;
+
+        this.currentPlayerIndicatorMesh.clone(this.currentSelectedPlayerObjects[playerIndex]);
     }
 
     registerNetworkEvents() {

@@ -138,7 +138,10 @@
             ],
             "components": [
                 {
-                    "type": "player-controller"
+                    "type": "player-controller",
+                    "player-controller": {
+                        "currentPlayerIndicatorMesh": "912dab01-b3a9-4525-967c-d5616c859575"
+                    }
                 }
             ],
             "parent": "8ffc856c-7262-4dfa-8788-5b70bb3c7fc5"
@@ -1118,6 +1121,30 @@
                 0.0,
                 0.8660253
             ]
+        },
+        "912dab01-b3a9-4525-967c-d5616c859575": {
+            "name": "CurrentPlayerIndicatorPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "mesh": "3344b121-bb54-4dd0-912a-6ca19265c185",
+                        "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
+                    }
+                }
+            ],
+            "scaling": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation": [
+                1.0,
+                0.0,
+                0.0,
+                -4.371138828673793e-8
+            ]
         }
     },
     "meshes": {
@@ -1257,6 +1284,12 @@
             "link": {
                 "name": "Icosphere",
                 "file": "assets\\Objects\\Bubble.glb"
+            }
+        },
+        "3344b121-bb54-4dd0-912a-6ca19265c185": {
+            "link": {
+                "name": "Circle.001",
+                "file": "assets\\Objects\\Circle.glb"
             }
         }
     },
@@ -3243,6 +3276,11 @@
         },
         "777c3074-e9a7-409b-80d0-afb4d335512a": {
             "fileName": "assets/Objects/Bubble.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "c6fcabf1-19b3-4431-b0af-6e3c982a33de": {
+            "fileName": "assets/Objects/Circle.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
         }
