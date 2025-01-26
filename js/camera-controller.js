@@ -1,4 +1,4 @@
-import {Component, Property, ViewComponent} from '@wonderlandengine/api';
+import {Component, ProjectionType, Property, ViewComponent} from '@wonderlandengine/api';
 import { vec3 } from 'gl-matrix';
 
 let isDragging = false;
@@ -15,7 +15,12 @@ export class CameraController extends Component {
         cameraController = this;
 
         this.camera = this.object.getComponent(ViewComponent);
-        this.extent = this.camera.extent;
+        if(this.camera.projectionType === ProjectionType.Orthographic) {
+          this.extent = this.camera.extent;
+        } else {
+          this.object.getPositionLocal(tempVec)
+          this.extent = tempVec[2];
+        }
         window.addEventListener('wheel', this.handleScroll.bind(this));
         window.addEventListener('mousedown', this.handleMouseDown.bind(this));
         window.addEventListener('mousemove', this.handleMouseMove.bind(this));
@@ -25,18 +30,30 @@ export class CameraController extends Component {
 
     setPositionAbovePlayer(player) {
         player.getPositionWorld(tempVec)
-        tempVec[1] = 50.0;
-        this.object.parent.setPositionWorld(tempVec);
+        tempVec[1] = 20.0;
+        tempVec[2] += 10.0;
+        this.object.setPositionWorld(tempVec);
+        this.object.getPositionLocal(tempVec);
+        this.extent = tempVec[2];
     }
 
     handleScroll(event) {
         // Get scroll direction
         const deltaY = event.deltaY;
         const scrollAmount = deltaY;
-      
+        
         this.extent += scrollAmount / 100;
-        this.extent = Math.min(40, Math.max(20, this.extent));
-        this.camera.extent = this.extent;
+        if(this.camera.projectionType === ProjectionType.Orthographic) {
+          this.extent = Math.min(40, Math.max(20, this.extent));
+          this.camera.extent = this.extent;
+        } else {
+          this.object.getPositionLocal(tempVec)
+          this.extent = Math.min(25, Math.max(8, this.extent));
+          console.log('e', this.extent);
+          tempVec[2] = this.extent;
+          this.object.setPositionLocal(tempVec)
+        }
+        
     }
 
     

@@ -2,6 +2,8 @@ import {Component, Property} from '@wonderlandengine/api';
 import { vec3 } from 'gl-matrix';
 import { playerController } from './player-controller';
 
+const UP = [0, 1, 0];
+
 export const testString = `
 ################################
 #A.oooooooooooooooooooooooooo.B#
@@ -121,15 +123,15 @@ export class SceneParser extends Component {
         }
     }
 
-    checkCharacterLogic(char, position) {
+    checkCharacterLogic(char, position, object) {
         for (let i = 0; i < characterRegistryKeys.length; i++) {
             const key = characterRegistryKeys[i];
             const value = characterRegistry[key];
                 
-            if(value instanceof String && char === value) {
+            if(char === value) {
                 switch (char) {
                     case characterRegistry.wall:
-
+                        object.rotateAxisAngleDegLocal(UP, Math.random() * 360.0);
                         return;
                     case characterRegistry.floor:
 
@@ -148,7 +150,7 @@ export class SceneParser extends Component {
                 } else if(characterRegistry.spawnPoint.includes(char)) {
                     const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char)
                     vec3.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
-                    currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
+                    // currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
                     return;
                 }
             }
@@ -190,6 +192,15 @@ export class SceneParser extends Component {
                 this.map[y].push(null);
                 x++;
                 this.spawnTile(x, y, char);
+                const asset = this.getAssetPrototypeFromCharacter(char);
+                currentXPosition += gridWidth;
+                const newAsset = asset.clone(this.currentLevelAsssetContainer);
+                tempVec[0] = currentXPosition;
+                tempVec[2] = currentZPosition;
+                this.checkCharacterLogic(char, tempVec, newAsset)
+                newAsset.setPositionWorld(tempVec);
+                
+                // newAsset.setScalingLocal([0.9,0.9,0.9])
             }
         }
     }
