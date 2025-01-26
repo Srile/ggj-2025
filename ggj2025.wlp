@@ -1551,6 +1551,14 @@
             "link": {
                 "name": "Base",
                 "file": "assets\\Objects\\Portal.glb"
+            },
+            "Phong": {
+                "diffuseColor": [
+                    0.462745,
+                    0.358155,
+                    0.3375316,
+                    1.0
+                ]
             }
         },
         "3b5c2496-1a46-4117-850e-0547eb70904f": {
