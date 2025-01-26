@@ -100,8 +100,8 @@ export class PlayerController extends Component {
     }
 
     handleOxygenChaned(data) {
-        const {oxygen} = data;
-        setHealth(oxygen);
+        const {oxygen, oxygenMax} = data;
+        setHealth(100 * (oxygen / oxygenMax));
     }
 
     handleNetworkMove(data) {
