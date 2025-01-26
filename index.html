@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:07:26.667" as="script">
+    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:14:42.260" as="script">
     <title>ggj2025</title>
     <meta charset="utf-8" />
 
@@ -214,7 +214,7 @@
     </style>
     
 
-    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:07:26.667"></script>
+    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:14:42.260"></script>
 
     
     </script>
@@ -288,6 +288,27 @@
         <source src="music.webm" type="audio/webm">
       </audio>
 
+      <audio id="hitSfx">
+        <source src="hit.webm" type="audio/webm">
+      </audio>
+
+      <audio id="whooshSfx">
+        <source src="whoosh.webm" type="audio/webm">
+      </audio>
+
+      <audio id="winSfx">
+        <source src="win.webm" type="audio/webm">
+      </audio>
+
+      <audio id="loseSfx">
+        <source src="lose.webm" type="audio/webm">
+      </audio>
+
+      <audio id="bubbleSfx">
+        <source src="bubble.webm" type="audio/webm">
+      </audio>
+
+
     <script>
       function showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(screen => {
@@ -303,11 +324,12 @@
       function startGame() {
         showScreen('gameScreen');
         const music = document.getElementById('bgMusic');
+        music.volume = 0.4;
         music.play();
       }
   
-      function endGame(winner) {
-        document.getElementById('winnerText').textContent = 'Player '+ winner + ' Wins!';
+      function endGame(isPlayerWinner) {
+        document.getElementById('winnerText').textContent = isPlayerWinner ? 'You win!' : 'You lose!';
         showScreen('endScreen');
       }
   

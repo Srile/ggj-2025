@@ -4248,12 +4248,16 @@ var SceneParser = class extends Component3 {
   }
   start() {
     if (this.debug) {
-      this.setupLevel(testString);
+      this.setupInitialLevel(testString);
     }
   }
-  setupLevel(mapString) {
+  setupInitialLevel(mapString) {
     this.spawnLevel(mapString);
     playerController.initializePlayers();
+  }
+  setupConsequentLevel(mapString) {
+    this.spawnLevel(mapString);
+    playerController.setPlayerPositions();
   }
   cleanLevel() {
     this.currentLevelAsssetContainer.destroy();
@@ -4436,8 +4440,14 @@ var PlayerController = class extends Component3 {
   handleOxygenChaned(data) {
     const { oxygen, oxygenMax, entityId } = data;
     const index = Number(entityId);
-    if (index === this.ownPlayerIndex)
+    if (index === this.ownPlayerIndex) {
+      if (!this.oldOxygen)
+        this.oldOxygen = oxygenMax;
+      if (this.oldOxygen < oxygen)
+        document.querySelector("#bubbleSfx").play();
       setHealth(100 * (oxygen / oxygenMax));
+      this.oldOxygen = oxygen;
+    }
     if (oxygen === 0) {
       const meshes = this.currentSelectedPlayerObjects[index].findByNameRecursive("Mesh");
       const meshComp = meshes[0].getComponent("mesh");
@@ -4460,7 +4470,13 @@ var PlayerController = class extends Component3 {
   }
   handleGameWon(data) {
     const { entityId } = data;
-    endGame(entityId);
+    if (Number(entityId) === this.ownPlayerIndex) {
+      document.querySelector("#winSfx").play();
+      endGame(true);
+    } else {
+      document.querySelector("#loseSfx").play();
+      endGame(false);
+    }
   }
   registerKeyboardInput() {
     document.addEventListener("keydown", (event) => {
@@ -4507,6 +4523,9 @@ var PlayerController = class extends Component3 {
     activePlayerPositions[playerIndex].isMoving = true;
     player.resetRotation();
     player.rotateAxisAngleDegLocal([0, 1, 0], this.getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ));
+    if (playerIndex === this.ownPlayerIndex) {
+      document.querySelector("#whooshSfx").play();
+    }
   }
   getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ) {
     if (moveDirectionX > 0)
@@ -4520,6 +4539,9 @@ var PlayerController = class extends Component3 {
   }
   initializePlayers() {
     this.currentSelectedPlayerObjects = this.getSelectedPlayers();
+    this.setPlayerPositions();
+  }
+  setPlayerPositions() {
     for (let i = 0; i < this.currentSelectedPlayerObjects.length; i++) {
       const playerObject = this.currentSelectedPlayerObjects[i];
       const position = currentPlayerSpawnPositions[i];
@@ -4529,25 +4551,18 @@ var PlayerController = class extends Component3 {
   getSelectedPlayers() {
     if (this.playerObjects.length < ACTIVE_PLAYER_COUNT)
       throw console.error("player-controller: More children on object are required");
-    const randomIndices = [];
-    const playerObjects = [];
-    while (randomIndices.length < ACTIVE_PLAYER_COUNT) {
-      let newIndex = Math.floor(Math.random() * this.playerObjects.length);
-      while (randomIndices.includes(newIndex)) {
-        newIndex = Math.floor(Math.random() * this.playerObjects.length);
-      }
-      randomIndices.push(newIndex);
-    }
+    const randomIndices = [0, 1, 2, 4];
+    const newPlayerObjects = [];
     for (let i = 0; i < this.playerObjects.length; i++) {
       const playerObject = this.playerObjects[i];
       if (randomIndices.includes(i)) {
         setHierarchyActive(playerObject, false);
-        playerObjects.push(playerObject);
+        newPlayerObjects.push(playerObject);
       } else {
         setHierarchyActive(playerObject, false);
       }
     }
-    return playerObjects;
+    return newPlayerObjects;
   }
   update(dt) {
     for (let i = 0; i < ACTIVE_PLAYER_COUNT; i++) {
@@ -4592,7 +4607,7 @@ var WebSocketClient = class {
       const events = message.events;
       if (!this.connectedToGame) {
         this.connectedToGame = true;
-        sceneParser.setupLevel(message.map);
+        sceneParser.setupInitialLevel(message.map);
         playerController.setNetworkPlayersActive(message.entities);
         playerController.setCameraPositionFromPlayerIndex(message.player);
         startGame();
@@ -4601,7 +4616,7 @@ var WebSocketClient = class {
         const event2 = events[i];
         if (event2.type === "MAP_CHANGED") {
           sceneParser.cleanLevel();
-          sceneParser.setupLevel(message.map);
+          sceneParser.setupConsequentLevel(message.map);
           playerController.setCameraPositionFromPlayerIndex(message.player);
           startGame();
         } else {
@@ -4668,6 +4683,7 @@ var GameManager = class extends Component3 {
   }
   handleEntityAttacked(data) {
     const { entity } = data;
+    document.querySelector("#hitSfx").play();
   }
   handleEntityHit(data) {
     const { entity } = data;
