@@ -52,12 +52,20 @@ Server may send the following JSON Strings:
     },
     "events": [
         {
+            "type": "PLAYER_JOINED",
+            "entityId": "0",
+            "oldX": 4,
+            "oldY": 4,
+            "newX": 4,
+            "newY": 4
+        },
+        {
             "type": "ENTITY_MOVED",
             "entityId": "0",
             "oldX": 4,
             "oldY": 4,
             "newX": 5,
-            "newY": 4,
+            "newY": 4
         },
         {
             "type": "ENTITY_ATTACKED",
