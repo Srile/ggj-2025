@@ -1,11 +1,12 @@
 import { MAP } from "../example_map.js";
+import * as ROT from "../lib/rot.js"
 import { entities_create, entities_destroy, Entity } from "./entity.js";
 import { entity_act } from "./entity_map.js";
 import { Map, maps_create_all_manual, maps_parse } from "./map.js";
 import { generate_rogue_dungeon } from "./rot_map_generator.js";
 import { ClientIdWithAction, State, states_create } from "./state.js";
 
-const PLAYER_NUMBERS = new Set([0, 1, 2, 3, 4, 5, 6, 7])
+const PLAYER_NUMBERS = new Set([0, 1, 2, 3])
 
 export default class Game {
     state: State;
@@ -77,7 +78,7 @@ export default class Game {
     addPlayer(clientId: string): State | null {
         const availablePlayerNumbers: Set<number> = PLAYER_NUMBERS.difference(this.state._usedPlayerNumbers)
         if (availablePlayerNumbers.size > 0) {
-            const playerNumber = [...availablePlayerNumbers.keys()][0]
+            const playerNumber = ROT.RNG.getItem([...availablePlayerNumbers.keys()])
             this.state._usedPlayerNumbers.add(playerNumber)
             this.state._clientsToPlayers[clientId] = playerNumber
             const playerId = String(playerNumber)
