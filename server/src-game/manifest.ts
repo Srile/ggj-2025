@@ -60,6 +60,10 @@ export const MANIFEST = {
         "switchB": new Tile("Switch B", "Switch to unlock the exit", "B"),
         "switchC": new Tile("Switch C", "Switch to unlock the exit", "C"),
         "switchD": new Tile("Switch D", "Switch to unlock the exit", "D"),
+        "switcha": new Tile("Activated Switch A", "Activated switch", "a"),
+        "switchb": new Tile("Activated Switch B", "Activated switch", "b"),
+        "switchc": new Tile("Activated Switch C", "Activated switch", "c"),
+        "switchd": new Tile("Activated Switch D", "Activated switch", "d"),
         "wall": new Tile("Wall", "Blocks movement", "#"),
         "water": new Tile("Water", "Drains Oxygen", ".")
     }
