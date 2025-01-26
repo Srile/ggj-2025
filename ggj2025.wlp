@@ -140,7 +140,8 @@
                 {
                     "type": "player-controller",
                     "player-controller": {
-                        "currentPlayerIndicatorMesh": "912dab01-b3a9-4525-967c-d5616c859575"
+                        "currentPlayerIndicatorMesh": "912dab01-b3a9-4525-967c-d5616c859575",
+                        "deadPlayerMaterial": "e9c4ad30-4ceb-4220-a285-164c57a6c665"
                     }
                 }
             ],
@@ -1738,6 +1739,18 @@
                 "diffuseTexture": "01a1bfde-94ff-4064-96ba-409b7a9c7d2a"
             },
             "name": "Portal Activated"
+        },
+        "e9c4ad30-4ceb-4220-a285-164c57a6c665": {
+            "name": "Dead",
+            "pipeline": "d6ad6dbf-d0dc-43dd-a927-e024f6a2edf4",
+            "Phong": {
+                "diffuseColor": [
+                    0.5647058,
+                    0.5647058,
+                    0.5647058,
+                    0.6
+                ]
+            }
         }
     },
     "shaders": {
@@ -3135,6 +3148,22 @@
                 "name": "Overlay",
                 "file": "default"
             }
+        },
+        "d6ad6dbf-d0dc-43dd-a927-e024f6a2edf4": {
+            "link": {
+                "name": "Phong Opaque",
+                "file": "default"
+            },
+            "features": {
+                "DEPRECATED_LIGHT_ATTENUATION": true
+            },
+            "name": "Dead",
+            "blending": true,
+            "depthWrite": false,
+            "depthTest": false,
+            "blendSrcRgb": "source alpha",
+            "blendDestRgb": "one minus source alpha",
+            "blendDestAlpha": "one"
         }
     },
     "textures": {

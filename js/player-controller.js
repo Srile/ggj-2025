@@ -44,6 +44,7 @@ export class PlayerController extends Component {
     static Properties = {
         playerMovementSpeed: Property.float(5.0),
         currentPlayerIndicatorMesh: Property.object(),
+        deadPlayerMaterial: Property.material(),
     }
 
     init() {
@@ -105,7 +106,14 @@ export class PlayerController extends Component {
 
     handleOxygenChaned(data) {
         const {oxygen, oxygenMax, entityId} = data;
-        if(Number(entityId) === this.ownPlayerIndex) setHealth(100 * (oxygen / oxygenMax));
+        const index = Number(entityId);
+        if(index === this.ownPlayerIndex) setHealth(100 * (oxygen / oxygenMax));
+
+        if(oxygen === 0) {
+            const meshes = this.currentSelectedPlayerObjects[index].findByNameRecursive('Mesh');
+            const meshComp = meshes[0].getComponent('mesh');
+            meshComp.material = this.deadPlayerMaterial;
+        }
     }
 
     handleNetworkMove(data) {
