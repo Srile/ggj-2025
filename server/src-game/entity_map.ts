@@ -103,7 +103,7 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
         }
 
     } else if (tile.type === MANIFEST.tiles.oxygen) {
-        entity.oxygen = Math.min(entity.oxygen + 10, entity.oxygenMax)
+        entity.oxygen = Math.min(entity.oxygen + 20, entity.oxygenMax)
         map.setTile(entity.x, entity.y, MANIFEST.tiles.water)
         state._events.push({
             type: "TILE_CHANGED",

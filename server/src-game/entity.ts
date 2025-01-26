@@ -15,8 +15,8 @@ export function entities_create(state: State, id: string, mapId: string, x=0, y=
         "mapId": mapId,
         "x": x,
         "y": y,
-        "oxygen": 50,
-        "oxygenMax": 50,
+        "oxygen": 80,
+        "oxygenMax": 80,
     }
 
     state.entities[entity.id] = entity
