@@ -46,8 +46,8 @@ export class GameManager extends Component {
         // TODO logic for switching
         // e.g. animation
 
-        sceneParser.removeTile(tileX + 1, tileY);
-        sceneParser.spawnTile(tileX + 1, tileY, newTile);
+        sceneParser.removeTile(tileX, tileY);
+        sceneParser.spawnTile(tileX, tileY, newTile);
     }
 
     handleEntityAttacked(data) {

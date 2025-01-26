@@ -74,7 +74,7 @@ export class PlayerController extends Component {
 
         for (let i = 0; i < entityIds.length; i++) {
             const positions = entities[entityIds[i]];
-            tempVec[0] = gridWidth * 1 + startingXPosition + gridWidth*positions.x;
+            tempVec[0] = startingXPosition + gridWidth*positions.x;
             tempVec[1] = 0;
             tempVec[2] = startingZPosition + gridWidth*positions.y;
             

@@ -190,7 +190,6 @@ export class SceneParser extends Component {
                 x = 0;
             } else {
                 this.map[y].push(null);
-                x++;
                 this.spawnTile(x, y, char);
 
                 // Always add floor, stays there at all times
@@ -198,6 +197,8 @@ export class SceneParser extends Component {
                 tempVec[2] = startingZPosition + gridWidth*y;
                 const newFloor = floorAsset.clone(this.currentLevelAsssetContainer);
                 newFloor.setPositionWorld(tempVec);
+
+                x++;
             }
         }
     }
