@@ -107,7 +107,13 @@ export class PlayerController extends Component {
     handleOxygenChaned(data) {
         const {oxygen, oxygenMax, entityId} = data;
         const index = Number(entityId);
-        if(index === this.ownPlayerIndex) setHealth(100 * (oxygen / oxygenMax));
+        if(index === this.ownPlayerIndex) {
+            if(!this.oldOxygen) this.oldOxygen = oxygenMax;
+
+            if(this.oldOxygen < oxygen) document.querySelector('#bubbleSfx').play();
+            setHealth(100 * (oxygen / oxygenMax));
+            this.oldOxygen = oxygen;
+        } 
 
         if(oxygen === 0) {
             const meshes = this.currentSelectedPlayerObjects[index].findByNameRecursive('Mesh');
@@ -132,7 +138,13 @@ export class PlayerController extends Component {
 
     handleGameWon(data) {
         const { entityId } = data;
-        // TODO: Load next level
+
+        if(Number(entityId) === this.ownPlayerIndex) {
+            document.querySelector('#winSfx').play();
+        } else {
+            document.querySelector('#loseSfx').play();
+        }
+
         endGame(entityId);
     }
 
@@ -187,6 +199,10 @@ export class PlayerController extends Component {
 
         player.resetRotation();
         player.rotateAxisAngleDegLocal([0, 1, 0], this.getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ));
+
+        if(playerIndex === this.ownPlayerIndex) {
+            document.querySelector('#whooshSfx').play();
+        }
     }
 
     getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ) {

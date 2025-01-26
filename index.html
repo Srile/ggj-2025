@@ -310,6 +310,27 @@
         <source src="music.webm" type="audio/webm">
       </audio>
 
+      <audio id="hitSfx">
+        <source src="hit.webm" type="audio/webm">
+      </audio>
+
+      <audio id="whooshSfx">
+        <source src="whoosh.webm" type="audio/webm">
+      </audio>
+
+      <audio id="winSfx">
+        <source src="win.webm" type="audio/webm">
+      </audio>
+
+      <audio id="loseSfx">
+        <source src="lose.webm" type="audio/webm">
+      </audio>
+
+      <audio id="bubbleSfx">
+        <source src="bubble.webm" type="audio/webm">
+      </audio>
+
+
     <script>
       function showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(screen => {
@@ -325,6 +346,7 @@
       function startGame() {
         showScreen('gameScreen');
         const music = document.getElementById('bgMusic');
+        music.volume = 0.4;
         music.play();
       }
   
