@@ -4420,8 +4420,8 @@ var PlayerController = class extends Component3 {
     setHierarchyActive(this.currentSelectedPlayerObjects[index], false);
   }
   handleOxygenChaned(data) {
-    const { oxygen } = data;
-    setHealth(oxygen);
+    const { oxygen, oxygenMax } = data;
+    setHealth(100 * (oxygen / oxygenMax));
   }
   handleNetworkMove(data) {
     const { oldX, oldY, newX, newY, entityId } = data;
