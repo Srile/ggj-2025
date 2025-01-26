@@ -350,8 +350,8 @@
         music.play();
       }
   
-      function endGame(winner) {
-        document.getElementById('winnerText').textContent = 'Player '+ winner + ' Wins!';
+      function endGame(isPlayerWinner) {
+        document.getElementById('winnerText').textContent = isPlayerWinner ? 'You win!' : 'You lose!';
         showScreen('endScreen');
       }
   

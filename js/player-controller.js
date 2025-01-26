@@ -141,11 +141,11 @@ export class PlayerController extends Component {
 
         if(Number(entityId) === this.ownPlayerIndex) {
             document.querySelector('#winSfx').play();
+            endGame(true);
         } else {
             document.querySelector('#loseSfx').play();
+            endGame(false);
         }
-
-        endGame(entityId);
     }
 
     registerKeyboardInput() {
@@ -214,6 +214,10 @@ export class PlayerController extends Component {
 
     initializePlayers() {
         this.currentSelectedPlayerObjects = this.getSelectedPlayers();
+        this.setPlayerPositions();
+    }
+
+    setPlayerPositions() {
         for (let i = 0; i < this.currentSelectedPlayerObjects.length; i++) {
             const playerObject = this.currentSelectedPlayerObjects[i];
             const position = currentPlayerSpawnPositions[i];
@@ -224,28 +228,28 @@ export class PlayerController extends Component {
     getSelectedPlayers() {
         if(this.playerObjects.length < ACTIVE_PLAYER_COUNT) throw console.error("player-controller: More children on object are required")
 
-            const randomIndices = [];
-            const playerObjects = [];
-            while(randomIndices.length < ACTIVE_PLAYER_COUNT) {
-            let newIndex = Math.floor(Math.random() * this.playerObjects.length);
-            while(randomIndices.includes(newIndex)) {
-                newIndex = Math.floor(Math.random() * this.playerObjects.length);
-            }
-            randomIndices.push(newIndex);            
-        }
+        const randomIndices = [0, 1, 2, 4];
+        const newPlayerObjects = [];
+        // while(randomIndices.length < ACTIVE_PLAYER_COUNT) {
+        //     let newIndex = Math.floor(Math.random() * this.playerObjects.length);
+        //     while(randomIndices.includes(newIndex)) {
+        //         newIndex = Math.floor(Math.random() * this.playerObjects.length);
+        //     }
+        //     randomIndices.push(newIndex);            
+        // }   
 
         // Deactivate not selected player objects
         for (let i = 0; i < this.playerObjects.length; i++) {
             const playerObject = this.playerObjects[i];
             if(randomIndices.includes(i)) {
                 setHierarchyActive(playerObject, false);
-                playerObjects.push(playerObject);
+                newPlayerObjects.push(playerObject);
             } else {
                 setHierarchyActive(playerObject, false);
             }
         }
 
-        return playerObjects;
+        return newPlayerObjects;
     }
 
     update(dt) {

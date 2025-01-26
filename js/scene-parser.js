@@ -95,13 +95,18 @@ export class SceneParser extends Component {
 
     start() {
         if(this.debug) {
-            this.setupLevel(testString)
+            this.setupInitialLevel(testString)
         }
     }
 
-    setupLevel(mapString) {
+    setupInitialLevel(mapString) {
         this.spawnLevel(mapString);
         playerController.initializePlayers();
+    }
+
+    setupConsequentLevel(mapString) {
+        this.spawnLevel(mapString);
+        playerController.setPlayerPositions();
     }
 
     cleanLevel() {
