@@ -130,7 +130,8 @@ Legend:
 
 * `#` ... Wall
 * `.` ... Movable water, drains oxygen
-* `O` ... The (locked) exit
+* `O` ... The locked exit
+* `Q` ... The open exit
 * `A` - `H` ... Exit switches, not activated
 * `a` - `h` ... Exit switches, activated
 * `o` ... Oxygen, restores oxygen

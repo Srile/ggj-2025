@@ -77,7 +77,7 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
 
     // Exit
     let tile = map.getTile(entity.x, entity.y);
-    if (tile.type.name.startsWith('Exit')) {
+    if (tile.type === MANIFEST.tiles.exitopen) {
         //state = _enterPortalOrPlanet(state, entity, tile)
         state._events.push({
             type: "ENTITY_WON",
@@ -95,6 +95,12 @@ function _entity_move(state: State, map: Map, entity: Entity, dx: number, dy: nu
             tileX: entity.x,
             tileY: entity.y
         })
+        const additionalEvents = map.openExitIfPossible()
+        if (additionalEvents.length > 0) {
+            for (const e of additionalEvents) {
+                state._events.push(e)
+            }
+        }
 
     } else if (tile.type === MANIFEST.tiles.oxygen) {
         entity.oxygen = Math.min(entity.oxygen + 10, entity.oxygenMax)

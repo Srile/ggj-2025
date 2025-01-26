@@ -1,4 +1,5 @@
 import { MAP } from "../example_map.js";
+import { Event } from "../protocol.js";
 import { entities_destroy, entities_get_by } from "./entity.js";
 import { items_destroy, items_get_by } from "./item.js";
 import { MANIFEST, Tile as TileType } from "./manifest.js";
@@ -51,6 +52,7 @@ export function maps_destroy(state: State, mapId: string): State {
 }
 
 const SPAWN_ICONS = new Set(["0", "1", "2", "3"])
+const SWITCH_ICONS = new Set(["A", "B", "C", "D"])
 
 export class Map {
     id: string;
@@ -59,6 +61,7 @@ export class Map {
     seed: number | null;
     private _tiles: Tile[];
     private _spawnPoints: object;
+    private _switchesToActivate: number = 0;
 
     constructor(id: string, width_tiles: number, height_tiles: number, tiles: Tile[]=[]) {
         this.id = id;
@@ -66,6 +69,7 @@ export class Map {
         this.heightTiles = height_tiles;
         this.seed = null
         this._tiles = tiles;
+        this._switchesToActivate = 0;
 
         this._spawnPoints = {}
         for (let y = 0; y < this.heightTiles; y++) {
@@ -73,6 +77,10 @@ export class Map {
                 const icon: string = this.getTile(x, y)?.type?.icon
                 if (SPAWN_ICONS.has(icon)) {
                     this._spawnPoints[icon] = [x, y]
+                }
+
+                if (SWITCH_ICONS.has(icon)) {
+                    this._switchesToActivate++
                 }
             }
         }
@@ -98,6 +106,13 @@ export class Map {
             this._spawnPoints[icon] = [x, y]
         }
 
+        if (SWITCH_ICONS.has(icon)) {
+            this._switchesToActivate++
+        }
+        if (SWITCH_ICONS.has(oldTile.type.icon)) {
+            this._switchesToActivate--
+        }
+
         return oldTile
     }
 
@@ -109,6 +124,31 @@ export class Map {
         console.log("Unknown spawnpoint for player %s, all points: %o", playerId, this._spawnPoints)
 
         return null
+    }
+
+    openExitIfPossible(): Array<Event> {
+        const events = []
+
+        if (this._switchesToActivate <= 0) {
+            for (let y = 0; y < this.heightTiles; y++) {
+                for (let x = 0; x < this.widthTiles; x++) {
+                    const tileType: TileType = this.getTile(x, y)?.type
+
+                    if (tileType === MANIFEST.tiles.exit) {
+                        this.setTile(x, y, MANIFEST.tiles.exitopen)
+                        events.push({
+                            type: "TILE_CHANGED",
+                            oldTile: tileType.icon,
+                            newTile: MANIFEST.tiles.exitopen.icon,
+                            tileX: x,
+                            tileY: y
+                        })
+                    }
+                }
+            }
+        }
+
+        return events
     }
 }
 
@@ -129,6 +169,10 @@ const ICON2TILETYPE = {
     "B": MANIFEST.tiles.switchB,
     "C": MANIFEST.tiles.switchC,
     "D": MANIFEST.tiles.switchD,
+    "a": MANIFEST.tiles.switcha,
+    "b": MANIFEST.tiles.switchb,
+    "c": MANIFEST.tiles.switchc,
+    "d": MANIFEST.tiles.switchd,
 }
 
 export function maps_parse(mapString: string): Map {

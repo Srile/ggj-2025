@@ -46,7 +46,8 @@ export const MANIFEST = {
         "oxygen": new Item("Oxygen", "Restores Oxygen", "o")
     },
     "tiles": {
-        "exit": new Tile("Exit", "Whoever reaches this first wins", "O"),
+        "exit": new Tile("Exit", "You need to activate the switches first!", "O"),
+        "exitopen": new Tile("Open exit", "Whoever reaches this first wins", "Q"),
         "oxygen": new Item("Oxygen", "Restores Oxygen", "o"),
         "startplayer0": new Tile("Start Player 0", "Starting point of player 0", "0"),
         "startplayer1": new Tile("Start Player 1", "Starting point of player 1", "1"),
