@@ -58,8 +58,8 @@ export const currentPlayerSpawnPositions = [
 const characterRegistryKeys = Object.keys(characterRegistry);
 
 /* Grid Variables */
-const startingXPosition = -32;
-const startingZPosition = -32;
+export const startingXPosition = -32;
+export const startingZPosition = -32;
 
 export const gridWidth = 2;
 
@@ -137,7 +137,7 @@ export class SceneParser extends Component {
 
                         return;
                     case characterRegistry.oxygen:
-
+                        object.rotateAxisAngleDegLocal(UP, Math.random() * 360.0);
                         return;
                     case characterRegistry.exit:
 
