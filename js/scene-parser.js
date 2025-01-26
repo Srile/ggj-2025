@@ -2,6 +2,8 @@ import {Component, Property} from '@wonderlandengine/api';
 import { vec3 } from 'gl-matrix';
 import { playerController } from './player-controller';
 
+const UP = [0, 1, 0];
+
 export const testString = `
 ################################
 #A.oooooooooooooooooooooooooo.B#
@@ -84,6 +86,7 @@ export class SceneParser extends Component {
 
     init() {
         sceneParser = this;
+        this.map = null;
     }
 
     start() {
@@ -99,6 +102,7 @@ export class SceneParser extends Component {
 
     cleanLevel() {
         this.currentLevelAsssetContainer.destroy();
+        this.map = null;
     }
 
     getAssetPrototypeFromCharacter(char) {
@@ -119,15 +123,15 @@ export class SceneParser extends Component {
         }
     }
 
-    checkCharacterLogic(char, position) {
+    checkCharacterLogic(char, position, object) {
         for (let i = 0; i < characterRegistryKeys.length; i++) {
             const key = characterRegistryKeys[i];
             const value = characterRegistry[key];
                 
-            if(value instanceof String && char === value) {
+            if(char === value) {
                 switch (char) {
                     case characterRegistry.wall:
-
+                        object.rotateAxisAngleDegLocal(UP, Math.random() * 360.0);
                         return;
                     case characterRegistry.floor:
 
@@ -146,33 +150,49 @@ export class SceneParser extends Component {
                 } else if(characterRegistry.spawnPoint.includes(char)) {
                     const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char)
                     vec3.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
-                    currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
+                    // currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
                     return;
                 }
             }
         }
     }
 
-    spawnLevel(levelString) {
-        let currentXPosition = startingXPosition;
-        let currentZPosition = startingZPosition;
+    removeTile(x, y) {
+        this.map[y][x].object.destroy();
+        this.map[y][x] = null;
+    }
 
+    spawnTile(x, y, char) {
+        if(this.map[y][x]) this.removeTile(x, y);
+        const asset = this.getAssetPrototypeFromCharacter(char);
+        const newAsset = asset.clone(this.currentLevelAsssetContainer);
+        tempVec[0] = startingXPosition + gridWidth*x;
+        tempVec[2] = startingZPosition + gridWidth*y;
+        this.checkCharacterLogic(char, tempVec, newAsset);
+        newAsset.setPositionWorld(tempVec);
+        this.map[y][x] = {
+            object: newAsset,
+            char
+        };
+    }
+
+    spawnLevel(levelString) {
         this.currentLevelAsssetContainer = this.object.addChild();
 
-        for (let i = 0; i < levelString.length; i++) {
-            const char = levelString[i];
+        let x = 0;
+        let y = 0;
+        this.map = [[]];
+
+        for(const char of levelString) {
             if(isNewLine(char)) {
-                currentXPosition = startingXPosition;
-                currentZPosition += gridWidth;
+                this.map.push([]);
+                y++;
+                x = 0;
             } else {
-                const asset = this.getAssetPrototypeFromCharacter(char);
-                currentXPosition += gridWidth;
-                const newAsset = asset.clone(this.currentLevelAsssetContainer);
-                tempVec[0] = currentXPosition;
-                tempVec[2] = currentZPosition;
-                this.checkCharacterLogic(char, tempVec)
-                newAsset.setPositionWorld(tempVec);
-                
+                this.map[y].push(null);
+                x++;
+                this.spawnTile(x, y, char);
+
                 // newAsset.setScalingLocal([0.9,0.9,0.9])
             }
         }

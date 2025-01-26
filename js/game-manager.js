@@ -1,6 +1,7 @@
 import {Component, Property} from '@wonderlandengine/api';
 import { WebSocketClient } from './networking';
 import { playerController } from './player-controller';
+import { sceneParser } from './scene-parser';
 
 export let gameManager;
 
@@ -27,7 +28,9 @@ export class GameManager extends Component {
 
     registerNetworkEvents() {
         this.ws.onMessage("COUNTDOWN", this.handleCountdown.bind(this));
-        this.ws.onMessage("MAP_CHANGED", this.handleMapChanged.bind(this));
+        this.ws.onMessage("TILE_CHANGED", this.handleTileChanged.bind(this));
+        this.ws.onMessage("ENTITY_ATTACKED", this.handleEntityAttacked.bind(this));
+        this.ws.onMessage("ENTITY_HIT", this.handleEntityHit.bind(this));
     }
 
     handleCountdown(data) {
@@ -37,8 +40,26 @@ export class GameManager extends Component {
         countdownEl.innerText = countdown;
     }
 
-    handleMapChanged() {
-        
+    handleTileChanged(data) {
+        const {oldTile, newTile, tileX, tileY} = data;
+
+        // TODO logic for switching
+        // e.g. animation
+
+        sceneParser.removeTile(tileX + 1, tileY);
+        sceneParser.spawnTile(tileX + 1, tileY, newTile);
+    }
+
+    handleEntityAttacked(data) {
+        const {entity} = data;
+
+        // TODO play animation, apply damage
+    }
+
+    handleEntityHit(data) {
+        const {entity} = data;
+
+        // TODO play animation
     }
 
     disconnect() {

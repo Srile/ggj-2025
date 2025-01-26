@@ -9,7 +9,7 @@
             ],
             "translation": [
                 0.0,
-                50.0,
+                0.0,
                 0.0
             ],
             "rotation": [
@@ -21,12 +21,12 @@
         },
         "17": {
             "name": "Camera",
-            "parent": "14",
+            "parent": "bd1146a5-43ca-4622-a90b-9333c6877730",
             "components": [
                 {
                     "type": "view",
                     "view": {
-                        "projectionType": "orthographic",
+                        "projectionType": "perspective",
                         "far": 100.0,
                         "extent": 30.0
                     }
@@ -36,20 +36,20 @@
                 }
             ],
             "translation": [
-                1.361774479846645e-7,
-                0.000004,
-                -1.1675535915856017e-7
+                1.3617744798466447e-7,
+                0.0000035,
+                -0.0000057
             ],
             "rotation": [
-                -0.7071068,
                 0.0,
                 0.0,
-                0.7071068
+                0.0,
+                1.0
             ],
             "scaling": [
-                0.9999999,
-                0.9999997,
-                0.9999997
+                0.9999995,
+                0.9999994,
+                0.9999995
             ]
         },
         "21": {
@@ -1114,7 +1114,7 @@
             "name": "SceneAssets",
             "translation": [
                 0.0,
-                -28.5151596,
+                -400.0,
                 0.0
             ],
             "rotation": [
@@ -1145,8 +1145,17 @@
             ],
             "translation": [
                 0.0,
-                1.0,
+                0.0,
                 0.0
+            ],
+            "components": [
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "29f0dfaa-5819-4244-9f92-cf9ba1262f18",
+                        "mesh": "84117e3f-2d4b-4b35-9bc1-6000554d35ab"
+                    }
+                }
             ]
         },
         "8ffc856c-7262-4dfa-8788-5b70bb3c7fc5": {
@@ -1188,19 +1197,19 @@
             ],
             "translation": [
                 0.0,
-                1.0,
+                0.0,
                 0.0000016
+            ],
+            "scaling": [
+                1.0,
+                0.9999963,
+                0.9999963
             ],
             "rotation": [
                 -0.7071068,
                 0.0,
                 0.0,
                 0.7071068
-            ],
-            "scaling": [
-                1.0,
-                0.9999963,
-                0.9999963
             ]
         },
         "925ddca8-e5cb-40af-84d7-a52d90bf0acd": {
@@ -1240,7 +1249,7 @@
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "9",
+                        "mesh": "98afbc91-337d-4991-b315-ca2591b094c6",
                         "material": "58feade2-ff60-448c-9458-219b129c029c"
                     },
                     "active": true
@@ -1248,7 +1257,7 @@
             ],
             "translation": [
                 0.0,
-                1.0,
+                0.0,
                 0.0
             ],
             "rotation": [
@@ -1330,78 +1339,6 @@
                 }
             ]
         },
-        "8c9c06d7-56a1-4bc9-bb7a-7bfd8e4e148a": {
-            "link": {
-                "name": "Trunk",
-                "file": "assets\\Objects\\Plant.glb"
-            },
-            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                1.0,
-                1.0,
-                1.0
-            ]
-        },
-        "3270df6f-dcd1-44bd-82ae-c2639bc9b861": {
-            "link": {
-                "name": "Flower",
-                "file": "assets\\Objects\\Plant.glb"
-            },
-            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
-            "rotation": [
-                -0.1824982,
-                0.4306477,
-                0.8585889,
-                0.2099093
-            ],
-            "scaling": [
-                0.0765468,
-                0.0765468,
-                0.0765468
-            ]
-        },
-        "b93acc22-bc15-4329-8a8c-f34d74e6b0a8": {
-            "link": {
-                "name": "Flower.001",
-                "file": "assets\\Objects\\Plant.glb"
-            },
-            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
-            "rotation": [
-                -0.4769537,
-                0.1693897,
-                0.3574095,
-                0.784908
-            ],
-            "scaling": [
-                0.0765468,
-                0.0765468,
-                0.0765468
-            ]
-        },
-        "b4d6e71f-af44-4ae2-9d5a-b38de6e4dfe8": {
-            "link": {
-                "name": "Flower.002",
-                "file": "assets\\Objects\\Plant.glb"
-            },
-            "parent": "65d29dfa-0160-4e7e-ab2b-0e688aa0e181",
-            "rotation": [
-                -0.6863701,
-                -0.4419051,
-                -0.2082819,
-                0.5387341
-            ],
-            "scaling": [
-                0.0765468,
-                0.0765468,
-                0.0765468
-            ]
-        },
         "aa5b8932-b019-497b-9b15-ac6663b84e26": {
             "name": "Light.001",
             "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
@@ -1451,6 +1388,26 @@
                 "file": "assets\\Objects\\Switch.glb"
             },
             "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
+        },
+        "bd1146a5-43ca-4622-a90b-9333c6877730": {
+            "name": "CameraParent",
+            "parent": "14",
+            "translation": [
+                -0.0,
+                -0.0,
+                0.0
+            ],
+            "scaling": [
+                1.0000003,
+                1.0000003,
+                1.0000002
+            ],
+            "rotation": [
+                -0.5,
+                0.0,
+                0.0,
+                0.8660253
+            ]
         }
     },
     "meshes": {
@@ -1584,6 +1541,12 @@
             "link": {
                 "name": "Cylinder.001",
                 "file": "assets\\Objects\\Portal.glb"
+            }
+        },
+        "98afbc91-337d-4991-b315-ca2591b094c6": {
+            "link": {
+                "name": "Icosphere",
+                "file": "assets\\Objects\\Bubble.glb"
             }
         }
     },
@@ -1881,6 +1844,43 @@
                 "name": "Base",
                 "file": "assets\\Objects\\Portal.glb"
             }
+        },
+        "3b5c2496-1a46-4117-850e-0547eb70904f": {
+            "name": "Background",
+            "shader": "Phong",
+            "Phong": {
+                "specularColor": [
+                    9.999899930335232e-7,
+                    9.99993744699168e-7,
+                    9.999999974752427e-7,
+                    1.0
+                ],
+                "shininess": 1
+            },
+            "pipeline": "54",
+            "Flat": {
+                "flatTexture": "77"
+            },
+            "Sky": {
+                "colorStop3": [
+                    0.3372548,
+                    0.6491348,
+                    1.0,
+                    1.0
+                ],
+                "colorStop2": [
+                    0.030296,
+                    0.1525493,
+                    0.772549,
+                    1.0
+                ],
+                "colorStop0": [
+                    0.0,
+                    0.1431141,
+                    0.5529412,
+                    1.0
+                ]
+            }
         }
     },
     "shaders": {
@@ -2143,6 +2143,27 @@
         "rendering": {
             "hdr": {
                 "exposure": 1.5
+            },
+            "clearColor": [
+                0.1120953,
+                0.5938379,
+                0.772549,
+                1.0
+            ],
+            "compressedTextureAtlasSize": [
+                2048,
+                2048
+            ],
+            "textureAtlasSize": [
+                2048,
+                2048
+            ],
+            "environment": {
+                "enabled": false
+            },
+            "sky": {
+                "enabled": true,
+                "material": "3b5c2496-1a46-4117-850e-0547eb70904f"
             }
         },
         "editor": {
@@ -3255,6 +3276,10 @@
             "link": {
                 "name": "Sky",
                 "file": "default"
+            },
+            "features": {
+                "GRADIENT_4_STOPS": true,
+                "TEXTURED": false
             }
         },
         "72": {
@@ -3461,13 +3486,21 @@
             "link": {
                 "name": "BaseColor",
                 "file": "assets\\Objects\\Switch.glb"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         },
         "85027557-bf43-4835-a04e-770ea56bbbe4": {
             "link": {
                 "name": "BaseColor",
                 "file": "assets\\Objects\\Portal.glb"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         }
     },
     "fonts": {
@@ -3540,6 +3573,11 @@
         },
         "fa54d0e1-67b1-4c56-8efb-915e93445301": {
             "fileName": "assets/Objects/Portal.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "777c3074-e9a7-409b-80d0-afb4d335512a": {
+            "fileName": "assets/Objects/Bubble.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
         }
