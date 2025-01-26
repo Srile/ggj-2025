@@ -4285,6 +4285,7 @@ var SceneParser = class extends Component3 {
           case characterRegistry.floor:
             return;
           case characterRegistry.oxygen:
+            object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
             return;
           case characterRegistry.exit:
             return;
@@ -4392,6 +4393,31 @@ var PlayerController = class extends Component3 {
     gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
     gameManager.ws.onMessage("ENTITY_WON", this.handleGameWon.bind(this));
     gameManager.ws.onMessage("OXYGEN_CHANGED", this.handleOxygenChaned.bind(this));
+    gameManager.ws.onMessage("PLAYER_JOINED", this.handlePlayerJoined.bind(this));
+    gameManager.ws.onMessage("PLAYER_LEFT", this.handlePlayerLeft.bind(this));
+  }
+  setNetworkPlayersActive(entities) {
+    const entityIds = Object.keys(entities);
+    for (let i = 0; i < entityIds.length; i++) {
+      const positions = entities[entityIds[i]];
+      tempVec3[0] = gridWidth * 1 + startingXPosition + gridWidth * positions.x;
+      tempVec3[1] = 0;
+      tempVec3[2] = startingZPosition + gridWidth * positions.y;
+      const id = entityIds[i];
+      const index = Number(id);
+      this.currentSelectedPlayerObjects[index].setPositionLocal(tempVec3);
+      setHierarchyActive(this.currentSelectedPlayerObjects[index], true);
+    }
+  }
+  handlePlayerJoined(data) {
+    const { entityId } = data;
+    const index = Number(entityId);
+    setHierarchyActive(this.currentSelectedPlayerObjects[index], true);
+  }
+  handlePlayerLeft(data) {
+    const { entityId } = data;
+    const index = Number(entityId);
+    setHierarchyActive(this.currentSelectedPlayerObjects[index], false);
   }
   handleOxygenChaned(data) {
     const { oxygen } = data;
@@ -4494,7 +4520,7 @@ var PlayerController = class extends Component3 {
     for (let i = 0; i < this.playerObjects.length; i++) {
       const playerObject = this.playerObjects[i];
       if (randomIndices.includes(i)) {
-        setHierarchyActive(playerObject, true);
+        setHierarchyActive(playerObject, false);
         playerObjects.push(playerObject);
       } else {
         setHierarchyActive(playerObject, false);
@@ -4544,6 +4570,7 @@ var WebSocketClient = class {
       if (!this.connectedToGame) {
         this.connectedToGame = true;
         sceneParser.setupLevel(message.map);
+        playerController.setNetworkPlayersActive(message.entities);
         playerController.setCameraPositionFromPlayerIndex(message.player);
         startGame();
       }
