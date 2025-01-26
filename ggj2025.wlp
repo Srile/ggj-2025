@@ -2795,49 +2795,6 @@
                 "90ba2c60-27cc-47d1-9c22-4307459a913a"
             ]
         },
-        "a078e894-13a8-4c23-9824-e9f757e6b244": {
-            "link": {
-                "name": "Rig",
-                "file": "assets\\Players\\Herring.glb"
-            },
-            "joints": [
-                "b9d92251-ccbb-4a9f-acbb-52f827708c19",
-                "5e09216f-6b45-4510-b36b-70220e867dda",
-                "767f2546-036d-4970-8a77-e91d81f31458",
-                "ce22a545-0492-4b51-8e78-5b21228343e7",
-                "fe430303-52da-4638-bf22-a2a275440830",
-                "75af8104-1a7a-4bcb-9a2f-ed5c3ba75e8f",
-                "af136a70-d311-46db-a9c5-082be500034d",
-                "c59459c9-e14a-4dcf-8d2a-b94bfe9bc993",
-                "6ce72255-2e79-40d3-b708-47d86996493f"
-            ]
-        },
-        "a1e6b8e0-f4ad-4aff-b8c7-8f7ba5a4728c": {
-            "link": {
-                "name": "Rig",
-                "file": "assets\\Players\\Inkfish.glb"
-            },
-            "joints": [
-                "2ae624e7-1456-491a-981f-ebcdd96b20aa",
-                "f101e60a-9070-45f6-930f-6ab9ff018174",
-                "94195aef-361a-4d3e-bad6-1ea3aaf2cfb5",
-                "d6f9b481-3837-4452-a979-25f3cd745443",
-                "6e70d3a3-2d0b-4eee-b6f6-a7fbde83a38e",
-                "fc346003-faae-4473-82f7-c253aa1c7d2f",
-                "58f2098f-b07f-4c88-83ad-5d58721ff50e",
-                "ba94dc27-19d5-4e9e-bbce-f8ff32ce3d37",
-                "d7c79732-531b-49a5-88ac-cb1a1680da66",
-                "57cc07f2-ac3a-4572-9c87-0c2a1ca11b30",
-                "2324626b-ffd0-4858-a77b-dff50bba17b0",
-                "361ed1e7-c441-4c62-94bd-2b2e2d03d043",
-                "0d470abe-c4ea-489e-a2d3-1603df6b1dca",
-                "02bac97e-937e-421b-8312-29e690406d5d",
-                "7ba95cef-30ac-43a4-a987-3a3596966fbd",
-                "98d9a14f-fe13-4786-b318-fb8615457c38",
-                "0f9052cc-fbb1-451f-8a74-a3af65b1dae0",
-                "e7067e44-3d82-4e9e-b3dd-893728d1cdc3"
-            ]
-        },
         "ffdf99c7-d410-4d6d-bb97-e144b8411178": {
             "link": {
                 "name": "Rig",
@@ -3242,16 +3199,6 @@
         },
         "5733f7f2-2202-44b5-8e19-331419a0bd32": {
             "fileName": "assets/Players/Gecko.glb",
-            "importerName": "",
-            "importPhysicalAsPhongMaterials": true
-        },
-        "4e045cea-f3f2-4418-9446-8db8d3029288": {
-            "fileName": "assets/Players/Herring.glb",
-            "importerName": "",
-            "importPhysicalAsPhongMaterials": true
-        },
-        "ac02b439-37a4-47f3-8d45-8ee7f6700f53": {
-            "fileName": "assets/Players/Inkfish.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
         },
