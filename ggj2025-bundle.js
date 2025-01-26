@@ -4388,6 +4388,7 @@ var PlayerController = class extends Component3 {
   }
   setCameraPositionFromPlayerIndex(playerIndex) {
     cameraController.setPositionAbovePlayer(this.currentSelectedPlayerObjects[playerIndex]);
+    this.ownPlayerIndex = playerIndex;
   }
   registerNetworkEvents() {
     gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
@@ -4420,8 +4421,9 @@ var PlayerController = class extends Component3 {
     setHierarchyActive(this.currentSelectedPlayerObjects[index], false);
   }
   handleOxygenChaned(data) {
-    const { oxygen, oxygenMax } = data;
-    setHealth(100 * (oxygen / oxygenMax));
+    const { oxygen, oxygenMax, entityId } = data;
+    if (Number(entityId) === this.ownPlayerIndex)
+      setHealth(100 * (oxygen / oxygenMax));
   }
   handleNetworkMove(data) {
     const { oldX, oldY, newX, newY, entityId } = data;
