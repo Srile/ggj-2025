@@ -50,7 +50,7 @@ export function maps_destroy(state: State, mapId: string): State {
     return state
 }
 
-const SPAWN_ICONS = new Set(["0", "1", "2", "3", "4", "5", "6", "7"])
+const SPAWN_ICONS = new Set(["0", "1", "2", "3"])
 
 export class Map {
     id: string;
@@ -105,6 +105,8 @@ export class Map {
         if (Object.hasOwn(this._spawnPoints, playerId)) {
             return this._spawnPoints[playerId]
         }
+
+        console.log("Unknown spawnpoint for player %s, all points: %o", playerId, this._spawnPoints)
 
         return null
     }
