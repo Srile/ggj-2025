@@ -4580,7 +4580,7 @@ var PlayerController = class extends Component3 {
 };
 __publicField(PlayerController, "TypeName", "player-controller");
 __publicField(PlayerController, "Properties", {
-  playerMovementSpeed: Property.float(5),
+  playerMovementSpeed: Property.float(10),
   currentPlayerIndicatorMesh: Property.object(),
   deadPlayerMaterial: Property.material()
 });
