@@ -84,6 +84,7 @@ export class SceneParser extends Component {
 
     init() {
         sceneParser = this;
+        this.map = null;
     }
 
     start() {
@@ -99,6 +100,7 @@ export class SceneParser extends Component {
 
     cleanLevel() {
         this.currentLevelAsssetContainer.destroy();
+        this.map = null;
     }
 
     getAssetPrototypeFromCharacter(char) {
@@ -153,27 +155,41 @@ export class SceneParser extends Component {
         }
     }
 
-    spawnLevel(levelString) {
-        let currentXPosition = startingXPosition;
-        let currentZPosition = startingZPosition;
+    removeTile(x, y) {
+        this.map[y][x].object.destroy();
+        this.map[y][x] = null;
+    }
 
+    spawnTile(x, y, char) {
+        if(this.map[y][x]) this.removeTile(x, y);
+        const asset = this.getAssetPrototypeFromCharacter(char);
+        const newAsset = asset.clone(this.currentLevelAsssetContainer);
+        tempVec[0] = startingXPosition + gridWidth*x;
+        tempVec[2] = startingZPosition + gridWidth*y;
+        this.checkCharacterLogic(char, tempVec);
+        newAsset.setPositionWorld(tempVec);
+        this.map[y][x] = {
+            object: newAsset,
+            char
+        };
+    }
+
+    spawnLevel(levelString) {
         this.currentLevelAsssetContainer = this.object.addChild();
 
-        for (let i = 0; i < levelString.length; i++) {
-            const char = levelString[i];
+        let x = 0;
+        let y = 0;
+        this.map = [[]];
+
+        for(const char of levelString) {
             if(isNewLine(char)) {
-                currentXPosition = startingXPosition;
-                currentZPosition += gridWidth;
+                this.map.push([]);
+                y++;
+                x = 0;
             } else {
-                const asset = this.getAssetPrototypeFromCharacter(char);
-                currentXPosition += gridWidth;
-                const newAsset = asset.clone(this.currentLevelAsssetContainer);
-                tempVec[0] = currentXPosition;
-                tempVec[2] = currentZPosition;
-                this.checkCharacterLogic(char, tempVec)
-                newAsset.setPositionWorld(tempVec);
-                
-                // newAsset.setScalingLocal([0.9,0.9,0.9])
+                this.map[y].push(null);
+                x++;
+                this.spawnTile(x, y, char);
             }
         }
     }
