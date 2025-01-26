@@ -1,6 +1,6 @@
 import {Component, Property} from '@wonderlandengine/api';
 import { setHierarchyActive } from './utils';
-import { currentPlayerSpawnPositions, gridWidth, sceneParser } from './scene-parser';
+import { currentPlayerSpawnPositions, gridWidth, sceneParser, startingXPosition, startingZPosition } from './scene-parser';
 import { vec3 } from 'gl-matrix';
 import { gameManager } from './game-manager';
 import { cameraController } from './camera-controller';
@@ -62,6 +62,41 @@ export class PlayerController extends Component {
         gameManager.ws.onMessage("ENTITY_MOVED", this.handleNetworkMove.bind(this));
         gameManager.ws.onMessage("ENTITY_WON", this.handleGameWon.bind(this));
         gameManager.ws.onMessage("OXYGEN_CHANGED", this.handleOxygenChaned.bind(this));
+
+        gameManager.ws.onMessage("PLAYER_JOINED", this.handlePlayerJoined.bind(this));
+        gameManager.ws.onMessage("PLAYER_LEFT", this.handlePlayerLeft.bind(this));
+
+    }
+
+    setNetworkPlayersActive(entities) {
+        const entityIds = Object.keys(entities);
+
+        for (let i = 0; i < entityIds.length; i++) {
+            const positions = entities[entityIds[i]];
+            tempVec[0] = gridWidth * 1 + startingXPosition + gridWidth*positions.x;
+            tempVec[1] = 0;
+            tempVec[2] = startingZPosition + gridWidth*positions.y;
+            
+            const id = entityIds[i];
+            const index = Number(id);
+
+            this.currentSelectedPlayerObjects[index].setPositionLocal(tempVec);
+            setHierarchyActive(this.currentSelectedPlayerObjects[index], true);
+        }
+    }
+
+    handlePlayerJoined(data) {
+        const {entityId} = data;
+        const index = Number(entityId);
+
+        setHierarchyActive(this.currentSelectedPlayerObjects[index], true);
+    }
+
+    handlePlayerLeft(data) {
+        const {entityId} = data;
+        const index = Number(entityId);
+
+        setHierarchyActive(this.currentSelectedPlayerObjects[index], false);
     }
 
     handleOxygenChaned(data) {
@@ -175,7 +210,7 @@ export class PlayerController extends Component {
         for (let i = 0; i < this.playerObjects.length; i++) {
             const playerObject = this.playerObjects[i];
             if(randomIndices.includes(i)) {
-                setHierarchyActive(playerObject, true);
+                setHierarchyActive(playerObject, false);
                 playerObjects.push(playerObject);
             } else {
                 setHierarchyActive(playerObject, false);

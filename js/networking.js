@@ -29,6 +29,7 @@ export class WebSocketClient {
         if(!this.connectedToGame) {
             this.connectedToGame = true;
             sceneParser.setupLevel(message.map);
+            playerController.setNetworkPlayersActive(message.entities);
             playerController.setCameraPositionFromPlayerIndex(message.player);
             startGame();
         } 
