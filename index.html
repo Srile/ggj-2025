@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:24:09.955" as="script">
+    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:33:28.883" as="script">
     <title>ggj2025</title>
     <meta charset="utf-8" />
 
@@ -211,10 +211,18 @@
       transition: width 0.3s ease-out;
     }
 
+    button:disabled,
+    button[disabled],
+    button[disabled]:hover{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
     </style>
     
 
-    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:24:09.955"></script>
+    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:33:28.883"></script>
 
     
     </script>
@@ -233,7 +241,7 @@
 
     <div id="menuScreen" class="screen active">
       <div class="logo"><img src="./logo_website.webp" /></div>
-      <button class="button primary-btn" onclick="connectToServer()">Play Game</button>
+      <button id="start-game-btn" class="button primary-btn" disabled onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
 

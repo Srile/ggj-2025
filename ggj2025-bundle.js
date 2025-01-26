@@ -4723,6 +4723,8 @@ var RuntimeOptions = {
 };
 var engine = await loadRuntime(Constants.RuntimeBaseName, RuntimeOptions);
 engine.onLoadingScreenEnd.once(() => {
+  const startBtn = document.querySelector("#start-game-btn");
+  startBtn.disabled = false;
   const el = document.getElementById("version");
   if (el)
     setTimeout(() => el.remove(), 2e3);
