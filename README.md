@@ -1,6 +1,6 @@
 # Underwater Zoo Race
 
-TODO Game Logo
+![Game logo](uzr_logo.png)
 
 In this underwater multiplayer roguelike, take control of a drowning animal and guide it to the exit!
 
