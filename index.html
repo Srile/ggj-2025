@@ -85,7 +85,7 @@
       z-index: 1000;
       top: 0;
       width: 100%;
-      background-color: burlywood;
+      background-color: #468cc6;
     }
 
     .screen.active {
@@ -132,12 +132,12 @@
     }
 
     .primary-btn {
-      background: #3b82f6;
+      background: #1bd18b;
       color: white;
     }
 
     .primary-btn:hover {
-      background: #2563eb;
+      background: #0e724c;
     }
 
     .secondary-btn {
@@ -158,6 +158,10 @@
       font-size: 2.5rem;
       font-weight: bold;
       margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 300px;
     }
 
     #arrow-display {
@@ -250,7 +254,7 @@
     <button id="fullscreenBtn" class="button secondary-btn fullscreen-btn">⛶</button>
 
     <div id="menuScreen" class="screen active">
-      <div class="logo">Game Logo</div>
+      <div class="logo"><img src="./logo_website.webp" /></div>
       <button class="button primary-btn" onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
@@ -275,10 +279,32 @@
     <div id="instructionsModal" class="modal">
       <div class="modal-content">
         <button class="close-btn" onclick="hideInstructions()">✕</button>
-        <h2>How to Play</h2>
-        <p>Add your game instructions here...</p>
+        <div class="">
+          <h3 class="">Instructions</h3>
+          <div class="">In this underwater multiplayer roguelike, take control of a drowning animal and guide it to the exit!<br>
+            <br>
+            Your goal is simple - reach the exit before any other player does. But there are a few complications:<br>
+            <br>
+            - You need oxygen to survive. Pick up air bubbles to fill up your oxygen meter. Every movement step drains your oxygen. If the meter reaches 0, you die 😵<br>
+            - The exit needs to be opened first by using one of the switches placed on the map<br>
+            - Enemy players can attack you by walking into you (and you can attack them too). Being hit removes some oxygen from each player's meter.<br>
+            <br>
+            How to play:<br>
+            <br>
+            - Click 'Play Game'<br>
+            - Wait for other players to join (or not). Up to 4 players can join one game.<br>
+            - Start playing<br>
+            - Be the fastest animal!<br>
+            - After a player wins the round, a new map is loaded and a new round begins.<br>
+            - Maps are generated randomly. Every round is a new adventure 👽<br>
+            <br>
+            Assets:<br>
+            - https://www.omabuarts.com/product/quirky-series-free-animals/<br>
+            - https://www.deviantart.com/dabbex30/art/Underwater-Sand-575719072
+          </div>
+          </div>
+        </div>
       </div>
-    </div>
 
     <script>
       function showScreen(screenId) {
