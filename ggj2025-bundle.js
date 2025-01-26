@@ -4435,8 +4435,14 @@ var PlayerController = class extends Component3 {
   }
   handleOxygenChaned(data) {
     const { oxygen, oxygenMax, entityId } = data;
-    if (Number(entityId) === this.ownPlayerIndex)
+    const index = Number(entityId);
+    if (index === this.ownPlayerIndex)
       setHealth(100 * (oxygen / oxygenMax));
+    if (oxygen === 0) {
+      const meshes = this.currentSelectedPlayerObjects[index].findByNameRecursive("Mesh");
+      const meshComp = meshes[0].getComponent("mesh");
+      meshComp.material = this.deadPlayerMaterial;
+    }
   }
   handleNetworkMove(data) {
     const { oldX, oldY, newX, newY, entityId } = data;
@@ -4560,7 +4566,8 @@ var PlayerController = class extends Component3 {
 __publicField(PlayerController, "TypeName", "player-controller");
 __publicField(PlayerController, "Properties", {
   playerMovementSpeed: Property.float(5),
-  currentPlayerIndicatorMesh: Property.object()
+  currentPlayerIndicatorMesh: Property.object(),
+  deadPlayerMaterial: Property.material()
 });
 
 // js/networking.js
