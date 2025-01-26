@@ -219,6 +219,13 @@
       color: #666666;
     }
 
+    .container {
+        padding: 20px;
+    }
+    input {
+        padding: 8px;
+        margin-right: 8px;
+    }
     </style>
     {{ if settings.runtime.pwa.enable }}
     <link rel="manifest" href="manifest.json">
@@ -263,6 +270,10 @@
 
     <div id="menuScreen" class="screen active">
       <div class="logo"><img src="./logo_website.webp" /></div>
+      <div class="container">
+        <input type="text" id="inputField" placeholder="Enter value">
+        <button class="button primary-btn" onclick="setRoomNumber()">Set Variable</button>
+      </div>
       <button id="start-game-btn" class="button primary-btn" disabled onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
@@ -414,6 +425,11 @@
         const healthBar = document.getElementById('health-bar');
         const clampedHealth = Math.max(0, Math.min(100, percentage));
         healthBar.style.width = `${clampedHealth}%`;
+      }
+
+      function setRoomNumber() {
+        const input = document.getElementById('inputField');
+        window.roomId = input.value;
       }
     </script>
 
