@@ -4281,22 +4281,16 @@ var SceneParser = class extends Component3 {
         switch (char) {
           case characterRegistry.wall:
             object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
-            return;
-          case characterRegistry.floor:
-            return;
+            break;
           case characterRegistry.oxygen:
             object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
-            return;
-          case characterRegistry.exit:
-            return;
+            break;
         }
       } else {
-        if (characterRegistry.switch.includes(char)) {
-          return;
-        } else if (characterRegistry.spawnPoint.includes(char)) {
+        if (characterRegistry.spawnPoint.includes(char)) {
           const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char);
           vec3_exports.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
-          return;
+          break;
         }
       }
     }
@@ -4308,6 +4302,13 @@ var SceneParser = class extends Component3 {
   spawnTile(x, y, char) {
     if (this.map[y][x])
       this.removeTile(x, y);
+    if (char === characterRegistry.floor) {
+      this.map[y][x] = {
+        object: this.currentLevelAsssetContainer.addChild(),
+        char
+      };
+      return;
+    }
     const asset = this.getAssetPrototypeFromCharacter(char);
     const newAsset = asset.clone(this.currentLevelAsssetContainer);
     tempVec2[0] = startingXPosition + gridWidth * x;
@@ -4321,6 +4322,7 @@ var SceneParser = class extends Component3 {
   }
   spawnLevel(levelString) {
     this.currentLevelAsssetContainer = this.object.addChild();
+    const floorAsset = this.getAssetPrototypeFromCharacter(characterRegistry.floor);
     let x = 0;
     let y = 0;
     this.map = [[]];
@@ -4331,8 +4333,12 @@ var SceneParser = class extends Component3 {
         x = 0;
       } else {
         this.map[y].push(null);
-        x++;
         this.spawnTile(x, y, char);
+        tempVec2[0] = startingXPosition + gridWidth * x;
+        tempVec2[2] = startingZPosition + gridWidth * y;
+        const newFloor = floorAsset.clone(this.currentLevelAsssetContainer);
+        newFloor.setPositionWorld(tempVec2);
+        x++;
       }
     }
   }
@@ -4401,7 +4407,7 @@ var PlayerController = class extends Component3 {
     const entityIds = Object.keys(entities);
     for (let i = 0; i < entityIds.length; i++) {
       const positions = entities[entityIds[i]];
-      tempVec3[0] = gridWidth * 1 + startingXPosition + gridWidth * positions.x;
+      tempVec3[0] = startingXPosition + gridWidth * positions.x;
       tempVec3[1] = 0;
       tempVec3[2] = startingZPosition + gridWidth * positions.y;
       const id = entityIds[i];
@@ -4642,8 +4648,8 @@ var GameManager = class extends Component3 {
   }
   handleTileChanged(data) {
     const { oldTile, newTile, tileX, tileY } = data;
-    sceneParser.removeTile(tileX + 1, tileY);
-    sceneParser.spawnTile(tileX + 1, tileY, newTile);
+    sceneParser.removeTile(tileX, tileY);
+    sceneParser.spawnTile(tileX, tileY, newTile);
   }
   handleEntityAttacked(data) {
     const { entity } = data;
