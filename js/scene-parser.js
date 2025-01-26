@@ -43,9 +43,11 @@ const characterRegistry = {
     wall: '#',
     floor: '.',
     switch: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    switchActivated: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
     oxygen: 'o',
     spawnPoint: ['0', '1', '2', '3', '4', '5', '6', '7'],
-    exit: 'O',
+    exitLocked: 'O',
+    exit: 'Q',
 }
 
 export const currentPlayerSpawnPositions = [
@@ -78,8 +80,10 @@ export class SceneParser extends Component {
         wallPrototype: Property.object(),
         floorPrototype: Property.object(),
         switchPrototype: Property.object(),
+        switchActivatedPrototype: Property.object(),
         oxygenPrototype: Property.object(),
         spawnPointPrototype: Property.object(),
+        exitLockedPrototype: Property.object(),
         exitPrototype: Property.object(),
         debug: Property.bool(true),
     };
@@ -138,7 +142,9 @@ export class SceneParser extends Component {
                         break;
                 }
             } else {
-                if(characterRegistry.spawnPoint.includes(char)) {
+                if(characterRegistry.switchActivated.includes(char)) {
+                    object.rotateAxisAngleDegLocal(UP, 180.0);
+                } else if(characterRegistry.spawnPoint.includes(char)) {
                     const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char)
                     vec3.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
                     // currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
