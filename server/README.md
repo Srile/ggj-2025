@@ -131,6 +131,7 @@ Legend:
 * `#` ... Wall
 * `.` ... Movable water, drains oxygen
 * `O` ... The (locked) exit
-* `A` - `H` ... Exit open switches
+* `A` - `H` ... Exit switches, not activated
+* `a` - `h` ... Exit switches, activated
 * `o` ... Oxygen, restores oxygen
 * `0` - `7` ... Player start positions
