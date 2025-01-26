@@ -880,10 +880,10 @@
                         "switchPrototype": "925ddca8-e5cb-40af-84d7-a52d90bf0acd",
                         "oxygenPrototype": "2740976e-41a9-47c9-9ec7-0b051571fb98",
                         "spawnPointPrototype": "8208aadc-b2a1-4cd7-aa84-e25dbe06ee9e",
-                        "exitPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c",
+                        "exitPrototype": "06fcb632-d62f-4623-be19-4809b9ac0aac",
                         "debug": false,
-                        "exitLockedPrototype": "ef8be81b-dc65-4a61-8512-f9470a2d547c",
-                        "switchActivatedPrototype": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
+                        "exitLockedPrototype": "87a60cc9-69b8-414b-945d-1ca31765fcec",
+                        "switchActivatedPrototype": "7fe6b4c0-ccd9-4e4c-90ac-cb1a21f2e216"
                     }
                 }
             ]
@@ -929,25 +929,37 @@
             "name": "SwitchPrototype",
             "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
             "components": [
+                null,
+                {
+                    "animation": {
+                        "preview": false
+                    }
+                },
                 {
                     "type": "mesh",
                     "mesh": {
-                        "mesh": "8",
-                        "material": "a0937b28-2b03-4e83-9929-2366d0380f5b"
-                    },
-                    "active": false
+                        "material": "85268b54-2200-4de2-b49d-daeb96ef8d30",
+                        "mesh": "552c10fc-eec8-4282-ad84-466f038ccda6"
+                    }
+                },
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "85268b54-2200-4de2-b49d-daeb96ef8d30",
+                        "mesh": "5e0270b4-e31a-4da3-9f03-0aa9428513e9"
+                    }
                 }
             ],
             "translation": [
                 0.0,
-                1.0,
+                0.0,
                 0.0
             ],
             "rotation": [
                 0.0,
+                0.7071068,
                 0.0,
-                0.0,
-                1.0
+                0.7071068
             ],
             "scaling": [
                 0.75,
@@ -1014,36 +1026,6 @@
                 0.5
             ]
         },
-        "ef8be81b-dc65-4a61-8512-f9470a2d547c": {
-            "name": "ExitPrototype",
-            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
-            "components": [
-                {
-                    "type": "mesh",
-                    "mesh": {
-                        "mesh": "8",
-                        "material": "64394d02-1869-4065-9aa9-43bae65ff6a2"
-                    },
-                    "active": true
-                }
-            ],
-            "translation": [
-                0.0,
-                1.0,
-                0.0
-            ],
-            "rotation": [
-                0.0,
-                0.0,
-                0.0,
-                1.0
-            ],
-            "scaling": [
-                0.85,
-                0.85,
-                0.85
-            ]
-        },
         "d2eb1bef-e521-4139-b3b3-a3d3a138da39": {
             "name": "Empty",
             "components": [
@@ -1079,28 +1061,6 @@
                 1.0,
                 1.0
             ]
-        },
-        "1f914ab4-6b0a-41c2-b5da-0280191a3af1": {
-            "link": {
-                "name": "Lever",
-                "file": "assets\\Objects\\Switch.glb"
-            },
-            "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd",
-            "components": [
-                null,
-                {
-                    "animation": {
-                        "preview": false
-                    }
-                }
-            ]
-        },
-        "684434ec-5ddf-4fff-872c-024b0d2c5118": {
-            "link": {
-                "name": "Base",
-                "file": "assets\\Objects\\Switch.glb"
-            },
-            "parent": "925ddca8-e5cb-40af-84d7-a52d90bf0acd"
         },
         "bd1146a5-43ca-4622-a90b-9333c6877730": {
             "name": "CameraParent",
@@ -1143,7 +1103,101 @@
                 1.0,
                 0.0,
                 0.0,
-                -4.371138828673793e-8
+                -4.3711388286737935e-8
+            ]
+        },
+        "7fe6b4c0-ccd9-4e4c-90ac-cb1a21f2e216": {
+            "name": "SwitchActivatedPrototype",
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "components": [
+                null,
+                {
+                    "animation": {
+                        "preview": false
+                    }
+                },
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "0cfbb928-e861-414d-9df3-eb7f07867a0e",
+                        "mesh": "552c10fc-eec8-4282-ad84-466f038ccda6"
+                    }
+                },
+                {
+                    "type": "mesh",
+                    "mesh": {
+                        "material": "0cfbb928-e861-414d-9df3-eb7f07867a0e",
+                        "mesh": "5e0270b4-e31a-4da3-9f03-0aa9428513e9"
+                    }
+                }
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.7071068,
+                0.0,
+                0.7071068
+            ],
+            "scaling": [
+                0.75,
+                0.75,
+                0.75
+            ]
+        },
+        "06fcb632-d62f-4623-be19-4809b9ac0aac": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Portal2.glb"
+            },
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "name": "ExitPrototype",
+            "rotation": [
+                0.0,
+                0.7071068,
+                0.0,
+                0.7071068
+            ],
+            "scaling": [
+                1.0,
+                0.0775088,
+                1.0
+            ],
+            "components": [
+                null,
+                {
+                    "mesh": {
+                        "material": "72bf278f-1ddc-4fdc-8291-919ef3026707"
+                    }
+                }
+            ]
+        },
+        "87a60cc9-69b8-414b-945d-1ca31765fcec": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Portal2.glb"
+            },
+            "parent": "9ebab2d0-1173-40e7-80a8-4a97df5f0069",
+            "name": "ExitLockedPrototype",
+            "rotation": [
+                0.0,
+                0.7071068,
+                0.0,
+                0.7071068
+            ],
+            "scaling": [
+                1.0,
+                0.0775088,
+                1.0
+            ],
+            "components": [
+                null,
+                {
+                    "active": true
+                }
             ]
         }
     },
@@ -1290,6 +1344,18 @@
             "link": {
                 "name": "Circle.001",
                 "file": "assets\\Objects\\Circle.glb"
+            }
+        },
+        "8085582c-921d-41bc-9b0e-1f676a62be7e": {
+            "link": {
+                "name": "Cylinder.001",
+                "file": "assets\\Objects\\Portal2.glb"
+            }
+        },
+        "a118f21d-4368-4411-9151-2d513a345878": {
+            "link": {
+                "name": "Cylinder.001.0",
+                "file": "assets\\Objects\\Portal2.glb"
             }
         }
     },
@@ -1574,6 +1640,10 @@
             "link": {
                 "name": "Material.001",
                 "file": "assets\\Objects\\Switch.glb"
+            },
+            "name": "Switch Deactivated",
+            "Phong": {
+                "diffuseTexture": "1ee48261-4365-442b-8726-47b285e70d43"
             }
         },
         "14cfb1eb-3910-447f-9cbc-76238cedeade": {
@@ -1632,6 +1702,42 @@
                     1.0
                 ]
             }
+        },
+        "0cfbb928-e861-414d-9df3-eb7f07867a0e": {
+            "link": {
+                "name": "Material.001",
+                "file": "assets\\Objects\\Switch.glb"
+            },
+            "name": "Switch Activated",
+            "Phong": {
+                "diffuseTexture": "6c810cb1-3a78-4d75-a082-28c42f1bb2bc"
+            }
+        },
+        "8a222f22-1fb7-4be6-be29-21be69676e20": {
+            "link": {
+                "name": "Base",
+                "file": "assets\\Objects\\Portal2.glb"
+            }
+        },
+        "d15d6b55-4404-4e66-9f51-d03faf49ee5c": {
+            "link": {
+                "name": "Portal",
+                "file": "assets\\Objects\\Portal2.glb"
+            },
+            "Phong": {
+                "diffuseTexture": "4ce47cb3-b010-4227-8142-a50d8cdbd6e7"
+            },
+            "name": "Portal Deactivated"
+        },
+        "72bf278f-1ddc-4fdc-8291-919ef3026707": {
+            "link": {
+                "name": "Portal",
+                "file": "assets\\Objects\\Portal2.glb"
+            },
+            "Phong": {
+                "diffuseTexture": "01a1bfde-94ff-4064-96ba-409b7a9c7d2a"
+            },
+            "name": "Portal Activated"
         }
     },
     "shaders": {
@@ -1902,8 +2008,8 @@
                 1.0
             ],
             "compressedTextureAtlasSize": [
-                2048,
-                2048
+                4096,
+                4096
             ],
             "textureAtlasSize": [
                 2048,
@@ -3115,6 +3221,30 @@
                 "name": "texture_0",
                 "file": "assets\\Objects\\Portal.glb"
             }
+        },
+        "6c810cb1-3a78-4d75-a082-28c42f1bb2bc": {
+            "link": {
+                "name": "BaseColorGreen.png",
+                "file": "assets\\Objects\\BaseColorGreen.png"
+            }
+        },
+        "72198ac9-6a3f-4016-b4b4-da1b02daaaaa": {
+            "link": {
+                "name": "texture_0",
+                "file": "assets\\Objects\\Portal2.glb"
+            }
+        },
+        "4ce47cb3-b010-4227-8142-a50d8cdbd6e7": {
+            "link": {
+                "name": "PortalRed.png",
+                "file": "assets\\Objects\\PortalRed.png"
+            }
+        },
+        "01a1bfde-94ff-4064-96ba-409b7a9c7d2a": {
+            "link": {
+                "name": "PortalGreen.png",
+                "file": "assets\\Objects\\PortalGreen.png"
+            }
         }
     },
     "images": {
@@ -3209,6 +3339,46 @@
                 256,
                 256
             ]
+        },
+        "5cfc4ce3-dcc5-4d5c-93df-667b863146f7": {
+            "link": {
+                "name": "BaseColorGreen.png",
+                "file": "assets\\Objects\\BaseColorGreen.png"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "3f882350-bb6b-444b-a6ba-117d1525b4b4": {
+            "link": {
+                "name": "BaseColor",
+                "file": "assets\\Objects\\Portal2.glb"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "b10cdcf6-7689-4a32-95f0-a15a34cacd58": {
+            "link": {
+                "name": "PortalRed.png",
+                "file": "assets\\Objects\\PortalRed.png"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
+        },
+        "e4f19157-a5b0-431c-8a76-ea5beb11c8a9": {
+            "link": {
+                "name": "PortalGreen.png",
+                "file": "assets\\Objects\\PortalGreen.png"
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         }
     },
     "fonts": {
@@ -3283,6 +3453,23 @@
             "fileName": "assets/Objects/Circle.glb",
             "importerName": "",
             "importPhysicalAsPhongMaterials": true
+        },
+        "88029502-8cba-4184-8a4b-2e0d86116112": {
+            "fileName": "assets/Objects/BaseColorGreen.png",
+            "importerName": ""
+        },
+        "871b539c-9a95-407d-a491-f857b3cddc03": {
+            "fileName": "assets/Objects/Portal2.glb",
+            "importerName": "",
+            "importPhysicalAsPhongMaterials": true
+        },
+        "126122dc-2607-4d8c-8c6e-7f68c76b8530": {
+            "fileName": "assets/Objects/PortalRed.png",
+            "importerName": ""
+        },
+        "facd2f39-39e7-4131-accd-c221026b0202": {
+            "fileName": "assets/Objects/PortalGreen.png",
+            "importerName": ""
         }
     },
     "morphTargets": {}
