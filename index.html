@@ -211,6 +211,21 @@
       transition: width 0.3s ease-out;
     }
 
+    button:disabled,
+    button[disabled],
+    button[disabled]:hover{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
+    .container {
+        padding: 20px;
+    }
+    input {
+        padding: 8px;
+        margin-right: 8px;
+    }
     </style>
     {{ if settings.runtime.pwa.enable }}
     <link rel="manifest" href="manifest.json">
@@ -255,7 +270,11 @@
 
     <div id="menuScreen" class="screen active">
       <div class="logo"><img src="./logo_website.webp" /></div>
-      <button class="button primary-btn" onclick="connectToServer()">Play Game</button>
+      <div class="container">
+        <input type="text" id="inputField" placeholder="Enter value">
+        <button class="button primary-btn" onclick="setRoomNumber()">Set Variable</button>
+      </div>
+      <button id="start-game-btn" class="button primary-btn" disabled onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
 
@@ -310,6 +329,27 @@
         <source src="music.webm" type="audio/webm">
       </audio>
 
+      <audio id="hitSfx">
+        <source src="hit.webm" type="audio/webm">
+      </audio>
+
+      <audio id="whooshSfx">
+        <source src="whoosh.webm" type="audio/webm">
+      </audio>
+
+      <audio id="winSfx">
+        <source src="win.webm" type="audio/webm">
+      </audio>
+
+      <audio id="loseSfx">
+        <source src="lose.webm" type="audio/webm">
+      </audio>
+
+      <audio id="bubbleSfx">
+        <source src="bubble.webm" type="audio/webm">
+      </audio>
+
+
     <script>
       function showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(screen => {
@@ -325,11 +365,12 @@
       function startGame() {
         showScreen('gameScreen');
         const music = document.getElementById('bgMusic');
+        music.volume = 0.4;
         music.play();
       }
   
-      function endGame(winner) {
-        document.getElementById('winnerText').textContent = 'Player '+ winner + ' Wins!';
+      function endGame(isPlayerWinner) {
+        document.getElementById('winnerText').textContent = isPlayerWinner ? 'You win!' : 'You lose!';
         showScreen('endScreen');
       }
   
@@ -384,6 +425,11 @@
         const healthBar = document.getElementById('health-bar');
         const clampedHealth = Math.max(0, Math.min(100, percentage));
         healthBar.style.width = `${clampedHealth}%`;
+      }
+
+      function setRoomNumber() {
+        const input = document.getElementById('inputField');
+        window.roomId = input.value;
       }
     </script>
 

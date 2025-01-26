@@ -53,6 +53,7 @@ export class GameManager extends Component {
     handleEntityAttacked(data) {
         const {entity} = data;
 
+        document.querySelector('#hitSfx').play();
         // TODO play animation, apply damage
     }
 

@@ -42,7 +42,7 @@ export class PlayerController extends Component {
     static TypeName = 'player-controller';
 
     static Properties = {
-        playerMovementSpeed: Property.float(5.0),
+        playerMovementSpeed: Property.float(10.0),
         currentPlayerIndicatorMesh: Property.object(),
         deadPlayerMaterial: Property.material(),
     }
@@ -107,7 +107,13 @@ export class PlayerController extends Component {
     handleOxygenChaned(data) {
         const {oxygen, oxygenMax, entityId} = data;
         const index = Number(entityId);
-        if(index === this.ownPlayerIndex) setHealth(100 * (oxygen / oxygenMax));
+        if(index === this.ownPlayerIndex) {
+            if(!this.oldOxygen) this.oldOxygen = oxygenMax;
+
+            if(this.oldOxygen < oxygen) document.querySelector('#bubbleSfx').play();
+            setHealth(100 * (oxygen / oxygenMax));
+            this.oldOxygen = oxygen;
+        } 
 
         if(oxygen === 0) {
             const meshes = this.currentSelectedPlayerObjects[index].findByNameRecursive('Mesh');
@@ -132,8 +138,14 @@ export class PlayerController extends Component {
 
     handleGameWon(data) {
         const { entityId } = data;
-        // TODO: Load next level
-        endGame(entityId);
+
+        if(Number(entityId) === this.ownPlayerIndex) {
+            document.querySelector('#winSfx').play();
+            endGame(true);
+        } else {
+            document.querySelector('#loseSfx').play();
+            endGame(false);
+        }
     }
 
     registerKeyboardInput() {
@@ -187,6 +199,10 @@ export class PlayerController extends Component {
 
         player.resetRotation();
         player.rotateAxisAngleDegLocal([0, 1, 0], this.getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ));
+
+        if(playerIndex === this.ownPlayerIndex) {
+            document.querySelector('#whooshSfx').play();
+        }
     }
 
     getPlayerRotationAngleFromDirection(moveDirectionX, moveDirectionZ) {
@@ -198,6 +214,10 @@ export class PlayerController extends Component {
 
     initializePlayers() {
         this.currentSelectedPlayerObjects = this.getSelectedPlayers();
+        this.setPlayerPositions();
+    }
+
+    setPlayerPositions() {
         for (let i = 0; i < this.currentSelectedPlayerObjects.length; i++) {
             const playerObject = this.currentSelectedPlayerObjects[i];
             const position = currentPlayerSpawnPositions[i];
@@ -208,28 +228,28 @@ export class PlayerController extends Component {
     getSelectedPlayers() {
         if(this.playerObjects.length < ACTIVE_PLAYER_COUNT) throw console.error("player-controller: More children on object are required")
 
-            const randomIndices = [];
-            const playerObjects = [];
-            while(randomIndices.length < ACTIVE_PLAYER_COUNT) {
-            let newIndex = Math.floor(Math.random() * this.playerObjects.length);
-            while(randomIndices.includes(newIndex)) {
-                newIndex = Math.floor(Math.random() * this.playerObjects.length);
-            }
-            randomIndices.push(newIndex);            
-        }
+        const randomIndices = [0, 1, 2, 4];
+        const newPlayerObjects = [];
+        // while(randomIndices.length < ACTIVE_PLAYER_COUNT) {
+        //     let newIndex = Math.floor(Math.random() * this.playerObjects.length);
+        //     while(randomIndices.includes(newIndex)) {
+        //         newIndex = Math.floor(Math.random() * this.playerObjects.length);
+        //     }
+        //     randomIndices.push(newIndex);            
+        // }   
 
         // Deactivate not selected player objects
         for (let i = 0; i < this.playerObjects.length; i++) {
             const playerObject = this.playerObjects[i];
             if(randomIndices.includes(i)) {
                 setHierarchyActive(playerObject, false);
-                playerObjects.push(playerObject);
+                newPlayerObjects.push(playerObject);
             } else {
                 setHierarchyActive(playerObject, false);
             }
         }
 
-        return playerObjects;
+        return newPlayerObjects;
     }
 
     update(dt) {

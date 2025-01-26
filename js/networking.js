@@ -19,7 +19,7 @@ export class WebSocketClient {
         const urlParams = new URLSearchParams(window.location.search);
         const roomId = urlParams.get('roomId');
 
-        this.send({command: "CONNECT", roomId: roomId || "1337"});
+        this.send({command: "CONNECT", roomId: window.roomId || roomId || "1337"});
       };
   
       this.ws.onmessage = (event) => {
@@ -28,7 +28,7 @@ export class WebSocketClient {
 
         if(!this.connectedToGame) {
             this.connectedToGame = true;
-            sceneParser.setupLevel(message.map);
+            sceneParser.setupInitialLevel(message.map);
             playerController.setNetworkPlayersActive(message.entities);
             playerController.setCameraPositionFromPlayerIndex(message.player);
             startGame();
@@ -39,7 +39,7 @@ export class WebSocketClient {
             
             if(event.type === "MAP_CHANGED") {
               sceneParser.cleanLevel();
-              sceneParser.setupLevel(message.map);
+              sceneParser.setupConsequentLevel(message.map);
               playerController.setCameraPositionFromPlayerIndex(message.player);
               startGame();
             } else {
