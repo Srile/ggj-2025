@@ -16,6 +16,15 @@ export class GameManager extends Component {
         gameManager = this;
     
         window.gameManager = this;
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('roomId');
+        console.log('roomId', roomId);
+
+        if(roomId) {
+          const input = document.getElementById('inputField');
+          input.value = roomId;
+        } 
     }
 
     joinGame() {
