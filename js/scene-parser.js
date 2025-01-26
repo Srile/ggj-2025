@@ -124,34 +124,25 @@ export class SceneParser extends Component {
     }
 
     checkCharacterLogic(char, position, object) {
-        for (let i = 0; i < characterRegistryKeys.length; i++) {
+        for(let i = 0; i < characterRegistryKeys.length; i++) {
             const key = characterRegistryKeys[i];
             const value = characterRegistry[key];
                 
             if(char === value) {
-                switch (char) {
+                switch(char) {
                     case characterRegistry.wall:
                         object.rotateAxisAngleDegLocal(UP, Math.random() * 360.0);
-                        return;
-                    case characterRegistry.floor:
-
-                        return;
+                        break;
                     case characterRegistry.oxygen:
                         object.rotateAxisAngleDegLocal(UP, Math.random() * 360.0);
-                        return;
-                    case characterRegistry.exit:
-
-                        return;
+                        break;
                 }
             } else {
-                if(characterRegistry.switch.includes(char)) {
-                    
-                    return;
-                } else if(characterRegistry.spawnPoint.includes(char)) {
+                if(characterRegistry.spawnPoint.includes(char)) {
                     const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char)
                     vec3.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
                     // currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1.0;
-                    return;
+                    break;
                 }
             }
         }
@@ -164,6 +155,14 @@ export class SceneParser extends Component {
 
     spawnTile(x, y, char) {
         if(this.map[y][x]) this.removeTile(x, y);
+        if(char === characterRegistry.floor) {
+            // empty child, floor doesn't spawn its own asset
+            this.map[y][x] = {
+                object: this.currentLevelAsssetContainer.addChild(),
+                char
+            };
+            return;
+        }
         const asset = this.getAssetPrototypeFromCharacter(char);
         const newAsset = asset.clone(this.currentLevelAsssetContainer);
         tempVec[0] = startingXPosition + gridWidth*x;
@@ -178,6 +177,7 @@ export class SceneParser extends Component {
 
     spawnLevel(levelString) {
         this.currentLevelAsssetContainer = this.object.addChild();
+        const floorAsset = this.getAssetPrototypeFromCharacter(characterRegistry.floor);
 
         let x = 0;
         let y = 0;
@@ -193,7 +193,11 @@ export class SceneParser extends Component {
                 x++;
                 this.spawnTile(x, y, char);
 
-                // newAsset.setScalingLocal([0.9,0.9,0.9])
+                // Always add floor, stays there at all times
+                tempVec[0] = startingXPosition + gridWidth*x;
+                tempVec[2] = startingZPosition + gridWidth*y;
+                const newFloor = floorAsset.clone(this.currentLevelAsssetContainer);
+                newFloor.setPositionWorld(tempVec);
             }
         }
     }
