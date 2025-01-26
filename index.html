@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:33:28.883" as="script">
+    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T16:40:56.404" as="script">
     <title>ggj2025</title>
     <meta charset="utf-8" />
 
@@ -219,10 +219,17 @@
       color: #666666;
     }
 
+    .container {
+        padding: 20px;
+    }
+    input {
+        padding: 8px;
+        margin-right: 8px;
+    }
     </style>
     
 
-    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:33:28.883"></script>
+    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T16:40:56.404"></script>
 
     
     </script>
@@ -241,6 +248,10 @@
 
     <div id="menuScreen" class="screen active">
       <div class="logo"><img src="./logo_website.webp" /></div>
+      <div class="container">
+        <input type="text" id="inputField" placeholder="Enter value">
+        <button class="button primary-btn" onclick="setRoomNumber()">Set Variable</button>
+      </div>
       <button id="start-game-btn" class="button primary-btn" disabled onclick="connectToServer()">Play Game</button>
       <button class="button secondary-btn" onclick="showInstructions()">Instructions</button>
     </div>
@@ -392,6 +403,11 @@
         const healthBar = document.getElementById('health-bar');
         const clampedHealth = Math.max(0, Math.min(100, percentage));
         healthBar.style.width = `${clampedHealth}%`;
+      }
+
+      function setRoomNumber() {
+        const input = document.getElementById('inputField');
+        window.roomId = input.value;
       }
     </script>
 

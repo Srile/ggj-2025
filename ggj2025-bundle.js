@@ -4108,11 +4108,11 @@ var CameraController = class extends Component3 {
       this.object.getPositionLocal(tempVec);
       this.extent = tempVec[2];
     }
-    window.addEventListener("wheel", this.handleScroll.bind(this));
-    window.addEventListener("mousedown", this.handleMouseDown.bind(this));
-    window.addEventListener("mousemove", this.handleMouseMove.bind(this));
-    window.addEventListener("mouseup", this.handleMouseUp.bind(this));
-    window.addEventListener("contextmenu", (e) => e.preventDefault());
+    this.engine.canvas.addEventListener("wheel", this.handleScroll.bind(this));
+    this.engine.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
+    this.engine.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
+    this.engine.canvas.addEventListener("mouseup", this.handleMouseUp.bind(this));
+    this.engine.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
   }
   setPositionAbovePlayer(player) {
     player.getPositionWorld(tempVec);
@@ -4132,7 +4132,6 @@ var CameraController = class extends Component3 {
     } else {
       this.object.getPositionLocal(tempVec);
       this.extent = Math.min(20, Math.max(0, this.extent));
-      console.log("e", this.extent);
       tempVec[2] = this.extent;
       this.object.setPositionLocal(tempVec);
     }
@@ -4600,7 +4599,7 @@ var WebSocketClient = class {
       console.log("Connected to server");
       const urlParams = new URLSearchParams(window.location.search);
       const roomId = urlParams.get("roomId");
-      this.send({ command: "CONNECT", roomId: roomId || "1337" });
+      this.send({ command: "CONNECT", roomId: window.roomId || roomId || "1337" });
     };
     this.ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
