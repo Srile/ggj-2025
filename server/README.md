@@ -60,6 +60,10 @@ Server may send the following JSON Strings:
             "newY": 4
         },
         {
+            "type": "PLAYER_LEFT",
+            "entityId": "0",
+        },
+        {
             "type": "ENTITY_MOVED",
             "entityId": "0",
             "oldX": 4,
