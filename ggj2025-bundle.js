@@ -4102,7 +4102,12 @@ var CameraController = class extends Component3 {
   start() {
     cameraController = this;
     this.camera = this.object.getComponent(ViewComponent);
-    this.extent = this.camera.extent;
+    if (this.camera.projectionType === ProjectionType.Orthographic) {
+      this.extent = this.camera.extent;
+    } else {
+      this.object.getPositionLocal(tempVec);
+      this.extent = tempVec[2];
+    }
     window.addEventListener("wheel", this.handleScroll.bind(this));
     window.addEventListener("mousedown", this.handleMouseDown.bind(this));
     window.addEventListener("mousemove", this.handleMouseMove.bind(this));
@@ -4111,15 +4116,26 @@ var CameraController = class extends Component3 {
   }
   setPositionAbovePlayer(player) {
     player.getPositionWorld(tempVec);
-    tempVec[1] = 50;
-    this.object.parent.setPositionWorld(tempVec);
+    tempVec[1] = 20;
+    tempVec[2] += 10;
+    this.object.setPositionWorld(tempVec);
+    this.object.getPositionLocal(tempVec);
+    this.extent = tempVec[2];
   }
   handleScroll(event) {
     const deltaY = event.deltaY;
     const scrollAmount = deltaY;
     this.extent += scrollAmount / 100;
-    this.extent = Math.min(40, Math.max(20, this.extent));
-    this.camera.extent = this.extent;
+    if (this.camera.projectionType === ProjectionType.Orthographic) {
+      this.extent = Math.min(40, Math.max(20, this.extent));
+      this.camera.extent = this.extent;
+    } else {
+      this.object.getPositionLocal(tempVec);
+      this.extent = Math.min(25, Math.max(8, this.extent));
+      console.log("e", this.extent);
+      tempVec[2] = this.extent;
+      this.object.setPositionLocal(tempVec);
+    }
   }
   handleMouseDown(event) {
     event.preventDefault();
@@ -4166,6 +4182,7 @@ function setHierarchyActive(object, b) {
 }
 
 // js/scene-parser.js
+var UP = [0, 1, 0];
 var testString = `
 ################################
 #A.oooooooooooooooooooooooooo.B#
@@ -4257,13 +4274,14 @@ var SceneParser = class extends Component3 {
       }
     }
   }
-  checkCharacterLogic(char, position) {
+  checkCharacterLogic(char, position, object) {
     for (let i = 0; i < characterRegistryKeys.length; i++) {
       const key = characterRegistryKeys[i];
       const value = characterRegistry[key];
-      if (value instanceof String && char === value) {
+      if (char === value) {
         switch (char) {
           case characterRegistry.wall:
+            object.rotateAxisAngleDegLocal(UP, Math.random() * 360);
             return;
           case characterRegistry.floor:
             return;
@@ -4278,7 +4296,6 @@ var SceneParser = class extends Component3 {
         } else if (characterRegistry.spawnPoint.includes(char)) {
           const spawnPointPositionIndex = characterRegistry.spawnPoint.indexOf(char);
           vec3_exports.copy(currentPlayerSpawnPositions[spawnPointPositionIndex], position);
-          currentPlayerSpawnPositions[spawnPointPositionIndex][1] = 1;
           return;
         }
       }
@@ -4316,6 +4333,13 @@ var SceneParser = class extends Component3 {
         this.map[y].push(null);
         x++;
         this.spawnTile(x, y, char);
+        const asset = this.getAssetPrototypeFromCharacter(char);
+        currentXPosition += gridWidth;
+        const newAsset = asset.clone(this.currentLevelAsssetContainer);
+        tempVec2[0] = currentXPosition;
+        tempVec2[2] = currentZPosition;
+        this.checkCharacterLogic(char, tempVec2, newAsset);
+        newAsset.setPositionWorld(tempVec2);
       }
     }
   }
