@@ -12,6 +12,8 @@
  */
 
 /* wle:auto-imports:start */
+import {AnimateBubble} from './animate-bubble.js';
+import {AnimatePortal} from './animate-portal.js';
 import {CameraController} from './camera-controller.js';
 import {GameManager} from './game-manager.js';
 import {PlayerController} from './player-controller.js';
@@ -78,6 +80,8 @@ if (document.readyState === 'loading') {
 }
 
 /* wle:auto-register:start */
+engine.registerComponent(AnimateBubble);
+engine.registerComponent(AnimatePortal);
 engine.registerComponent(CameraController);
 engine.registerComponent(GameManager);
 engine.registerComponent(PlayerController);

@@ -979,6 +979,9 @@
                         "material": "58feade2-ff60-448c-9458-219b129c029c"
                     },
                     "active": true
+                },
+                {
+                    "type": "animate-bubble"
                 }
             ],
             "translation": [
@@ -1173,6 +1176,12 @@
                     "mesh": {
                         "material": "72bf278f-1ddc-4fdc-8291-919ef3026707"
                     }
+                },
+                {
+                    "type": "animate-portal",
+                    "animate-portal": {
+                        "speed": 180.0
+                    }
                 }
             ]
         },
@@ -1198,6 +1207,12 @@
                 null,
                 {
                     "active": true
+                },
+                {
+                    "type": "animate-portal",
+                    "animate-portal": {
+                        "speed": 45.0
+                    }
                 }
             ]
         }
