@@ -3344,25 +3344,41 @@
             "link": {
                 "name": "BaseColorGreen.png",
                 "file": "assets\\Objects\\BaseColorGreen.png"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         },
         "3f882350-bb6b-444b-a6ba-117d1525b4b4": {
             "link": {
                 "name": "BaseColor",
                 "file": "assets\\Objects\\Portal2.glb"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         },
         "b10cdcf6-7689-4a32-95f0-a15a34cacd58": {
             "link": {
                 "name": "PortalRed.png",
                 "file": "assets\\Objects\\PortalRed.png"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         },
         "e4f19157-a5b0-431c-8a76-ea5beb11c8a9": {
             "link": {
                 "name": "PortalGreen.png",
                 "file": "assets\\Objects\\PortalGreen.png"
-            }
+            },
+            "maxSize": [
+                256,
+                256
+            ]
         }
     },
     "fonts": {
