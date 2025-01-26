@@ -42,7 +42,7 @@ export class PlayerController extends Component {
     static TypeName = 'player-controller';
 
     static Properties = {
-        playerMovementSpeed: Property.float(5.0),
+        playerMovementSpeed: Property.float(10.0),
         currentPlayerIndicatorMesh: Property.object(),
         deadPlayerMaterial: Property.material(),
     }
