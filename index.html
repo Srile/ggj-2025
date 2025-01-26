@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T14:54:08.029" as="script">
+    <link rel="modulepreload" href="ggj2025-bundle.js?t=2025-01-26T15:01:39.655" as="script">
     <title>ggj2025</title>
     <meta charset="utf-8" />
 
@@ -214,7 +214,7 @@
     </style>
     
 
-    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T14:54:08.029"></script>
+    <script type="module" src="ggj2025-bundle.js?t=2025-01-26T15:01:39.655"></script>
 
     
     </script>
@@ -284,6 +284,10 @@
         </div>
       </div>
 
+      <audio id="bgMusic" loop>
+        <source src="music.webm" type="audio/webm">
+      </audio>
+
     <script>
       function showScreen(screenId) {
         document.querySelectorAll('.screen').forEach(screen => {
@@ -298,6 +302,8 @@
   
       function startGame() {
         showScreen('gameScreen');
+        const music = document.getElementById('bgMusic');
+        music.play();
       }
   
       function endGame(winner) {
