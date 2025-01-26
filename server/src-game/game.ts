@@ -58,6 +58,7 @@ export default class Game {
                         const spawnPoint = this.state._maps[this.state.currentMapId].getSpawnPointForPlayer(playerId)
                         playerEntity.x = spawnPoint[0]
                         playerEntity.y = spawnPoint[1]
+                        playerEntity.oxygen = 80
                     }
                 }
 
