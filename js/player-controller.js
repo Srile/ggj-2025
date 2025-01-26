@@ -56,6 +56,7 @@ export class PlayerController extends Component {
 
     setCameraPositionFromPlayerIndex(playerIndex) {
         cameraController.setPositionAbovePlayer(this.currentSelectedPlayerObjects[playerIndex]);
+        this.ownPlayerIndex = playerIndex;
     }
 
     registerNetworkEvents() {
@@ -73,7 +74,7 @@ export class PlayerController extends Component {
 
         for (let i = 0; i < entityIds.length; i++) {
             const positions = entities[entityIds[i]];
-            tempVec[0] = gridWidth * 1 + startingXPosition + gridWidth*positions.x;
+            tempVec[0] = startingXPosition + gridWidth*positions.x;
             tempVec[1] = 0;
             tempVec[2] = startingZPosition + gridWidth*positions.y;
             
@@ -100,8 +101,8 @@ export class PlayerController extends Component {
     }
 
     handleOxygenChaned(data) {
-        const {oxygen, oxygenMax} = data;
-        setHealth(100 * (oxygen / oxygenMax));
+        const {oxygen, oxygenMax, entityId} = data;
+        if(Number(entityId) === this.ownPlayerIndex) setHealth(100 * (oxygen / oxygenMax));
     }
 
     handleNetworkMove(data) {
